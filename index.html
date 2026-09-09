@@ -61,6 +61,10 @@ h1.title{font-size:29px;line-height:1.15;margin:0 0 5px;color:var(--navy);font-w
 .prio ol{margin:0;padding-left:0;list-style:none;counter-reset:p}
 .prio li{counter-increment:p;position:relative;padding-left:24px;margin:5px 0;font-size:12.8px;color:var(--ink-soft)}
 .prio li::before{content:counter(p);position:absolute;left:0;top:1px;width:16px;height:16px;border-radius:50%;background:var(--blue);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.prio li.key{background:#FFF6E5;border:1px solid #FFD08A;border-radius:8px;padding:9px 12px 9px 30px;margin:6px 0 9px;color:var(--navy);font-weight:600;font-size:13.2px}
+.prio li.key::before{background:var(--amber);left:8px;top:11px}
+.prio li.key::after{content:'Principio rector';display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.09em;color:#B26A00;font-weight:700;margin-top:4px}
+.claim{border-left:5px solid var(--amber);background:linear-gradient(90deg,#FEF1E4,#FFFDFA);border-radius:0 10px 10px 0;padding:14px 18px;margin:2px 0 14px;font-size:clamp(16px,2.2vw,20px);font-weight:700;color:var(--navy);line-height:1.35;max-width:900px}
 .logoslot{width:min(230px,30%);flex:0 0 auto;text-align:right}
 
 .imgslot{position:relative;border-radius:10px;overflow:hidden}
@@ -246,6 +250,53 @@ html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 
 
 /* ---------- Scroll del roadmap ---------- */
+.msimg{margin-bottom:8px}
+.msimg .imgslot img{width:100%;max-height:140px;object-fit:contain;border-radius:8px}
+.msimg .imgslot .ph{min-height:70px}
+.msmobile{display:none}
+.msmitem{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:10px;background:#fff}
+.msmitem img{width:96px;height:64px;object-fit:contain;border-radius:8px;flex:0 0 auto}
+.msmitem b{display:block;font-size:13.5px;color:var(--navy);line-height:1.3}
+.msmitem span{display:block;font-size:12px;color:var(--ink-soft);margin-top:2px}
+/* ---------- Portada con clave ---------- */
+.gate{
+  position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;
+  padding:24px;background:radial-gradient(120% 120% at 20% 0%,#0B4A8F 0%,var(--navy) 55%,#021A38 100%);
+}
+body.unlocked .gate{display:none}
+body:not(.unlocked) .toolbar,
+body:not(.unlocked) .robar,
+body:not(.unlocked) .wrap{display:none !important}
+.gatecard{
+  width:100%;max-width:26rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);
+  border-radius:18px;padding:30px 26px 24px;text-align:center;color:#fff;
+  box-shadow:0 24px 60px rgba(0,0,0,.35);backdrop-filter:blur(4px);
+}
+.gatelogo{max-width:190px;width:70%;height:auto;margin:0 auto 20px;display:block}
+.gatefallback{font-size:15px;font-weight:700;letter-spacing:.12em;color:var(--yellow);margin-bottom:18px}
+.gatecard h2{margin:0 0 6px;font-size:clamp(17px,4.6vw,21px);line-height:1.3;font-weight:700}
+.gatecard h2 span{color:var(--sky);display:block;font-size:.85em;margin-top:2px}
+.gatecard p{margin:0 0 18px;font-size:13px;color:rgba(255,255,255,.78);line-height:1.5}
+#gateForm{display:flex;flex-direction:column;gap:10px}
+#gatePass{
+  width:100%;min-height:48px;padding:12px 16px;border-radius:12px;font-size:16px;font-family:inherit;
+  border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.1);color:#fff;text-align:center;letter-spacing:.08em;
+}
+#gatePass::placeholder{color:rgba(255,255,255,.5);letter-spacing:0}
+#gatePass:focus{outline:none;border-color:var(--sky);background:rgba(255,255,255,.16)}
+.gatebtn{
+  min-height:48px;border:none;border-radius:12px;background:var(--blue);color:#fff;
+  font-size:15px;font-weight:600;cursor:pointer;transition:.15s;
+}
+.gatebtn:hover{background:#0a6fc2}
+.gateerr{
+  display:none;margin-top:12px;font-size:12.5px;color:#FFC9C9;background:rgba(255,0,0,.14);
+  border:1px solid rgba(255,120,120,.4);border-radius:8px;padding:8px 10px;
+}
+.gateerr.show{display:block}
+.gatefoot{margin-top:18px;font-size:11px;color:rgba(255,255,255,.45);letter-spacing:.04em}
+@media (max-width:400px){.gatecard{padding:24px 18px 20px}}
+
 .rmwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
 .rmscroll{min-width:1120px}
 
@@ -302,6 +353,7 @@ html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .sec-h{flex-direction:column;gap:2px;align-items:flex-start}
   .sec-h h2{font-size:clamp(18px,5.4vw,23px)}
   .sec-intro{font-size:13.5px}
+  .claim{font-size:16px;padding:12px 14px}
 
   .two,.safarirow,.photos,.demogrid,.heard,.doms,.curvewrap,.nextgrid{grid-template-columns:1fr}
   .panel{padding:14px}
@@ -318,6 +370,7 @@ html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .rmwrap{overflow-x:visible}
   .rmscroll{min-width:0}
   .grid,.tlrow{display:none}
+  .msmobile{display:grid;grid-template-columns:1fr;gap:10px;margin:4px 0 6px}
   .lane{display:block;margin-top:18px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
   .laneTitle{min-height:0;padding:12px 14px;border-radius:0}
   .laneTitle .lt-name{font-size:16px}
@@ -363,11 +416,12 @@ html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 @page{size:A3 landscape;margin:10mm}
 @media print{
   body{background:#fff}
-  .toolbar,.robar,.modal,.toast,.addcard,.ctools,.laneTools,.slotbar,.phx,.tonepick,.handle,.hamb,.tbmenu{display:none !important}
+  .toolbar,.robar,.modal,.toast,.addcard,.ctools,.laneTools,.slotbar,.phx,.tonepick,.handle,.hamb,.tbmenu,.gate{display:none !important}
   .wrap{padding:0;overflow:visible}
   .rmwrap{overflow:visible}
   .rmscroll{min-width:0;width:100%}
   .grid,.tlrow{display:grid !important}
+  .msmobile{display:none !important}
   .lane{display:grid !important}
   .cell{border-bottom:none}
   .cell::before{display:none !important}
@@ -409,6 +463,21 @@ html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   <span class="status" id="status"><i></i><span id="statusTxt">Local</span></span>
   <button class="tbtn primary" id="btnPdf">PDF</button>
   <button class="hamb" id="tbToggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+</div>
+
+<div class="gate" id="gate">
+  <div class="gatecard">
+    <img class="gatelogo" src="https://laguacaenlinea.cr/skins/la_guacamaya/customer/images/footer-logo.png" alt="Repuestos La Guaca" onerror="this.style.display='none';document.getElementById('gateFallback').style.display='block'">
+    <div id="gateFallback" class="gatefallback" style="display:none">REPUESTOS LA GUACA</div>
+    <h2>Visión La Guaca Repuestos y Guaca Servicios <span>+ Salesforce</span></h2>
+    <p>Contenido confidencial de la propuesta. Ingresa la clave de acceso para continuar.</p>
+    <form id="gateForm" autocomplete="off">
+      <input id="gatePass" type="password" placeholder="Clave de acceso" autocomplete="off" spellcheck="false">
+      <button class="gatebtn" type="submit">Entrar</button>
+    </form>
+    <div class="gateerr" id="gateErr">Clave incorrecta. Intenta de nuevo.</div>
+    <div class="gatefoot">Propuesta preliminar · uso interno</div>
+  </div>
 </div>
 
 <div class="wrap"><div class="board" id="board"></div></div>
@@ -474,10 +543,37 @@ const CONFIG = {
 };
 /* ============================================================ */
 
-const LS_STATE='guaca-roadmap-sf-v8';
+const LS_STATE='guaca-roadmap-sf-v11';
 const LS_CFG='guaca-roadmap-cfg';
 const LS_TOKEN='guaca-roadmap-token';
 const LS_ME='guaca-roadmap-author';
+
+/* ---------------- Portada con clave de acceso ---------------- */
+const GATE_KEY='guaca-gate-ok';
+const GATE_TOKEN='Q09MRFBMQVk=';
+function gateOpen(){
+  document.body.classList.add('unlocked');
+  try{sessionStorage.setItem(GATE_KEY,'1')}catch(e){}
+}
+(function initGate(){
+  let ok=false;
+  try{ok=sessionStorage.getItem(GATE_KEY)==='1'}catch(e){}
+  if(ok){document.body.classList.add('unlocked');return}
+  const f=document.getElementById('gateForm'),
+        i=document.getElementById('gatePass'),
+        err=document.getElementById('gateErr');
+  if(!f) {document.body.classList.add('unlocked');return}
+  setTimeout(()=>{try{i.focus()}catch(e){}},120);
+  f.addEventListener('submit',ev=>{
+    ev.preventDefault();
+    const val=(i.value||'').trim().toUpperCase();
+    let expected='';
+    try{expected=atob(GATE_TOKEN)}catch(e){expected='COLDPLAY'}
+    if(val===expected){err.classList.remove('show');gateOpen()}
+    else{err.classList.add('show');i.value='';i.focus()}
+  });
+  i.addEventListener('input',()=>err.classList.remove('show'));
+})();
 
 const qs=new URLSearchParams(location.search);
 const canEdit=!(qs.has('view')||qs.has('readonly'));   // editable por defecto · ?view=1 = solo lectura
@@ -575,7 +671,8 @@ const DOC_DEFAULTS = {
   curve:{
     kicker:'Antes del roadmap',
     title:'Curva de priorización: valor de negocio vs. esfuerzo',
-    intro:'El roadmap no se ordena por producto, se ordena por retorno. Cada iniciativa se ubica según el valor que genera y el esfuerzo que exige; de ahí salen las olas de entrega. Las burbujas y las olas se completan en conjunto con el cliente.',
+    claim:'El roadmap no se ordena por producto, se ordena por retorno.',
+    intro:'Cada iniciativa se ubica según el valor que genera y el esfuerzo que exige; de ahí salen las olas de entrega. Las burbujas y las olas se completan en conjunto con el cliente.',
     how:[
       '¿Qué mide el eje vertical? El valor de negocio: ingreso incremental, retención, costo evitado y riesgo que se elimina.',
       '¿Qué mide el eje horizontal? El esfuerzo y la complejidad: integraciones, cambio de proceso, calidad de datos y adopción del equipo.',
@@ -664,7 +761,8 @@ const DEFAULT_DATA = {
     "title2": "Propuesta de Roadmap"
   },
   "priorities": [
-    "Unificar la experiencia del cliente entre tienda, web y WhatsApp",
+    "Conocer al cliente de forma integrada, sin importar el canal por el que contacte",
+    "Escalar la operación de servicio de ~6.800 a 10.000 vehículos atendidos al mes",
     "Aumentar conversión y ticket promedio con recomendación asistida por IA",
     "Reducir costos de soporte y de aplicaciones legadas"
   ],
@@ -672,43 +770,68 @@ const DEFAULT_DATA = {
   "phases": [
     {
       "id": "9wbzzw7",
-      "label": "Fase 1 - MVP Guaca Service",
-      "sub": "Semanas 1 a 14",
+      "label": "Ola 1 · MVP Guaca Servicios",
+      "sub": "Mes 1 a 4",
       "tone": "amber",
       "height": 46,
-      "milestone": "MVP"
+      "milestone": "",
+      "image": {
+        "key": "fase-1.png",
+        "url": "https://drive.google.com/thumbnail?id=1MyokKCrzp_REeLf8n9RKNSoTXpHdHXBY&sz=w800",
+        "link": "https://drive.google.com/file/d/1MyokKCrzp_REeLf8n9RKNSoTXpHdHXBY/view?usp=drive_link"
+      }
     },
     {
       "id": "vu6j4ba",
-      "label": "Fase 2 · Servicio y Omnicanal",
+      "label": "Ola 2 · Servicio y Vista 360",
       "sub": "Mes 4 a 7",
       "tone": "blue",
       "height": 80,
-      "milestone": "SERVICIO"
+      "milestone": "",
+      "image": {
+        "key": "fase-2.png",
+        "url": "https://drive.google.com/thumbnail?id=1LUf-zoB2U0LBzZfI5-We5jUqp19Un0jy&sz=w800",
+        "link": "https://drive.google.com/file/d/1LUf-zoB2U0LBzZfI5-We5jUqp19Un0jy/view?usp=drive_link"
+      }
     },
     {
       "id": "wmaeyq6",
-      "label": "Fase 3",
+      "label": "Ola 3 · Operación integral de talleres",
       "sub": "Mes 7 a 12",
       "tone": "blue",
       "height": 112,
-      "milestone": "FIELD SERVICE"
+      "milestone": "",
+      "image": {
+        "key": "fase-3.png",
+        "url": "https://drive.google.com/thumbnail?id=1jJMcNdSpckZXQz76Cq5kef0v7kS0TaDj&sz=w800",
+        "link": "https://drive.google.com/file/d/1jJMcNdSpckZXQz76Cq5kef0v7kS0TaDj/view?usp=drive_link"
+      }
     },
     {
       "id": "2rtatsi",
-      "label": "Año 1",
+      "label": "Horizonte de evolución · Año 1",
       "sub": "Todas las agencias",
       "tone": "sky",
       "height": 146,
-      "milestone": "PERSONALIZACIÓN"
+      "milestone": "",
+      "image": {
+        "key": "ano-1.png",
+        "url": "https://drive.google.com/thumbnail?id=1Z_mxGFEDWe-ZvCX1NR9UOJ4Zj2Re4n4q&sz=w800",
+        "link": "https://drive.google.com/file/d/1Z_mxGFEDWe-ZvCX1NR9UOJ4Zj2Re4n4q/view?usp=drive_link"
+      }
     },
     {
       "id": "iyitc4h",
-      "label": "Año 2 y 5",
+      "label": "Horizonte de evolución · Años 2 a 5",
       "sub": "Optimización",
       "tone": "sky",
       "height": 180,
-      "milestone": "LEALTAD"
+      "milestone": "",
+      "image": {
+        "key": "ano-2-5.png",
+        "url": "https://drive.google.com/thumbnail?id=1IAp-OKk5TAztr6aTjPgjrdQnK6mQGWMh&sz=w800",
+        "link": "https://drive.google.com/file/d/1IAp-OKk5TAztr6aTjPgjrdQnK6mQGWMh/view?usp=drive_link"
+      }
     }
   ],
   "lanes": [
@@ -741,30 +864,6 @@ const DEFAULT_DATA = {
           "items": [
             "Guaca Club escalonado por nivel",
             "Contenido dinámico por segmento y categoria"
-          ],
-          "tags": [],
-          "image": null
-        },
-        {
-          "id": "qyhapab",
-          "phaseId": "9wbzzw7",
-          "title": "Orquestación de canales",
-          "items": [
-            "WhatsApp masivo",
-            "Correo transaccional",
-            "Conversaciones en doble vía"
-          ],
-          "tags": [],
-          "image": null
-        },
-        {
-          "id": "gjpag0v",
-          "phaseId": "9wbzzw7",
-          "title": "Estrategia digital MVP",
-          "items": [
-            "Modelo contextual",
-            "Audiencias y Segmentos x 5",
-            "Journeys x 2 prioritarios"
           ],
           "tags": [],
           "image": null
@@ -818,6 +917,49 @@ const DEFAULT_DATA = {
           ],
           "tags": [],
           "image": null
+        },
+        {
+          "id": "5e540kr",
+          "phaseId": "9wbzzw7",
+          "title": "Orquestación de canales",
+          "items": [
+            "Número oficial centralizado de WhatsApp para Guaca Servicios",
+            "Transición progresiva de los 9 números actuales",
+            "Atención inbound y comunicaciones outbound",
+            "Correo transaccional",
+            "Conversaciones en doble vía con trazabilidad",
+            "Gobierno de plantillas, consentimiento y opt-out"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "ueth38j",
+          "phaseId": "9wbzzw7",
+          "title": "Estrategia digital MVP",
+          "items": [
+            "Modelo contextual",
+            "5 audiencias y segmentos iniciales",
+            "2 journeys prioritarios",
+            "Preferencias de canal y exclusiones mínimas",
+            "Indicadores de campaña, conversación y cita"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "z1kzshr",
+          "phaseId": "9wbzzw7",
+          "title": "Perfil básico cliente–vehículo",
+          "items": [
+            "Identificación inicial por teléfono, cédula o placa",
+            "Cliente y vehículo relacionados",
+            "Historial inicial de conversaciones, citas y servicios",
+            "Reglas mínimas de coincidencia y duplicados",
+            "Evolución posterior hacia perfil unificado"
+          ],
+          "tags": [],
+          "image": null
         }
       ]
     },
@@ -831,33 +973,6 @@ const DEFAULT_DATA = {
         "url": ""
       },
       "cards": [
-        {
-          "id": "8ldirsh",
-          "phaseId": "9wbzzw7",
-          "title": "Omnicanalidad + IA",
-          "items": [
-            "Escalamiento fluido a agente humano",
-            "Agente Autónomo captura información para agendamiento",
-            "WhatsApp Business",
-            "Chat para web y Facebook messenger"
-          ],
-          "tags": [],
-          "image": null
-        },
-        {
-          "id": "lw8prv2",
-          "phaseId": "9wbzzw7",
-          "title": "Solicitudes de servicio",
-          "items": [
-            "Migración desde Zendesk",
-            "Base de conocimiento unificada",
-            "Citas de taller",
-            "Recepción de vehículos",
-            "Encuestas"
-          ],
-          "tags": [],
-          "image": null
-        },
         {
           "id": "9qa0kb0",
           "phaseId": "vu6j4ba",
@@ -936,6 +1051,35 @@ const DEFAULT_DATA = {
             "Tickets con SLAs, escalamiento y aprobaciones",
             "Analítica y Visibilidad"
           ]
+        },
+        {
+          "id": "ot4tuh0",
+          "phaseId": "9wbzzw7",
+          "title": "Omnicanalidad + IA",
+          "items": [
+            "Agentforce captura información inicial para el agendamiento",
+            "Escalamiento al agente humano conservando el contexto",
+            "WhatsApp oficial con enrutamiento y trazabilidad",
+            "Chat para web y Facebook Messenger",
+            "Medición de conversaciones, citas y conversiones"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "tghmr3o",
+          "phaseId": "9wbzzw7",
+          "title": "Solicitudes de servicio",
+          "items": [
+            "Estrategia de transición desde la plataforma actual; alcance histórico por validar",
+            "Base de conocimiento unificada",
+            "Citas de taller",
+            "Recepción de vehículos",
+            "Encuesta posterior con alerta y acción de recuperación",
+            "NPS/CSAT por canal, sucursal y servicio"
+          ],
+          "tags": [],
+          "image": null
         }
       ]
     },
@@ -1019,7 +1163,7 @@ const DEFAULT_DATA = {
       "id": "v8jhue6",
       "name": "Data e Integraciones",
       "sub": "",
-      "tone": "navy",
+      "tone": "sky",
       "icon": {
         "key": "icono-mulesoft.png",
         "url": ""
@@ -1061,16 +1205,6 @@ const DEFAULT_DATA = {
           "image": null
         },
         {
-          "id": "y6l6sn3",
-          "phaseId": "9wbzzw7",
-          "title": "Datos de contacto",
-          "items": [
-            "Precarga de información básica"
-          ],
-          "tags": [],
-          "image": null
-        },
-        {
           "id": "6bspset",
           "phaseId": "wmaeyq6",
           "title": "Integraciones Field Service",
@@ -1094,13 +1228,39 @@ const DEFAULT_DATA = {
           ],
           "tags": [],
           "image": null
+        },
+        {
+          "id": "5h488ut",
+          "phaseId": "9wbzzw7",
+          "title": "Arquitectura e integraciones prioritarias",
+          "items": [
+            "Inventario de sistemas y datos",
+            "Definición de fuentes y sistemas maestros",
+            "Disponibilidad de APIs y frecuencia de actualización",
+            "Diseño de integración, seguridad y responsables",
+            "Relación entre Data Lake, Salesforce y Data Cloud"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "w0giiu6",
+          "phaseId": "9wbzzw7",
+          "title": "Datos mínimos del MVP",
+          "items": [
+            "Precarga de información básica",
+            "Datos disponibles mediante API, sujetos a validación de TI",
+            "Calidad y cobertura requeridas para identificar cliente y vehículo"
+          ],
+          "tags": [],
+          "image": null
         }
       ]
     },
     {
       "id": "duepv47",
-      "name": "Estrategia, Analítica e Incentivos",
-      "sub": "Tableau · Slack · Spiff",
+      "name": "Adopción, Analítica y Evolución",
+      "sub": "Transversal al programa",
       "tone": "blue",
       "icon": {
         "key": "icono-tableau.png",
@@ -1145,12 +1305,39 @@ const DEFAULT_DATA = {
             "Habilita licitaciones B2B con flotillas, corporativos y aseguradoras",
             "Ahorro operativo y acceso a créditos verdes al optimizar consumo y residuos"
           ]
+        },
+        {
+          "id": "vsebrnb",
+          "phaseId": "9wbzzw7",
+          "title": "Gobierno, adopción y despliegue",
+          "items": [
+            "Sponsor ejecutivo, product owner y líder interno Salesforce",
+            "Referentes de marketing, contact center y talleres",
+            "Formación por rol y piloto controlado",
+            "Indicadores de adopción y gobierno de mejoras"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "z1ry5cl",
+          "phaseId": "9wbzzw7",
+          "title": "Indicadores del MVP",
+          "items": [
+            "Conversaciones, respuesta y atención",
+            "Conversión de conversación a cita y asistencia",
+            "Vehículos recibidos y conversión por campaña",
+            "NPS/CSAT, tasa de respuesta y recuperación",
+            "Línea base y metas por definir conjuntamente"
+          ],
+          "tags": [],
+          "image": null
         }
       ]
     }
   ],
   "version": 2,
-  "updatedAt": "2026-09-09T16:34:19.218Z",
+  "updatedAt": "2026-09-09T19:54:25.086Z",
   "updatedBy": "alfredo",
   "comments": {},
   "exec": {
@@ -1170,18 +1357,15 @@ const DEFAULT_DATA = {
       "photos": [
         {
           "key": "safari-1.jpg",
-          "url": "https://drive.google.com/thumbnail?id=1AAAolkcewc9NzyRyyjCf_FzBwwFxvDrI&sz=w1600",
-          "link": "https://drive.google.com/file/d/1AAAolkcewc9NzyRyyjCf_FzBwwFxvDrI/view?usp=drive_link"
+          "url": "https://drive.google.com/thumbnail?id=1AAAolkcewc9NzyRyyjCf_FzBwwFxvDrI&sz=w1600"
         },
         {
           "key": "safari-2.jpg",
-          "url": "https://drive.google.com/thumbnail?id=1UqU3Y3fMAo_gPLYNoYuI9VB5RZ9aEM2T&sz=w1600",
-          "link": "https://drive.google.com/file/d/1UqU3Y3fMAo_gPLYNoYuI9VB5RZ9aEM2T/view?usp=drive_link"
+          "url": "https://drive.google.com/thumbnail?id=1UqU3Y3fMAo_gPLYNoYuI9VB5RZ9aEM2T&sz=w1600"
         },
         {
           "key": "safari-3.jpg",
-          "url": "https://drive.google.com/thumbnail?id=1y6ceMo22QeN3Ok8BBrumqFg3EvePIFxV&sz=w1600",
-          "link": "https://drive.google.com/file/d/1y6ceMo22QeN3Ok8BBrumqFg3EvePIFxV/view?usp=drive_link"
+          "url": "https://drive.google.com/thumbnail?id=1y6ceMo22QeN3Ok8BBrumqFg3EvePIFxV&sz=w1600"
         }
       ]
     },
@@ -1336,7 +1520,7 @@ const DEFAULT_DATA = {
   "curve": {
     "kicker": "Antes del roadmap",
     "title": "Curva de priorización: valor de negocio vs. esfuerzo",
-    "intro": "El roadmap no se ordena por producto, se ordena por retorno. Cada iniciativa se ubica según el valor que genera y el esfuerzo que exige; de ahí salen las olas de entrega. Las burbujas y las olas se completan en conjunto con el cliente.",
+    "intro": "Cada iniciativa se ubica según el valor que genera y el esfuerzo que exige; de ahí salen las olas de entrega. Las burbujas y las olas se completan en conjunto con el cliente.",
     "how": [
       "¿Qué mide el eje vertical? El valor de negocio: ingreso incremental, retención, costo evitado y riesgo que se elimina.",
       "¿Qué mide el eje horizontal? El esfuerzo y la complejidad: integraciones, cambio de proceso, calidad de datos y adopción del equipo.",
@@ -1356,49 +1540,49 @@ const DEFAULT_DATA = {
         "n": "1",
         "x": 29,
         "y": 88,
-        "label": ""
+        "label": "WhatsApp oficial + atención omnicanal"
       },
       {
         "n": "2",
         "x": 20,
         "y": 83,
-        "label": ""
+        "label": "Perfil básico cliente–vehículo"
       },
       {
         "n": "3",
         "x": 45,
         "y": 72,
-        "label": ""
+        "label": "Citas y recepción digital"
       },
       {
         "n": "4",
         "x": 20,
         "y": 61,
-        "label": ""
+        "label": "Campañas y journeys prioritarios"
       },
       {
         "n": "5",
-        "x": 72,
-        "y": 75,
-        "label": ""
+        "x": 67,
+        "y": 44,
+        "label": "Operación integral de talleres"
       },
       {
         "n": "6",
         "x": 57,
         "y": 52,
-        "label": ""
+        "label": "Experiencia asistida en tienda"
       },
       {
         "n": "7",
         "x": 76,
         "y": 52,
-        "label": ""
+        "label": "Commerce B2C conectado"
       },
       {
         "n": "8",
-        "x": 18,
-        "y": 36,
-        "label": ""
+        "x": 85,
+        "y": 59,
+        "label": "Iniciativas futuras por validar"
       }
     ],
     "olas": [
@@ -1408,13 +1592,14 @@ const DEFAULT_DATA = {
       },
       {
         "c": "o2",
-        "label": ""
+        "label": "Ola 2 · Servicio y Vista 360"
       },
       {
         "c": "o3",
-        "label": ""
+        "label": "Ola 3 · Operación integral de talleres"
       }
-    ]
+    ],
+    "claim": "El roadmap no se ordena por producto, se ordena por retorno."
   },
   "roadmapHead": {
     "kicker": "El plan",
@@ -1579,6 +1764,8 @@ function imgSlotHTML(img,path,label,style){
 }
 function getImgRef(path){
   if(path==='brand.logo') return {get:()=>state.brand.logo,set:v=>state.brand.logo=v};
+  const mf=path.match(/^phase:(.+)\.image$/);
+  if(mf){const f=state.phases.find(x=>x.id===mf[1]);return f?{get:()=>f.image,set:v=>f.image=v}:null}
   const mp=path.match(/^exec\.photo:(\d+)$/);
   if(mp){const i=Number(mp[1]);return {get:()=>state.exec.safari.photos[i],set:v=>state.exec.safari.photos[i]=v}}
   return null;
@@ -1586,18 +1773,19 @@ function getImgRef(path){
 function collectSlots(){
   const out=[{path:'brand.logo',where:'Encabezado · logo',img:state.brand.logo}];
   (state.exec&&state.exec.safari&&state.exec.safari.photos||[]).forEach((ph,i)=>out.push({path:'exec.photo:'+i,where:'Safari · foto '+(i+1),img:ph}));
+  (state.phases||[]).forEach(f=>{if(f.image)out.push({path:'phase:'+f.id+'.image',where:'Fase · '+f.label,img:f.image})});
   return out;
 }
 
 /* ---------------- Render ---------------- */
 /* ---------------- Render de secciones narrativas ---------------- */
-function secHead(base){
+function secHead(base,skipIntro){
   const d=getPath(base)||{};
   return `<div class="sec-h">
     <span class="kicker" ${CE} data-doc="${base}.kicker">${esc(d.kicker)}</span>
     <h2 ${CE} data-doc="${base}.title">${esc(d.title)}</h2>
   </div>
-  ${d.intro!==undefined?`<p class="sec-intro" ${CE} data-doc="${base}.intro">${esc(d.intro)}</p>`:''}`;
+  ${(!skipIntro&&d.intro!==undefined)?`<p class="sec-intro" ${CE} data-doc="${base}.intro">${esc(d.intro)}</p>`:''}`;
 }
 function blist(path,cls){
   const arr=getPath(path)||[];
@@ -1617,7 +1805,6 @@ function docExec(){
       <div class="photos">
         ${(sf.photos||[]).map((phx,i)=>`<div class="photocell">
           ${imgSlotHTML(phx,'exec.photo:'+i,'Foto del safari '+(i+1),'')}
-          ${phx&&phx.link?`<a class="vlink" href="${esc(phx.link)}" target="_blank" rel="noopener">Abrir la foto en Drive ↗</a>`:''}
         </div>`).join('')}
       </div>
     </div>
@@ -1691,7 +1878,9 @@ function curveSVG(){
 function docCurve(){
   const c=state.curve;
   return `<div class="docsec brk">
-    ${secHead('curve')}
+    ${secHead('curve',true)}
+    <div class="claim" ${CE} data-doc="curve.claim">${esc(c.claim||'')}</div>
+    <p class="sec-intro" ${CE} data-doc="curve.intro">${esc(c.intro||'')}</p>
     <div class="curvewrap">
       <div class="curvebox">${curveSVG()}</div>
       <div>
@@ -1732,7 +1921,7 @@ function render(){
     <div class="title2" ${CE} data-bind="brand.title2">${esc(state.brand.title2||'Propuesta de Roadmap')}</div>
     <div class="pill" ${CE} data-bind="brand.badge">${esc(state.brand.badge)}</div>
     <div class="prio"><h4>Prioridades estratégicas</h4>
-      <ol ${CE} data-bind="priorities">${state.priorities.map(p=>'<li>'+esc(p)+'</li>').join('')}</ol>
+      <ol ${CE} data-bind="priorities">${state.priorities.map((p,i)=>'<li'+(i===0?' class="key"':'')+'>'+esc(p)+'</li>').join('')}</ol>
     </div></div>
     <div class="logoslot">${imgSlotHTML(state.brand.logo,'brand.logo','Logo Repuestos La Guaca','max-height:70px;margin-left:auto')}</div>
   </div>`;
@@ -1742,6 +1931,11 @@ function render(){
   h+=`<div class="rmwrap"><div class="rmscroll">`;
   h+=`<div class="grid"><div></div>`;
   state.phases.forEach(p=>{
+    const hasImg=p.image&&resolveSrc(p.image);
+    if(hasImg){
+      h+=`<div class="msCell"><div class="msimg">${imgSlotHTML(p.image,'phase:'+p.id+'.image',p.label,'')}</div><div class="bar t-${p.tone}" style="height:${p.height||20}px"></div></div>`;
+      return;
+    }
     const empty=!p.milestone;
     if(!canEdit&&empty){h+=`<div class="msCell"><div class="msLabel"></div><div class="bar t-${p.tone}" style="height:${p.height||20}px"></div></div>`;return}
     h+=`<div class="msCell"><div class="msLabel ${empty?'empty':''}" ${CE} data-bind="phase.milestone:${p.id}">${esc(p.milestone||'hito…')}</div>${p.milestone?'<div class="msDot"></div>':''}<div class="bar t-${p.tone}" style="height:${p.height||20}px"></div></div>`;
@@ -1772,6 +1966,10 @@ function render(){
     h+=`</div>`;
   });
 
+  h+=`<div class="msmobile">${state.phases.map(p=>`<div class="msmitem">
+    ${p.image&&resolveSrc(p.image)?`<img src="${esc(resolveSrc(p.image))}" alt="${esc(p.label)}">`:''}
+    <div><b>${esc(p.label)}</b><span>${esc(p.sub||'')}</span></div>
+  </div>`).join('')}</div>`;
   h+=`</div></div>`;
   h+=docNext();
   h+=`<div class="bfoot"><div class="legend">${TONES.map(t=>`<span><i style="background:${TONE_HEX[t[0]]}"></i>${t[1]}</span>`).join('')}</div>
