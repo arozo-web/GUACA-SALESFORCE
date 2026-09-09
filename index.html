@@ -1,192 +1,99 @@
 <!DOCTYPE html>
-<!-- saved from url=(0237)file:///Users/arozo/Library/Application%20Support/Claude/local-agent-mode-sessions/e9a11d26-2981-460e-a233-6efa6a5e0821/a995d2bb-cadd-4fb9-9a37-0177a1884c31/local_072b0be9-00e6-4c64-962b-975202d5c6f9/outputs/roadmap-guaca-salesforce.html -->
-<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="es">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Propuesta de Roadmap · Repuestos La Guaca · Salesforce</title>
 <style>
 :root{
   color-scheme: light;
-  --navy:#032D60;
-  --blue:#0176D3;
-  --blue-600:#0B5CAB;
-  --sky:#57A3F3;
-  --sky-100:#EAF5FE;
-  --sky-200:#CFE9FE;
-  --amber:#FE9339;
-  --amber-100:#FEF1E4;
-  --yellow:#FCC003;
-  --ink:#181818;
-  --ink-soft:#444;
-  --line:#D8DDE6;
-  --bg:#F7F9FB;
-  --white:#fff;
-  --radius:12px;
+  --navy:#032D60; --blue:#0176D3; --blue-600:#0B5CAB;
+  --sky:#57A3F3; --sky-100:#EAF5FE; --sky-200:#CFE9FE;
+  --amber:#FE9339; --amber-100:#FEF1E4; --yellow:#FCC003;
+  --ink:#181818; --ink-soft:#444; --line:#D8DDE6; --bg:#F7F9FB; --white:#fff;
+  --ok:#2E844A; --warn:#EA001E;
   --shadow:0 1px 2px rgba(3,45,96,.10),0 6px 16px rgba(3,45,96,.06);
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{
-  background:var(--bg);
-  color:var(--ink);
-  font-family:'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
-  font-size:14px;
-  -webkit-font-smoothing:antialiased;
-}
-[contenteditable]{outline:none}
-[contenteditable]:focus{
-  box-shadow:0 0 0 2px var(--blue);
-  border-radius:4px;
-  background:rgba(255,255,255,.55);
-}
+body{background:var(--bg);color:var(--ink);font-family:'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;font-size:14px;-webkit-font-smoothing:antialiased}
+[contenteditable="true"]{outline:none}
+[contenteditable="true"]:focus{box-shadow:0 0 0 2px var(--blue);border-radius:4px;background:rgba(255,255,255,.55)}
 button{font-family:inherit}
 
 /* ---------- Toolbar ---------- */
-.toolbar{
-  position:sticky;top:0;z-index:50;
-  display:flex;flex-wrap:wrap;gap:8px;align-items:center;
-  padding:10px 16px;
-  background:var(--navy);
-  color:#fff;
-  box-shadow:0 2px 10px rgba(3,45,96,.25);
-}
-.toolbar .brandmark{
-  font-weight:700;letter-spacing:.02em;margin-right:8px;
-  display:flex;align-items:center;gap:8px;font-size:13px;
-}
+.toolbar{position:sticky;top:0;z-index:50;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 16px;background:var(--navy);color:#fff;box-shadow:0 2px 10px rgba(3,45,96,.25)}
+.toolbar .brandmark{font-weight:700;letter-spacing:.02em;margin-right:8px;display:flex;align-items:center;gap:8px;font-size:13px}
 .toolbar .brandmark span.dot{width:9px;height:9px;border-radius:50%;background:var(--yellow);display:inline-block}
-.tbtn{
-  border:1px solid rgba(255,255,255,.28);
-  background:rgba(255,255,255,.08);
-  color:#fff;border-radius:999px;
-  padding:7px 13px;font-size:12.5px;cursor:pointer;
-  display:inline-flex;align-items:center;gap:6px;transition:.15s;
-}
+.tbtn{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:#fff;border-radius:999px;padding:7px 13px;font-size:12.5px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:.15s}
 .tbtn:hover{background:rgba(255,255,255,.2)}
 .tbtn.primary{background:var(--blue);border-color:var(--blue)}
 .tbtn.primary:hover{background:#0a6fc2}
 .tbtn.ghost{background:transparent}
 .spacer{flex:1}
-.hint{font-size:11.5px;color:rgba(255,255,255,.72)}
+.status{font-size:11.5px;color:rgba(255,255,255,.8);display:flex;align-items:center;gap:6px}
+.status i{width:8px;height:8px;border-radius:50%;background:#8A94A6;display:inline-block}
+.status.ok i{background:#4BCA81}
+.status.busy i{background:var(--yellow)}
+.status.err i{background:#FF8A8A}
+
+/* read-only banner */
+.robar{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:9px 16px;background:#EAF5FE;border-bottom:1px solid var(--sky-200);
+  color:var(--navy);font-size:12.5px;position:sticky;top:0;z-index:50;
+}
+.robar b{font-weight:700}
+.robar .rbtn{border:1px solid var(--blue);background:#fff;color:var(--blue);border-radius:999px;padding:6px 12px;font-size:12px;cursor:pointer}
+.robar .rbtn:hover{background:var(--blue);color:#fff}
 
 /* ---------- Canvas ---------- */
 .wrap{padding:20px 16px 60px;overflow-x:auto}
-.board{
-  background:var(--white);
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:var(--shadow);
-  min-width:1180px;
-  padding:22px 24px 26px;
-}
-
-/* header */
+.board{background:var(--white);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);min-width:1180px;padding:22px 24px 26px}
 .bhead{display:flex;gap:24px;align-items:flex-start}
 .bhead .left{flex:1;min-width:0}
-.pill{
-  display:inline-block;background:var(--amber);color:#fff;font-weight:600;
-  padding:6px 16px;border-radius:999px;font-size:12.5px;margin-bottom:14px;
-}
-h1.title{
-  font-size:34px;line-height:1.1;margin:0 0 4px;color:var(--navy);
-  font-weight:700;letter-spacing:-.01em;
-}
+.pill{display:inline-block;background:var(--amber);color:#fff;font-weight:600;padding:6px 16px;border-radius:999px;font-size:12.5px;margin-bottom:14px}
+h1.title{font-size:34px;line-height:1.1;margin:0 0 4px;color:var(--navy);font-weight:700;letter-spacing:-.01em}
 .subtitle{font-size:14.5px;color:var(--ink-soft);margin:0 0 14px}
-.prio{
-  background:#F1F5F9;border:1px solid var(--line);border-radius:10px;
-  padding:12px 14px;max-width:520px;
-}
+.prio{background:#F1F5F9;border:1px solid var(--line);border-radius:10px;padding:12px 14px;max-width:520px}
 .prio h4{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--navy)}
 .prio ol{margin:0;padding-left:0;list-style:none;counter-reset:p}
-.prio li{
-  counter-increment:p;position:relative;padding-left:24px;margin:5px 0;font-size:12.8px;color:var(--ink-soft);
-}
-.prio li::before{
-  content:counter(p);position:absolute;left:0;top:1px;
-  width:16px;height:16px;border-radius:50%;background:var(--blue);color:#fff;
-  font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;
-}
+.prio li{counter-increment:p;position:relative;padding-left:24px;margin:5px 0;font-size:12.8px;color:var(--ink-soft)}
+.prio li::before{content:counter(p);position:absolute;left:0;top:1px;width:16px;height:16px;border-radius:50%;background:var(--blue);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
 .logoslot{width:230px;flex:0 0 230px;text-align:right}
 
-/* image slot generic */
 .imgslot{position:relative;border-radius:10px;overflow:hidden}
 .imgslot img{display:block;max-width:100%;height:auto;border-radius:8px}
-.imgslot .ph{
-  border:1.5px dashed var(--sky);background:var(--sky-100);
-  border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:4px;color:var(--blue-600);text-align:center;padding:10px;font-size:11px;min-height:64px;
-}
+.imgslot .ph{border:1.5px dashed var(--sky);background:var(--sky-100);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--blue-600);text-align:center;padding:10px;font-size:11px;min-height:64px}
 .imgslot .ph .key{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;opacity:.85;word-break:break-all}
 .imgslot .ph b{font-size:11.5px;font-weight:600}
-.slotbar{
-  position:absolute;top:4px;right:4px;display:none;gap:4px;
-}
+.slotbar{position:absolute;top:4px;right:4px;display:none;gap:4px}
 .imgslot:hover .slotbar{display:flex}
-.mini{
-  border:none;background:rgba(3,45,96,.86);color:#fff;border-radius:6px;
-  font-size:10.5px;padding:3px 7px;cursor:pointer;line-height:1.4;
-}
+.mini{border:none;background:rgba(3,45,96,.86);color:#fff;border-radius:6px;font-size:10.5px;padding:3px 7px;cursor:pointer;line-height:1.4}
 .mini:hover{background:var(--blue)}
 
-/* milestone band */
-.grid{
-  display:grid;
-  grid-template-columns:var(--cols);
-  gap:0 10px;
-  align-items:end;
-  margin-top:18px;
-}
+.grid{display:grid;grid-template-columns:var(--cols);gap:0 10px;align-items:end;margin-top:18px}
 .msCell{position:relative;padding-bottom:6px}
-.msLabel{
-  font-size:12.5px;font-weight:700;color:var(--navy);text-align:center;
-  line-height:1.25;margin-bottom:6px;min-height:16px;
-}
+.msLabel{font-size:12.5px;font-weight:700;color:var(--navy);text-align:center;line-height:1.25;margin-bottom:6px;min-height:16px}
 .msLabel.empty{color:#B9C2CF;font-weight:500}
-.msDot{
-  width:9px;height:9px;border-radius:50%;background:var(--navy);
-  margin:0 auto 4px;
-}
+.msDot{width:9px;height:9px;border-radius:50%;background:var(--navy);margin:0 auto 4px}
 .bar{border-radius:8px 8px 0 0;min-height:14px}
-.bar.t-sky{background:var(--sky-200)}
-.bar.t-amber{background:var(--amber)}
-.bar.t-blue{background:var(--blue)}
-.bar.t-navy{background:var(--navy)}
+.bar.t-sky{background:var(--sky-200)}.bar.t-amber{background:var(--amber)}.bar.t-blue{background:var(--blue)}.bar.t-navy{background:var(--navy)}
 
-/* timeline row */
-.tlrow{
-  display:grid;grid-template-columns:var(--cols);gap:0 10px;
-  border-top:2px solid var(--navy);background:linear-gradient(180deg,#EEF5FC,#F7FAFD);
-  border-radius:0 0 8px 8px;padding:8px 0 10px;
-}
-.tlhead{
-  font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);
-  font-weight:700;padding:6px 10px;
-}
+.tlrow{display:grid;grid-template-columns:var(--cols);gap:0 10px;border-top:2px solid var(--navy);background:linear-gradient(180deg,#EEF5FC,#F7FAFD);border-radius:0 0 8px 8px;padding:8px 0 10px}
+.tlhead{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);font-weight:700;padding:6px 10px}
 .tlcell{text-align:center;position:relative;padding:4px 6px}
 .tlcell .ph-label{font-size:13px;font-weight:700;color:var(--navy);display:block}
 .tlcell .ph-sub{font-size:11.5px;color:var(--ink-soft);display:block;margin-top:2px}
-.tlcell .phx{
-  position:absolute;top:0;right:2px;display:none;
-}
+.tlcell .phx{position:absolute;top:0;right:2px;display:none}
 .tlcell:hover .phx{display:block}
 .tonepick{display:none;gap:3px;justify-content:center;margin-top:5px}
 .tlcell:hover .tonepick{display:flex}
 .swatch{width:13px;height:13px;border-radius:4px;border:1px solid rgba(0,0,0,.15);cursor:pointer;padding:0}
 
-/* lanes */
-.lane{
-  display:grid;grid-template-columns:var(--cols);gap:0 10px;
-  margin-top:10px;
-}
-.laneTitle{
-  border-radius:10px;padding:14px 14px;color:#fff;position:relative;
-  display:flex;flex-direction:column;gap:8px;min-height:104px;
-  background:var(--blue);
-}
-.laneTitle.l-amber{background:var(--amber)}
-.laneTitle.l-blue{background:var(--blue)}
-.laneTitle.l-navy{background:var(--navy)}
-.laneTitle.l-sky{background:var(--sky)}
+.lane{display:grid;grid-template-columns:var(--cols);gap:0 10px;margin-top:10px}
+.laneTitle{border-radius:10px;padding:14px;color:#fff;position:relative;display:flex;flex-direction:column;gap:8px;min-height:104px;background:var(--blue)}
+.laneTitle.l-amber{background:var(--amber)}.laneTitle.l-blue{background:var(--blue)}.laneTitle.l-navy{background:var(--navy)}.laneTitle.l-sky{background:var(--sky)}
 .laneTitle .lt-name{font-size:15px;font-weight:700;line-height:1.25}
 .laneTitle .lt-sub{font-size:11.5px;opacity:.92;line-height:1.35}
 .laneTitle .lt-icon{width:52px;margin-top:auto;align-self:flex-end}
@@ -195,26 +102,14 @@ h1.title{
 .laneTitle:hover .laneTools{display:flex}
 .laneTools .mini{background:rgba(0,0,0,.3)}
 
-.cell{
-  background:#FBFCFE;border:1px dashed transparent;border-radius:10px;
-  padding:6px;min-height:104px;display:flex;flex-direction:column;gap:8px;
-  transition:.12s;
-}
+.cell{background:#FBFCFE;border:1px dashed transparent;border-radius:10px;padding:6px;min-height:104px;display:flex;flex-direction:column;gap:8px;transition:.12s}
 .cell.alt{background:#F4F7FB}
 .cell.over{border-color:var(--blue);background:var(--sky-100)}
-.addcard{
-  border:1px dashed var(--line);background:transparent;color:#8A94A6;
-  border-radius:8px;font-size:11.5px;padding:5px;cursor:pointer;opacity:0;transition:.12s;
-}
+.addcard{border:1px dashed var(--line);background:transparent;color:#8A94A6;border-radius:8px;font-size:11.5px;padding:5px;cursor:pointer;opacity:0;transition:.12s}
 .cell:hover .addcard{opacity:1}
 .addcard:hover{border-color:var(--blue);color:var(--blue)}
 
-/* card */
-.card{
-  background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue);
-  border-radius:10px;padding:8px 9px 9px;box-shadow:0 1px 2px rgba(3,45,96,.07);
-  position:relative;transition:.12s;
-}
+.card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:8px 9px 9px;box-shadow:0 1px 2px rgba(3,45,96,.07);position:relative;transition:.12s}
 .card.c-sky{border-left-color:var(--sky);background:#F5FAFF}
 .card.c-amber{border-left-color:var(--amber);background:var(--amber-100)}
 .card.c-blue{border-left-color:var(--blue);background:#EEF6FE}
@@ -222,81 +117,63 @@ h1.title{
 .card.dragging{opacity:.35}
 .card:hover{box-shadow:0 4px 14px rgba(3,45,96,.14)}
 .card .chead{display:flex;align-items:flex-start;gap:6px}
-.handle{
-  cursor:grab;color:#98A2B3;flex:0 0 auto;padding:1px 2px 0;font-size:13px;line-height:1;
-  user-select:none;
-}
+.handle{cursor:grab;color:#98A2B3;flex:0 0 auto;padding:1px 2px 0;font-size:13px;line-height:1;user-select:none}
 .handle:active{cursor:grabbing}
 .c-title{font-size:12.6px;font-weight:700;color:var(--navy);line-height:1.3;flex:1;min-width:0}
 .ctools{display:none;gap:3px;flex:0 0 auto}
 .card:hover .ctools{display:flex}
 .items{margin-top:5px;font-size:11.8px;color:var(--ink-soft);line-height:1.45}
 .items>div{position:relative;padding-left:11px}
-.items>div::before{
-  content:'';position:absolute;left:2px;top:6px;width:4px;height:4px;border-radius:50%;
-  background:var(--blue);opacity:.7;
-}
+.items>div::before{content:'';position:absolute;left:2px;top:6px;width:4px;height:4px;border-radius:50%;background:var(--blue);opacity:.7}
 .card .imgslot{margin-top:7px}
 .tagrow{display:flex;gap:4px;flex-wrap:wrap;margin-top:7px}
-.tag{
-  font-size:10px;background:rgba(1,118,211,.12);color:var(--blue-600);
-  border-radius:999px;padding:2px 8px;font-weight:600;
+.tag{font-size:10px;background:rgba(1,118,211,.12);color:var(--blue-600);border-radius:999px;padding:2px 8px;font-weight:600}
+.cmt{
+  margin-top:7px;display:inline-flex;align-items:center;gap:5px;cursor:pointer;
+  border:1px solid var(--line);background:#fff;border-radius:999px;padding:2px 9px;font-size:10.5px;color:var(--blue-600);
 }
+.cmt:hover{border-color:var(--blue)}
+.cmt.has{background:#FFF6E5;border-color:var(--amber);color:#8A4B00;font-weight:600}
 .drop-ind{height:3px;background:var(--blue);border-radius:3px;margin:1px 0}
 
-/* footer */
-.bfoot{
-  display:flex;justify-content:space-between;align-items:center;gap:16px;
-  margin-top:22px;padding-top:12px;border-top:1px solid var(--line);
-  font-size:11.5px;color:#7A869A;
-}
+.bfoot{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:22px;padding-top:12px;border-top:1px solid var(--line);font-size:11.5px;color:#7A869A}
 .legend{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .legend i{width:11px;height:11px;border-radius:3px;display:inline-block;margin-right:5px;vertical-align:-1px}
 
 /* modal */
-.modal{
-  position:fixed;inset:0;background:rgba(3,45,96,.45);z-index:100;
-  display:none;align-items:center;justify-content:center;padding:24px;
-}
+.modal{position:fixed;inset:0;background:rgba(3,45,96,.45);z-index:100;display:none;align-items:center;justify-content:center;padding:24px}
 .modal.open{display:flex}
-.sheet{
-  background:#fff;border-radius:14px;max-width:760px;width:100%;max-height:82vh;
-  overflow:auto;padding:22px 24px;box-shadow:0 20px 50px rgba(3,45,96,.3);
-}
+.sheet{background:#fff;border-radius:14px;max-width:780px;width:100%;max-height:84vh;overflow:auto;padding:22px 24px;box-shadow:0 20px 50px rgba(3,45,96,.3)}
 .sheet h3{margin:0 0 6px;color:var(--navy);font-size:19px}
 .sheet p.lead{margin:0 0 16px;color:var(--ink-soft);font-size:13px}
 .field{margin-bottom:14px}
 .field label{display:block;font-size:12px;font-weight:600;color:var(--navy);margin-bottom:4px}
-.field input{
-  width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;font-size:13px;font-family:inherit;
-}
+.field input,.field textarea,.field select{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;font-size:13px;font-family:inherit}
+.field textarea{min-height:80px;resize:vertical}
 .field .help{font-size:11.5px;color:#7A869A;margin-top:4px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 table.slots{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px}
 table.slots th,table.slots td{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}
 table.slots th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--navy)}
 table.slots code{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;background:#F1F5F9;padding:1px 5px;border-radius:4px}
-.sheet .actions{display:flex;gap:8px;justify-content:flex-end;margin-top:18px}
-.btn{
-  border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:8px;
-  padding:8px 14px;font-size:13px;cursor:pointer;
-}
+.sheet .actions{display:flex;gap:8px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer}
+.btn:hover{border-color:var(--blue)}
 .btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
-pre.json{
-  background:#0B1F3A;color:#CFE9FE;border-radius:10px;padding:12px;font-size:11.5px;
-  overflow:auto;max-height:240px;font-family:ui-monospace,Menlo,monospace;
-}
-.toast{
-  position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);
-  background:var(--navy);color:#fff;padding:10px 18px;border-radius:999px;font-size:12.5px;
-  opacity:0;transition:.25s;z-index:200;pointer-events:none;
-}
+.btn.danger{color:var(--warn)}
+pre.json{background:#0B1F3A;color:#CFE9FE;border-radius:10px;padding:12px;font-size:11.5px;overflow:auto;max-height:220px;font-family:ui-monospace,Menlo,monospace}
+.note{background:#FFF6E5;border:1px solid #FFD08A;border-radius:8px;padding:10px 12px;font-size:12px;color:#7A4A00;margin-bottom:14px}
+.cmtlist{margin:6px 0 0;padding:0;list-style:none}
+.cmtlist li{border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin-bottom:8px;font-size:12.5px;background:#FBFCFE}
+.cmtlist li .meta{font-size:11px;color:#7A869A;margin-bottom:3px;display:flex;justify-content:space-between;gap:8px}
+.cmtlist li.pend{border-style:dashed;border-color:var(--amber);background:#FFFBF4}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:10px 18px;border-radius:999px;font-size:12.5px;opacity:0;transition:.25s;z-index:200;pointer-events:none;max-width:80vw;text-align:center}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-/* ---------- Print ---------- */
 @page{size:A3 landscape;margin:10mm}
 @media print{
   body{background:#fff}
-  .toolbar,.modal,.toast,.addcard,.ctools,.laneTools,.slotbar,.phx,.tonepick,.handle{display:none !important}
+  .toolbar,.robar,.modal,.toast,.addcard,.ctools,.laneTools,.slotbar,.phx,.tonepick,.handle,.cmt{display:none !important}
   .wrap{padding:0;overflow:visible}
   .board{border:none;box-shadow:none;border-radius:0;min-width:0;width:100%;padding:0}
   .lane,.card{break-inside:avoid;page-break-inside:avoid}
@@ -306,983 +183,965 @@ pre.json{
 </head>
 <body>
 
-<div class="toolbar no-print">
-  <div class="brandmark"><span class="dot"></span> Roadmap Builder · Salesforce</div>
+<!-- barra de solo lectura (visitantes) -->
+<div class="robar" id="robar" style="display:none">
+  <b>Vista de solo lectura</b>
+  <span id="roMeta">—</span>
+  <span class="spacer" style="flex:1"></span>
+  <button class="rbtn" id="roComments">Mis comentarios (<span id="roCmtCount">0</span>)</button>
+  <button class="rbtn" id="roPdf">Descargar PDF</button>
+</div>
+
+<!-- barra de edición -->
+<div class="toolbar" id="toolbar" style="display:none">
+  <div class="brandmark"><span class="dot"></span> Roadmap Builder</div>
   <button class="tbtn" id="btnPhase">+ Fase</button>
   <button class="tbtn" id="btnLane">+ Carril</button>
-  <button class="tbtn" id="btnImages">Imágenes / Repositorio</button>
-  <button class="tbtn" id="btnSave">Guardar JSON</button>
-  <button class="tbtn" id="btnLoad">Cargar JSON</button>
+  <button class="tbtn" id="btnImages">Imágenes</button>
+  <button class="tbtn" id="btnComments">Comentarios</button>
+  <button class="tbtn" id="btnGit">GitHub</button>
   <button class="tbtn ghost" id="btnReset">Reiniciar</button>
   <div class="spacer"></div>
-  <span class="hint" id="autosave">Autoguardado activo</span>
-  <button class="tbtn primary" id="btnPdf">Exportar PDF</button>
+  <span class="status" id="status"><i></i><span id="statusTxt">Local</span></span>
+  <button class="tbtn" id="btnPull">Traer del repo</button>
+  <button class="tbtn primary" id="btnPush">Guardar en GitHub</button>
+  <button class="tbtn" id="btnPdf">PDF</button>
 </div>
 
-<div class="wrap">
-  <div class="board" id="board" style="--cols: 260px repeat(5,minmax(190px,1fr));"><div class="bhead">
-    <div class="left">
-      <div class="pill" contenteditable="" data-bind="brand.badge">¿Cómo llegaremos allá?</div>
-      <h1 class="title" contenteditable="" data-bind="brand.title">Propuesta de Roadmap</h1>
-      <p class="subtitle" contenteditable="" data-bind="brand.subtitle">Repuestos La Guaca · Transformación comercial y de servicio con Salesforce</p>
-      <div class="prio">
-        <h4>Prioridades estratégicas</h4>
-        <ol class="items-prio" contenteditable="" data-bind="priorities"><li>Unificar la experiencia del cliente entre tienda, web y WhatsApp</li><li>Aumentar conversión y ticket promedio con recomendación asistida por IA</li><li>Reducir costos de soporte y de aplicaciones legadas</li></ol>
-      </div>
-    </div>
-    <div class="logoslot"><div class="imgslot" data-imgpath="brand.logo">
-    <img src="./Propuesta de Roadmap · Repuestos La Guaca · Salesforce_files/footer-logo.png" alt="Logo Repuestos La Guaca" style="max-height:70px;margin-left:auto" onerror="this.style.display=&#39;none&#39;;this.parentNode.querySelector(&#39;.ph&#39;).style.display=&#39;flex&#39;">
-       <div class="ph" style="display:none"><b>Logo Repuestos La Guaca</b><span class="key">logo-guaca.png</span></div>
-    <div class="slotbar no-print">
-      <button class="mini" data-act="img-key">clave</button>
-      <button class="mini" data-act="img-url">URL</button>
-      <button class="mini" data-act="img-file">subir</button>
-      <button class="mini" data-act="img-clear">×</button>
-    </div>
-  </div></div>
-  </div><div class="grid"><div></div><div class="msCell">
-      <div class="msLabel empty" contenteditable="" data-bind="phase.milestone:9ztfrqk">hito…</div>
-      
-      <div class="bar t-sky" style="height:46px"></div>
-    </div><div class="msCell">
-      <div class="msLabel empty" contenteditable="" data-bind="phase.milestone:z60fzzm">hito…</div>
-      
-      <div class="bar t-amber" style="height:80px"></div>
-    </div><div class="msCell">
-      <div class="msLabel empty" contenteditable="" data-bind="phase.milestone:n3nuwqv">hito…</div>
-      
-      <div class="bar t-amber" style="height:112px"></div>
-    </div><div class="msCell">
-      <div class="msLabel empty" contenteditable="" data-bind="phase.milestone:95mstfv">hito…</div>
-      
-      <div class="bar t-blue" style="height:146px"></div>
-    </div><div class="msCell">
-      <div class="msLabel empty" contenteditable="" data-bind="phase.milestone:wb5cnkk">hito…</div>
-      
-      <div class="bar t-navy" style="height:180px"></div>
-    </div></div><div class="tlrow"><div class="tlhead">Timeline</div><div class="tlcell" data-phase="9ztfrqk">
-      <button class="mini phx no-print" data-act="del-phase">×</button>
-      <span class="ph-label" contenteditable="" data-bind="phase.label:9ztfrqk">Fase 1 · Fundación CRM</span>
-      <span class="ph-sub" contenteditable="" data-bind="phase.sub:9ztfrqk">Mes 1 a 3</span>
-      <div class="tonepick no-print"><button class="swatch" data-act="tone" data-tone="sky" title="Celeste" style="background:#CFE9FE"></button><button class="swatch" data-act="tone" data-tone="amber" title="Naranja" style="background:#FE9339"></button><button class="swatch" data-act="tone" data-tone="blue" title="Azul" style="background:#0176D3"></button><button class="swatch" data-act="tone" data-tone="navy" title="Azul oscuro" style="background:#032D60"></button></div>
-    </div><div class="tlcell" data-phase="z60fzzm">
-      <button class="mini phx no-print" data-act="del-phase">×</button>
-      <span class="ph-label" contenteditable="" data-bind="phase.label:z60fzzm">Fase 2 · Servicio y Omnicanal</span>
-      <span class="ph-sub" contenteditable="" data-bind="phase.sub:z60fzzm">Mes 4 a 6</span>
-      <div class="tonepick no-print"><button class="swatch" data-act="tone" data-tone="sky" title="Celeste" style="background:#CFE9FE"></button><button class="swatch" data-act="tone" data-tone="amber" title="Naranja" style="background:#FE9339"></button><button class="swatch" data-act="tone" data-tone="blue" title="Azul" style="background:#0176D3"></button><button class="swatch" data-act="tone" data-tone="navy" title="Azul oscuro" style="background:#032D60"></button></div>
-    </div><div class="tlcell" data-phase="n3nuwqv">
-      <button class="mini phx no-print" data-act="del-phase">×</button>
-      <span class="ph-label" contenteditable="" data-bind="phase.label:n3nuwqv">Fase 2</span>
-      <span class="ph-sub" contenteditable="" data-bind="phase.sub:n3nuwqv">Mes 6 a 7</span>
-      <div class="tonepick no-print"><button class="swatch" data-act="tone" data-tone="sky" title="Celeste" style="background:#CFE9FE"></button><button class="swatch" data-act="tone" data-tone="amber" title="Naranja" style="background:#FE9339"></button><button class="swatch" data-act="tone" data-tone="blue" title="Azul" style="background:#0176D3"></button><button class="swatch" data-act="tone" data-tone="navy" title="Azul oscuro" style="background:#032D60"></button></div>
-    </div><div class="tlcell" data-phase="95mstfv">
-      <button class="mini phx no-print" data-act="del-phase">×</button>
-      <span class="ph-label" contenteditable="" data-bind="phase.label:95mstfv">Año 2 · Rollout</span>
-      <span class="ph-sub" contenteditable="" data-bind="phase.sub:95mstfv">Todas las agencias</span>
-      <div class="tonepick no-print"><button class="swatch" data-act="tone" data-tone="sky" title="Celeste" style="background:#CFE9FE"></button><button class="swatch" data-act="tone" data-tone="amber" title="Naranja" style="background:#FE9339"></button><button class="swatch" data-act="tone" data-tone="blue" title="Azul" style="background:#0176D3"></button><button class="swatch" data-act="tone" data-tone="navy" title="Azul oscuro" style="background:#032D60"></button></div>
-    </div><div class="tlcell" data-phase="wb5cnkk">
-      <button class="mini phx no-print" data-act="del-phase">×</button>
-      <span class="ph-label" contenteditable="" data-bind="phase.label:wb5cnkk">Año 3 a 5  · Rollout</span>
-      <span class="ph-sub" contenteditable="" data-bind="phase.sub:wb5cnkk">Optimización</span>
-      <div class="tonepick no-print"><button class="swatch" data-act="tone" data-tone="sky" title="Celeste" style="background:#CFE9FE"></button><button class="swatch" data-act="tone" data-tone="amber" title="Naranja" style="background:#FE9339"></button><button class="swatch" data-act="tone" data-tone="blue" title="Azul" style="background:#0176D3"></button><button class="swatch" data-act="tone" data-tone="navy" title="Azul oscuro" style="background:#032D60"></button></div>
-    </div></div><div class="lane" data-lane="2q2t556">
-      <div class="laneTitle l-amber">
-        <div class="laneTools no-print">
-          <button class="mini" data-act="lane-tone">color</button>
-          <button class="mini" data-act="lane-up">↑</button>
-          <button class="mini" data-act="lane-down">↓</button>
-          <button class="mini" data-act="lane-del">×</button>
-        </div>
-        <div class="lt-name" contenteditable="" data-bind="lane.name:2q2t556">Gestión de clientes / Vista 360</div>
-        <div class="lt-sub" contenteditable="" data-bind="lane.sub:2q2t556">Sales Cloud</div>
-        <div class="lt-icon"><div class="imgslot" data-imgpath="lane:2q2t556.icon">
-    <div class="ph"><b>icono</b><span class="key">icono-sales-cloud.png</span></div>
-    <div class="slotbar no-print">
-      <button class="mini" data-act="img-key">clave</button>
-      <button class="mini" data-act="img-url">URL</button>
-      <button class="mini" data-act="img-file">subir</button>
-      <button class="mini" data-act="img-clear">×</button>
-    </div>
-  </div></div>
-      </div><div class="cell " data-lane="2q2t556" data-phase="9ztfrqk">
-        <div class="card c-sky" data-card="48zpm66">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:48zpm66">Vista 360 del cliente</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:48zpm66"><div>Consola del asesor de mostrador</div><div>Cuentas, contactos y vehículos</div><div>Cotizaciones y proformas</div><div>Integración con tienda en línea (X-Cart)</div><div>Gestión de prospectos B2B: talleres y flotillas</div></div>
-    
-    <div class="tagrow"><span class="tag">Sales Cloud</span></div>
-  </div><div class="card c-sky" data-card="2kdl50e">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:2kdl50e">Descubrimiento y diseño</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:2kdl50e"><div>Levantamiento de procesos B2C y B2B</div><div>Mapa de datos de clientes y flotillas</div><div>Definición de la Vista 360</div><div>Gobierno del proyecto y KPIs</div></div>
-    
-    
+<div class="wrap"><div class="board" id="board"></div></div>
+
+<!-- modal GitHub -->
+<div class="modal" id="modalGit"><div class="sheet">
+  <h3>Guardado automático en GitHub</h3>
+  <p class="lead">El micrositio lee y escribe un único archivo JSON en tu repositorio. Los visitantes lo leen sin token; solo quien edita necesita uno.</p>
+  <div class="note"><b>Seguridad:</b> el token se guarda únicamente en este navegador (localStorage) y nunca se escribe dentro del JSON ni del HTML. No lo pegues en el código ni lo subas al repo: GitHub lo revoca automáticamente si aparece en un commit. Usa un token <i>fine-grained</i> limitado a este repositorio con permiso <code>Contents: Read and write</code> y con fecha de expiración.</div>
+  <div class="row2">
+    <div class="field"><label>Usuario u organización</label><input id="gOwner" placeholder="mi-org"></div>
+    <div class="field"><label>Repositorio</label><input id="gRepo" placeholder="roadmap-guaca"></div>
   </div>
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div><div class="cell " data-lane="2q2t556" data-phase="z60fzzm">
-        <div class="card c-amber" data-card="s7i5li9">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:s7i5li9">Gestión de oportunidades B2B</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:s7i5li9"><div>Metodología y etapas de venta</div><div>Reglas de asignación por agencia</div><div>Catálogo, listas de precios y descuentos</div><div>Aprobaciones y visibilidad por rol</div></div>
-    
-    <div class="tagrow"><span class="tag">CPQ básico</span></div>
+  <div class="row2">
+    <div class="field"><label>Rama</label><input id="gBranch" placeholder="main"></div>
+    <div class="field"><label>Ruta del archivo de datos</label><input id="gPath" placeholder="data/roadmap.json"></div>
   </div>
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div><div class="cell " data-lane="2q2t556" data-phase="n3nuwqv">
-        <div class="card c-amber" data-card="ofa7dke">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:ofa7dke">Agentforce de cara al asesor</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:ofa7dke"><div>Recomendación de repuestos por vehículo (placa / VIN)</div><div>Resumen de cuenta y próxima mejor acción</div><div>Búsqueda de compatibilidad asistida</div></div>
-    
-    <div class="tagrow"><span class="tag">Agentforce</span></div>
+  <div class="field"><label>Token de acceso (solo en este navegador)</label><input id="gToken" type="password" placeholder="github_pat_…">
+    <div class="help">Se guarda local. Para quitarlo del navegador usa “Olvidar token”.</div>
   </div>
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div><div class="cell " data-lane="2q2t556" data-phase="95mstfv">
-        <div class="card c-blue" data-card="hnzsh8d">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:hnzsh8d">ROLLOUTS</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:hnzsh8d"><div>Despliegue a todas las agencias</div><div>Guaca Club (lealtad) dentro del CRM</div><div>Portal de clientes B2B y autoservicio de pedidos</div></div>
-    
-    
+  <div class="field"><label>Tu nombre (queda en el mensaje del commit)</label><input id="gAuthor" placeholder="Alfredo Rozo"></div>
+  <div class="field"><label><input type="checkbox" id="gAuto" style="width:auto;margin-right:6px">Autoguardar en GitHub 20 s después del último cambio</label>
+    <div class="help">Cada guardado genera un commit, así queda historial y se puede revertir.</div>
   </div>
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div><div class="cell " data-lane="2q2t556" data-phase="wb5cnkk">
-        <div class="card c-navy" data-card="amfsbes">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:amfsbes">Crecimiento del cliente</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:amfsbes"><div>Programas de lealtad avanzados</div><div>Cross-sell y up-sell recomendado</div><div>Rentabilidad y valor de vida por cliente</div></div>
-    
-    
+  <div class="actions">
+    <button class="btn danger" id="gForget">Olvidar token</button>
+    <button class="btn" id="gTest">Probar conexión</button>
+    <button class="btn primary" id="gSave">Guardar ajustes</button>
   </div>
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div></div><div class="lane" data-lane="2eqo2e0">
-      <div class="laneTitle l-blue">
-        <div class="laneTools no-print">
-          <button class="mini" data-act="lane-tone">color</button>
-          <button class="mini" data-act="lane-up">↑</button>
-          <button class="mini" data-act="lane-down">↓</button>
-          <button class="mini" data-act="lane-del">×</button>
-        </div>
-        <div class="lt-name" contenteditable="" data-bind="lane.name:2eqo2e0">Servicio y Contact Center</div>
-        <div class="lt-sub" contenteditable="" data-bind="lane.sub:2eqo2e0">Service Cloud + Agentforce</div>
-        <div class="lt-icon"><div class="imgslot" data-imgpath="lane:2eqo2e0.icon">
-    <div class="ph"><b>icono</b><span class="key">icono-service-cloud.png</span></div>
-    <div class="slotbar no-print">
-      <button class="mini" data-act="img-key">clave</button>
-      <button class="mini" data-act="img-url">URL</button>
-      <button class="mini" data-act="img-file">subir</button>
-      <button class="mini" data-act="img-clear">×</button>
-    </div>
-  </div></div>
-      </div><div class="cell alt" data-lane="2eqo2e0" data-phase="9ztfrqk">
-        <div class="card c-sky" data-card="a4toxxr">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:a4toxxr">Solicitudes de servicio</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:a4toxxr"><div>Gestión de casos y colas por agencia</div><div>SLA, escalamiento y reasignación</div><div>Migración desde Zendesk</div><div>Base de conocimiento unificada</div></div>
-    
-    <div class="tagrow"><span class="tag">Service Cloud</span></div>
-  </div>
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div><div class="cell alt" data-lane="2eqo2e0" data-phase="z60fzzm">
-        <div class="card c-amber" data-card="u6xc0ag">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:u6xc0ag">Omnicanalidad</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:u6xc0ag"><div>WhatsApp Business y SMS</div><div>Chat web y redes sociales</div><div>Telefonía / CTI en contact center</div><div>Garantías, devoluciones y notas de crédito</div></div>
-    
-    <div class="tagrow"><span class="tag">Digital Engagement</span></div>
-  </div>
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div><div class="cell alt" data-lane="2eqo2e0" data-phase="n3nuwqv">
-        <div class="card c-amber" data-card="w8hs48r">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:w8hs48r">Agentforce de cara al cliente</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:w8hs48r"><div>FAQ y estado de pedido 24/7</div><div>Escalamiento fluido a agente humano</div><div>Conversaciones en doble vía</div></div>
-    
-    <div class="tagrow"><span class="tag">Agentforce</span></div>
-  </div>
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div><div class="cell alt" data-lane="2eqo2e0" data-phase="95mstfv">
-        <div class="card c-blue" data-card="w7fxw0i">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:w7fxw0i">Guaca Service</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:w7fxw0i"><div>Órdenes de trabajo y citas de taller</div><div>Asignación de técnicos y agenda</div><div>Feedback management y NPS por canal</div></div>
-    
-    <div class="tagrow"><span class="tag">Field Service</span></div>
-  </div>
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div><div class="cell alt" data-lane="2eqo2e0" data-phase="wb5cnkk">
-        <div class="card c-navy" data-card="x3chnil">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:x3chnil">Servicio proactivo</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:x3chnil"><div>Recordatorio de mantenimiento por kilometraje</div><div>Autoservicio total en app y web</div><div>Tracking de satisfacción en todo el journey</div></div>
-    
-    
-  </div>
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div></div><div class="lane" data-lane="fpuu6re">
-      <div class="laneTitle l-sky">
-        <div class="laneTools no-print">
-          <button class="mini" data-act="lane-tone">color</button>
-          <button class="mini" data-act="lane-up">↑</button>
-          <button class="mini" data-act="lane-down">↓</button>
-          <button class="mini" data-act="lane-del">×</button>
-        </div>
-        <div class="lt-name" contenteditable="" data-bind="lane.name:fpuu6re">Marketing y Comercio Digital</div>
-        <div class="lt-sub" contenteditable="" data-bind="lane.sub:fpuu6re">Marketing Cloud</div>
-        <div class="lt-icon"><div class="imgslot" data-imgpath="lane:fpuu6re.icon">
-    <div class="ph"><b>icono</b><span class="key">icono-marketing-cloud.png</span></div>
-    <div class="slotbar no-print">
-      <button class="mini" data-act="img-key">clave</button>
-      <button class="mini" data-act="img-url">URL</button>
-      <button class="mini" data-act="img-file">subir</button>
-      <button class="mini" data-act="img-clear">×</button>
-    </div>
-  </div></div>
-      </div><div class="cell " data-lane="fpuu6re" data-phase="9ztfrqk">
-        <div class="card c-sky" data-card="44hr5mw">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:44hr5mw">Orquestación de canales</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:44hr5mw"><div>Integración WhatsApp Business</div><div>Correo transaccional y de pedidos</div></div>
-    
-    
-  </div><div class="card c-sky" data-card="dqp2np7">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:dqp2np7">Estrategia digital</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:dqp2np7"><div>Segmentación y journeys prioritarios</div><div>Modelo de consentimiento y datos</div><div>Unificación de números y posicionamiento de Marca</div></div>
-    
-    
-  </div>
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div><div class="cell " data-lane="fpuu6re" data-phase="z60fzzm">
-        <div class="card c-amber" data-card="zv7gl7f">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:zv7gl7f">Campañas y promociones</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:zv7gl7f"><div>Promo del mes automatizada</div><div>Recuperación de carrito abandonado</div><div>Journeys de bienvenida y Guaca Club</div></div>
-    
-    <div class="tagrow"><span class="tag">Journeys</span></div>
-  </div>
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div><div class="cell " data-lane="fpuu6re" data-phase="n3nuwqv">
-        
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div><div class="cell " data-lane="fpuu6re" data-phase="95mstfv">
-        <div class="card c-blue" data-card="dq6z7mg">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:dq6z7mg">Personalización</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:dq6z7mg"><div>Recomendación por vehículo y por historial</div><div>Personalización en sitio y app</div><div>Atribución de campañas al ingreso</div></div>
-    
-    
-  </div>
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div><div class="cell " data-lane="fpuu6re" data-phase="wb5cnkk">
-        <div class="card c-navy" data-card="n63fpsa">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:n63fpsa">Lealtad avanzada</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:n63fpsa"><div>Guaca Club escalonado por nivel</div><div>Retención de flotillas y talleres</div><div>Contenido dinámico por segmento</div></div>
-    
-    
-  </div>
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div></div><div class="lane" data-lane="6indhql">
-      <div class="laneTitle l-navy">
-        <div class="laneTools no-print">
-          <button class="mini" data-act="lane-tone">color</button>
-          <button class="mini" data-act="lane-up">↑</button>
-          <button class="mini" data-act="lane-down">↓</button>
-          <button class="mini" data-act="lane-del">×</button>
-        </div>
-        <div class="lt-name" contenteditable="" data-bind="lane.name:6indhql">Data e Integraciones</div>
-        <div class="lt-sub" contenteditable="" data-bind="lane.sub:6indhql">MuleSoft · Data Cloud</div>
-        <div class="lt-icon"><div class="imgslot" data-imgpath="lane:6indhql.icon">
-    <div class="ph"><b>icono</b><span class="key">icono-mulesoft.png</span></div>
-    <div class="slotbar no-print">
-      <button class="mini" data-act="img-key">clave</button>
-      <button class="mini" data-act="img-url">URL</button>
-      <button class="mini" data-act="img-file">subir</button>
-      <button class="mini" data-act="img-clear">×</button>
-    </div>
-  </div></div>
-      </div><div class="cell alt" data-lane="6indhql" data-phase="9ztfrqk">
-        <div class="card c-sky" data-card="9vr7y65">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:9vr7y65">Integraciones core</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:9vr7y65"><div>ERP e inventario por agencia</div><div>Catálogo, precios y promociones</div><div>Pedidos, facturación y notas de crédito</div></div>
-    
-    <div class="tagrow"><span class="tag">MuleSoft</span></div>
-  </div><div class="card c-sky" data-card="y9i1t1i">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:y9i1t1i">Arquitectura objetivo</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:y9i1t1i"><div>Inventario de sistemas y datos</div><div>Diseño de integración y seguridad</div></div>
-    
-    
-  </div>
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div><div class="cell alt" data-lane="6indhql" data-phase="z60fzzm">
-        <div class="card c-amber" data-card="09f35q3">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:09f35q3">Modelo de datos unificado</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:09f35q3"><div>Perfil único de cliente (Data Cloud)</div><div>Identidad de vehículos y flotillas</div><div>MDM y calidad de datos</div></div>
-    
-    <div class="tagrow"><span class="tag">Data Cloud</span></div>
-  </div>
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div><div class="cell alt" data-lane="6indhql" data-phase="n3nuwqv">
-        
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div><div class="cell alt" data-lane="6indhql" data-phase="95mstfv">
-        <div class="card c-blue" data-card="3iq7p1y">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:3iq7p1y">API Management</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:3iq7p1y"><div>API Manager y catálogo de servicios</div><div>Eventos en tiempo real</div><div>Disponibilidad de inventario por tienda</div></div>
-    
-    
-  </div>
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div><div class="cell alt" data-lane="6indhql" data-phase="wb5cnkk">
-        <div class="card c-navy" data-card="7fdrdi3">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:7fdrdi3">Modelo de datos extendido</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:7fdrdi3"><div>Integraciones adicionales</div><div>Data sharing con proveedores</div><div>Analítica avanzada sobre Data Cloud</div></div>
-    
-    
-  </div>
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div></div><div class="lane" data-lane="t0yq6x9">
-      <div class="laneTitle l-blue">
-        <div class="laneTools no-print">
-          <button class="mini" data-act="lane-tone">color</button>
-          <button class="mini" data-act="lane-up">↑</button>
-          <button class="mini" data-act="lane-down">↓</button>
-          <button class="mini" data-act="lane-del">×</button>
-        </div>
-        <div class="lt-name" contenteditable="" data-bind="lane.name:t0yq6x9">Analítica e Incentivos</div>
-        <div class="lt-sub" contenteditable="" data-bind="lane.sub:t0yq6x9">Tableau · Slack · Spiff</div>
-        <div class="lt-icon"><div class="imgslot" data-imgpath="lane:t0yq6x9.icon">
-    <div class="ph"><b>icono</b><span class="key">icono-tableau.png</span></div>
-    <div class="slotbar no-print">
-      <button class="mini" data-act="img-key">clave</button>
-      <button class="mini" data-act="img-url">URL</button>
-      <button class="mini" data-act="img-file">subir</button>
-      <button class="mini" data-act="img-clear">×</button>
-    </div>
-  </div></div>
-      </div><div class="cell " data-lane="t0yq6x9" data-phase="9ztfrqk">
-        
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div><div class="cell " data-lane="t0yq6x9" data-phase="z60fzzm">
-        <div class="card c-amber" data-card="k04dksd">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:k04dksd">Reportes y tableros</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:k04dksd"><div>Tableros de venta por agencia y asesor</div><div>Pipeline B2B y conversión</div><div>Servicio: SLA, casos y satisfacción</div></div>
-    
-    
-  </div>
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div><div class="cell " data-lane="t0yq6x9" data-phase="n3nuwqv">
-        
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div><div class="cell " data-lane="t0yq6x9" data-phase="95mstfv">
-        <div class="card c-blue" data-card="6t199sl">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:6t199sl">Slack + Tableau</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:6t199sl"><div>Colaboración por cuenta y por deal</div><div>Alertas de inventario y pedidos</div><div>Tableau para dirección comercial</div></div>
-    
-    <div class="tagrow"><span class="tag">Slack</span></div>
-  </div>
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div><div class="cell " data-lane="t0yq6x9" data-phase="wb5cnkk">
-        <div class="card c-navy" data-card="ut1xp67">
-    <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable="" data-bind="card.title:ut1xp67">Compensación variable</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
-    </div>
-    <div class="items" contenteditable="" data-bind="card.items:ut1xp67"><div>Comisiones y esquemas por línea</div><div>Programas de venta y concursos</div><div>Performance en tiempo real</div></div>
-    
-    <div class="tagrow"><span class="tag">Spiff</span></div>
-  </div>
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div></div><div class="bfoot">
-    <div class="legend">
-      <span><i style="background:#CFE9FE"></i>Celeste</span><span><i style="background:#FE9339"></i>Naranja</span><span><i style="background:#0176D3"></i>Azul</span><span><i style="background:#032D60"></i>Azul oscuro</span>
-    </div>
-    <div contenteditable="" data-bind="brand.footer" style="text-align:right">Propuesta preliminar · sujeta a validación conjunta de alcance y esfuerzo</div>
-  </div></div>
-</div>
+</div></div>
 
 <!-- modal imágenes -->
-<div class="modal" id="modalImg">
-  <div class="sheet">
-    <h3>Imágenes y repositorio</h3>
-    <p class="lead">Cada espacio de imagen tiene una <b>clave</b>. Define la URL base del repositorio y el micrositio armará el <code>src</code> como <code>base + clave</code>. También puedes fijar una URL directa o subir un archivo en cada espacio.</p>
-    <div class="field">
-      <label>URL base del repositorio de imágenes</label>
-      <input id="repoBase" placeholder="https://repositorio.laguaca.cr/roadmap/">
-      <div class="help">Ejemplo: si la clave es <code>logo-guaca.png</code>, se cargará <code>https://repositorio.laguaca.cr/roadmap/logo-guaca.png</code>.</div>
-    </div>
-    <h4 style="margin:18px 0 2px;color:var(--navy);font-size:13px">Espacios de imagen en este roadmap</h4>
-    <table class="slots"><thead><tr><th>Ubicación</th><th>Clave</th><th>URL directa</th><th>Estado</th></tr></thead><tbody id="slotBody"></tbody></table>
-    <h4 style="margin:18px 0 6px;color:var(--navy);font-size:13px">Manifiesto (para conectar el repositorio)</h4>
-    <pre class="json" id="manifest"></pre>
-    <div class="actions">
-      <button class="btn" id="copyManifest">Copiar manifiesto</button>
-      <button class="btn primary" id="closeImg">Listo</button>
-    </div>
+<div class="modal" id="modalImg"><div class="sheet">
+  <h3>Imágenes y repositorio</h3>
+  <p class="lead">Cada espacio de imagen tiene una <b>clave</b>. Define la URL base y el <code>src</code> se arma como <code>base + clave</code>. Si publicas en GitHub Pages, puedes usar una carpeta del propio repo, por ejemplo <code>./img/</code>.</p>
+  <div class="field"><label>URL base del repositorio de imágenes</label><input id="repoBase" placeholder="./img/">
+    <div class="help">Con clave <code>logo-guaca.png</code> se cargará <code>./img/logo-guaca.png</code>.</div></div>
+  <h4 style="margin:18px 0 2px;color:var(--navy);font-size:13px">Espacios de imagen</h4>
+  <table class="slots"><thead><tr><th>Ubicación</th><th>Clave</th><th>URL directa</th><th>Estado</th></tr></thead><tbody id="slotBody"></tbody></table>
+  <h4 style="margin:18px 0 6px;color:var(--navy);font-size:13px">Manifiesto</h4>
+  <pre class="json" id="manifest"></pre>
+  <div class="actions"><button class="btn" id="copyManifest">Copiar manifiesto</button><button class="btn primary" id="closeImg">Listo</button></div>
+</div></div>
+
+<!-- modal comentario de tarjeta -->
+<div class="modal" id="modalCmt"><div class="sheet" style="max-width:560px">
+  <h3 id="cmtTitle">Comentarios</h3>
+  <p class="lead" id="cmtLead">—</p>
+  <ul class="cmtlist" id="cmtList"></ul>
+  <div class="field"><label>Tu nombre</label><input id="cmtAuthor" placeholder="Nombre y empresa"></div>
+  <div class="field"><label>Comentario</label><textarea id="cmtText" placeholder="Escribe aquí tu observación sobre esta iniciativa…"></textarea></div>
+  <div class="actions"><button class="btn" id="cmtClose">Cerrar</button><button class="btn primary" id="cmtAdd">Agregar comentario</button></div>
+</div></div>
+
+<!-- modal bandeja de comentarios -->
+<div class="modal" id="modalInbox"><div class="sheet">
+  <h3>Comentarios del roadmap</h3>
+  <p class="lead" id="inboxLead">—</p>
+  <div id="inboxBody"></div>
+  <div class="actions">
+    <button class="btn" id="inboxExport">Exportar mis comentarios</button>
+    <button class="btn" id="inboxImport">Importar archivo de comentarios</button>
+    <button class="btn primary" id="inboxClose">Cerrar</button>
   </div>
-</div>
+</div></div>
 
 <div class="toast" id="toast"></div>
 <input type="file" id="filePick" accept="image/*" style="display:none">
-<input type="file" id="jsonPick" accept="application/json,.json" style="display:none">
+<input type="file" id="cmtPick" accept="application/json,.json" style="display:none">
 
 <script>
 (function(){
 'use strict';
 
-const LS_KEY='guaca-roadmap-sf-v1';
+/* ============================================================
+   CONFIG — edita este bloque una sola vez antes de publicar.
+   Es lo que permite que los visitantes (sin token) vean la
+   última versión guardada del roadmap.
+   ============================================================ */
+const CONFIG = {
+  owner : '',                     // ej: 'arozo-sf'
+  repo  : '',                     // ej: 'roadmap-guaca'
+  branch: 'main',
+  path  : 'data/roadmap.json'
+};
+/* ============================================================ */
+
+const LS_STATE='guaca-roadmap-sf-v4';
+const LS_CFG='guaca-roadmap-cfg';
+const LS_TOKEN='guaca-roadmap-token';
+const LS_PEND='guaca-roadmap-pending-comments';
+const LS_ME='guaca-roadmap-author';
+
+const qs=new URLSearchParams(location.search);
+const canEdit=!(qs.has('view')||qs.has('readonly'));   // editable por defecto · ?view=1 = solo lectura
+const CE=canEdit?'contenteditable="true"':'';
+
 const uid=()=>Math.random().toString(36).slice(2,9);
 const TONES=[['sky','Celeste'],['amber','Naranja'],['blue','Azul'],['navy','Azul oscuro']];
 const TONE_HEX={sky:'#CFE9FE',amber:'#FE9339',blue:'#0176D3',navy:'#032D60'};
-
-/* ---------------- Estado por defecto ---------------- */
-function defaultState(){
-  const P=(label,sub,tone,h)=>({id:uid(),label,sub,tone,height:h});
-  const phases=[
-    P('Kick-off','Mes 0','sky',18),
-    P('Fase 1 · Fundación CRM','Mes 1 a 3','sky',46),
-    P('Fase 2 · Servicio y Omnicanal','Mes 4 a 6','amber',80),
-    P('Final Go Live','Mes 6 a 7','amber',112),
-    P('Año 1 · Rollout','Todas las agencias','blue',146),
-    P('Año 2 y 3','Optimización','navy',180)
-  ];
-  const ph=i=>phases[i].id;
-  const card=(pi,title,items,tags)=>({id:uid(),phaseId:ph(pi),title,items,tags:tags||[],image:null});
-  const lanes=[
-    {id:uid(),name:'Gestión de clientes / Vista 360',sub:'Sales Cloud',tone:'amber',icon:{key:'icono-sales-cloud.png',url:''},cards:[
-      card(0,'Descubrimiento y diseño',['Levantamiento de procesos B2C y B2B','Mapa de datos de clientes y flotillas','Definición de la Vista 360','Gobierno del proyecto y KPIs']),
-      card(1,'Vista 360 del cliente',['Consola del asesor de mostrador','Cuentas, contactos y vehículos','Cotizaciones y proformas','Integración con tienda en línea (X-Cart)','Gestión de prospectos B2B: talleres y flotillas'],['Sales Cloud']),
-      card(2,'Gestión de oportunidades B2B',['Metodología y etapas de venta','Reglas de asignación por agencia','Catálogo, listas de precios y descuentos','Aprobaciones y visibilidad por rol'],['CPQ básico']),
-      card(3,'Agentforce de cara al asesor',['Recomendación de repuestos por vehículo (placa / VIN)','Resumen de cuenta y próxima mejor acción','Búsqueda de compatibilidad asistida'],['Agentforce']),
-      card(4,'ROLLOUTS',['Despliegue a todas las agencias','Guaca Club (lealtad) dentro del CRM','Portal de clientes B2B y autoservicio de pedidos']),
-      card(5,'Crecimiento del cliente',['Programas de lealtad avanzados','Cross-sell y up-sell recomendado','Rentabilidad y valor de vida por cliente'])
-    ]},
-    {id:uid(),name:'Servicio y Contact Center',sub:'Service Cloud + Agentforce',tone:'blue',icon:{key:'icono-service-cloud.png',url:''},cards:[
-      card(1,'Solicitudes de servicio',['Gestión de casos y colas por agencia','SLA, escalamiento y reasignación','Migración desde Zendesk','Base de conocimiento unificada'],['Service Cloud']),
-      card(2,'Omnicanalidad',['WhatsApp Business y SMS','Chat web y redes sociales','Telefonía / CTI en contact center','Garantías, devoluciones y notas de crédito'],['Digital Engagement']),
-      card(3,'Agentforce de cara al cliente',['FAQ y estado de pedido 24/7','Escalamiento fluido a agente humano','Conversaciones en doble vía'],['Agentforce']),
-      card(4,'Guaca Service',['Órdenes de trabajo y citas de taller','Asignación de técnicos y agenda','Feedback management y NPS por canal'],['Field Service']),
-      card(5,'Servicio proactivo',['Recordatorio de mantenimiento por kilometraje','Autoservicio total en app y web','Tracking de satisfacción en todo el journey'])
-    ]},
-    {id:uid(),name:'Marketing y Comercio Digital',sub:'Marketing Cloud',tone:'sky',icon:{key:'icono-marketing-cloud.png',url:''},cards:[
-      card(0,'Estrategia digital',['Segmentación y journeys prioritarios','Modelo de consentimiento y datos']),
-      card(1,'Orquestación de canales',['Integración WhatsApp Business','Proveedor SMS','Correo transaccional y de pedidos']),
-      card(2,'Campañas y promociones',['Promo del mes automatizada','Recuperación de carrito abandonado','Journeys de bienvenida y Guaca Club'],['Journeys']),
-      card(4,'Personalización',['Recomendación por vehículo y por historial','Personalización en sitio y app','Atribución de campañas al ingreso']),
-      card(5,'Lealtad avanzada',['Guaca Club escalonado por nivel','Retención de flotillas y talleres','Contenido dinámico por segmento'])
-    ]},
-    {id:uid(),name:'Data e Integraciones',sub:'MuleSoft · Data Cloud',tone:'navy',icon:{key:'icono-mulesoft.png',url:''},cards:[
-      card(0,'Arquitectura objetivo',['Inventario de sistemas y datos','Diseño de integración y seguridad']),
-      card(1,'Integraciones core',['ERP e inventario por agencia','Catálogo, precios y promociones','Pedidos, facturación y notas de crédito'],['MuleSoft']),
-      card(2,'Modelo de datos unificado',['Perfil único de cliente (Data Cloud)','Identidad de vehículos y flotillas','MDM y calidad de datos'],['Data Cloud']),
-      card(4,'API Management',['API Manager y catálogo de servicios','Eventos en tiempo real','Disponibilidad de inventario por tienda']),
-      card(5,'Modelo de datos extendido',['Integraciones adicionales','Data sharing con proveedores','Analítica avanzada sobre Data Cloud'])
-    ]},
-    {id:uid(),name:'Analítica e Incentivos',sub:'Tableau · Slack · Spiff',tone:'blue',icon:{key:'icono-tableau.png',url:''},cards:[
-      card(2,'Reportes y tableros',['Tableros de venta por agencia y asesor','Pipeline B2B y conversión','Servicio: SLA, casos y satisfacción']),
-      card(4,'Slack + Tableau',['Colaboración por cuenta y por deal','Alertas de inventario y pedidos','Tableau para dirección comercial'],['Slack']),
-      card(5,'Compensación variable',['Comisiones y esquemas por línea','Programas de venta y concursos','Performance en tiempo real'],['Spiff'])
-    ]}
-  ];
-  return {
-    brand:{
-      badge:'¿Cómo llegaremos allá?',
-      title:'Propuesta de Roadmap',
-      subtitle:'Repuestos La Guaca · Transformación comercial y de servicio con Salesforce',
-      logo:{key:'logo-guaca.png',url:'https://laguacaenlinea.cr/skins/la_guacamaya/customer/images/footer-logo.png'},
-      footer:'Propuesta preliminar · sujeta a validación conjunta de alcance y esfuerzo'
-    },
-    priorities:[
-      'Unificar la experiencia del cliente entre tienda, web y WhatsApp',
-      'Aumentar conversión y ticket promedio con recomendación asistida por IA',
-      'Reducir costos de soporte y de aplicaciones legadas'
-    ],
-    repoBase:'',
-    phases, lanes
-  };
-}
-
-let state=load()||defaultState();
-
-function load(){
-  try{
-    const raw=localStorage.getItem(LS_KEY);
-    if(!raw) return null;
-    const s=JSON.parse(raw);
-    if(!s||!s.phases||!s.lanes) return null;
-    return s;
-  }catch(e){return null}
-}
-let saveTimer=null;
-function save(){
-  clearTimeout(saveTimer);
-  saveTimer=setTimeout(()=>{
-    try{localStorage.setItem(LS_KEY,JSON.stringify(state));}catch(e){}
-  },250);
-}
-function toast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),1800);
-}
 const esc=s=>String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const lsGet=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
+const lsSet=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+const lsDel=k=>{try{localStorage.removeItem(k)}catch(e){}};
+
+/* ---------------- Estado por defecto (versión cargada del roadmap) ---------------- */
+const DEFAULT_DATA = {
+  "brand": {
+    "badge": "¿Cómo llegaremos allá?",
+    "title": "Propuesta de Roadmap",
+    "subtitle": "Repuestos La Guaca · Transformación comercial y de servicio con Salesforce",
+    "logo": {
+      "key": "logo-guaca.png",
+      "url": "https://laguacaenlinea.cr/skins/la_guacamaya/customer/images/footer-logo.png"
+    },
+    "footer": "Propuesta preliminar · sujeta a validación conjunta de alcance y esfuerzo"
+  },
+  "priorities": [
+    "Unificar la experiencia del cliente entre tienda, web y WhatsApp",
+    "Aumentar conversión y ticket promedio con recomendación asistida por IA",
+    "Reducir costos de soporte y de aplicaciones legadas"
+  ],
+  "repoBase": "",
+  "phases": [
+    {
+      "id": "9wbzzw7",
+      "label": "Fase 1 - MVP Guaca Service",
+      "sub": "Semanas 1 a 14",
+      "tone": "amber",
+      "height": 46,
+      "milestone": "MVP"
+    },
+    {
+      "id": "vu6j4ba",
+      "label": "Fase 2 · Servicio y Omnicanal",
+      "sub": "Mes 4 a 7",
+      "tone": "blue",
+      "height": 80,
+      "milestone": "SERVICIO"
+    },
+    {
+      "id": "wmaeyq6",
+      "label": "Fase 3",
+      "sub": "Mes 7 a 12",
+      "tone": "blue",
+      "height": 112,
+      "milestone": "FIELD SERVICE"
+    },
+    {
+      "id": "2rtatsi",
+      "label": "Año 1",
+      "sub": "Todas las agencias",
+      "tone": "sky",
+      "height": 146,
+      "milestone": "PERSONALIZACIÓN"
+    },
+    {
+      "id": "iyitc4h",
+      "label": "Año 2 y 5",
+      "sub": "Optimización",
+      "tone": "sky",
+      "height": 180,
+      "milestone": "LEALTAD"
+    }
+  ],
+  "lanes": [
+    {
+      "id": "y6abaz0",
+      "name": "Marketing y Comercio Digital",
+      "sub": "Marketing Cloud",
+      "tone": "sky",
+      "icon": {
+        "key": "icono-marketing-cloud.png",
+        "url": ""
+      },
+      "cards": [
+        {
+          "id": "v30aslu",
+          "phaseId": "vu6j4ba",
+          "title": "Campañas y promociones",
+          "items": [
+            "Campañas adicionales automatizada",
+            "Recuperación de carrito abandonado",
+            "Journeys de bienvenida y Guaca Club"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "qw3bfp1",
+          "phaseId": "2rtatsi",
+          "title": "Personalización",
+          "items": [
+            "Recomendación por vehículo y por historial en commerce",
+            "Personalización en sitio y app",
+            "Atribución de campañas al ingreso"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "ci4ohsd",
+          "phaseId": "iyitc4h",
+          "title": "Lealtad avanzada",
+          "items": [
+            "Guaca Club escalonado por nivel",
+            "Contenido dinámico por segmento y categoria"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "qyhapab",
+          "phaseId": "9wbzzw7",
+          "title": "Orquestación de canales",
+          "items": [
+            "WhatsApp masivo",
+            "Correo transaccional",
+            "Conversaciones en doble vía"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "gjpag0v",
+          "phaseId": "9wbzzw7",
+          "title": "Estrategia digital",
+          "items": [
+            "Modelo contextual",
+            "Audiencias y Segmentos x 5",
+            "Journeys x 2 prioritarios"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "9eax9ze",
+          "phaseId": "wmaeyq6",
+          "title": "Orquestación de canales adicionales",
+          "items": [
+            "Push Notification en app"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "xaglenw",
+          "phaseId": "wmaeyq6",
+          "title": "Estrategia Digital",
+          "items": [
+            "Modelo de consentimiento y datos"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "quoabmp",
+          "phaseId": "vu6j4ba",
+          "title": "Modelo de datos unificado",
+          "items": [
+            "Perfil único de cliente",
+            "Identidad de vehículos y flotillas",
+            "Calidad de datos"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "17a5a22",
+          "phaseId": "2rtatsi",
+          "title": "Commerce B2C",
+          "items": [
+            "Mult"
+          ],
+          "tags": [],
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "a856wm9",
+      "name": "Servicio y Contact Center",
+      "sub": "Service Cloud + Agentforce",
+      "tone": "blue",
+      "icon": {
+        "key": "icono-service-cloud.png",
+        "url": ""
+      },
+      "cards": [
+        {
+          "id": "8ldirsh",
+          "phaseId": "9wbzzw7",
+          "title": "Omnicanalidad + IA",
+          "items": [
+            "Escalamiento fluido a agente humano",
+            "Agente Autónomo captura información para agendamiento",
+            "WhatsApp Business",
+            "Chat para web y Facebook messenger"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "lw8prv2",
+          "phaseId": "9wbzzw7",
+          "title": "Solicitudes de servicio",
+          "items": [
+            "Migración desde Zendesk",
+            "Base de conocimiento unificada",
+            "Citas de taller",
+            "Recepción de vehículos",
+            "Encuestas"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "9qa0kb0",
+          "phaseId": "vu6j4ba",
+          "title": "Agentforce de cara al cliente",
+          "items": [
+            "FAQ",
+            "Horarios de sucursales"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "nwlihfu",
+          "phaseId": "vu6j4ba",
+          "title": "Nueva iniciativa",
+          "items": [
+            "Gestión de casos y colas por agencia",
+            "SLA, escalamiento y reasignación",
+            "Garantías, devoluciones y notas de crédito"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "krmnac9",
+          "phaseId": "wmaeyq6",
+          "title": "Agentforce",
+          "items": [
+            "Agendamiento completamente autonomo.",
+            "Estado de pedido 24/7"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "0zvoywa",
+          "phaseId": "2rtatsi",
+          "title": "CTI TBD",
+          "items": [
+            "Telefonía / CTI en contact center"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "bjeyaf5",
+          "phaseId": "2rtatsi",
+          "title": "Servicio proactivo",
+          "items": [
+            "Recordatorio de mantenimiento por kilometraje",
+            "Autoservicio total en app y web",
+            "Tracking de satisfacción en todo el journey"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "tma6ych",
+          "phaseId": "wmaeyq6",
+          "title": "Guaca Service",
+          "items": [
+            "Órdenes de trabajo",
+            "Asignación de técnicos y agenda"
+          ],
+          "tags": [],
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "2kf9uxm",
+      "name": "Gestión de clientes / Vista 360",
+      "sub": "Sales Cloud",
+      "tone": "amber",
+      "icon": {
+        "key": "icono-sales-cloud.png",
+        "url": ""
+      },
+      "cards": [
+        {
+          "id": "1875jh3",
+          "phaseId": "vu6j4ba",
+          "title": "Vista 360 del cliente",
+          "items": [
+            "Consola del asesor de mostrador",
+            "Cuentas, contactos y vehículos",
+            "Cotizaciones y proformas",
+            "Integración con tienda en línea (X-Cart)",
+            "Gestión de prospectos B2B: talleres y flotillas"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "wn6ss77",
+          "phaseId": "vu6j4ba",
+          "title": "Descubrimiento y diseño",
+          "items": [
+            "Levantamiento de procesos B2C y B2B",
+            "Mapa de datos de clientes y flotillas",
+            "Definición de la Vista 360",
+            "Gobierno del proyecto y KPIs"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "32fh6hf",
+          "phaseId": "wmaeyq6",
+          "title": "Agentforce de cara al asesor",
+          "items": [
+            "Recomendación de repuestos por vehículo (placa / VIN)",
+            "Resumen de cuenta y próxima mejor acción",
+            "Búsqueda de compatibilidad asistida"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "xkctxmk",
+          "phaseId": "iyitc4h",
+          "title": "Crecimiento del cliente",
+          "items": [
+            "Programas de lealtad avanzados",
+            "Cross-sell y up-sell recomendado",
+            "Rentabilidad y valor de vida por cliente"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "9c3nili",
+          "phaseId": "2rtatsi",
+          "title": "Gestión de oportunidades B2B",
+          "items": [
+            "Metodología y etapas de venta",
+            "Reglas de asignación por agencia",
+            "Catálogo, listas de precios y descuentos",
+            "Aprobaciones y visibilidad por rol"
+          ],
+          "tags": [],
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "v8jhue6",
+      "name": "Data e Integraciones",
+      "sub": "",
+      "tone": "navy",
+      "icon": {
+        "key": "icono-mulesoft.png",
+        "url": ""
+      },
+      "cards": [
+        {
+          "id": "ikyak6i",
+          "phaseId": "2rtatsi",
+          "title": "API Management",
+          "items": [
+            "API Manager y catálogo de servicios",
+            "Eventos en tiempo real",
+            "Disponibilidad de inventario por tienda"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "n1bovt8",
+          "phaseId": "iyitc4h",
+          "title": "Arquitectura objetivo",
+          "items": [
+            "Inventario de sistemas y datos",
+            "Diseño de integración y seguridad"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "8dsp9wt",
+          "phaseId": "iyitc4h",
+          "title": "Modelo de datos extendido",
+          "items": [
+            "Integraciones adicionales",
+            "Data sharing con proveedores",
+            "Analítica avanzada sobre Data Cloud"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "y6l6sn3",
+          "phaseId": "9wbzzw7",
+          "title": "Datos de contacto",
+          "items": [
+            "Precarga de información básica"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "6bspset",
+          "phaseId": "wmaeyq6",
+          "title": "Integraciones Field Service",
+          "items": [
+            "ERP e inventario por agencia",
+            "Catálogo, precios y promociones",
+            "Pedidos, facturación y notas de crédito"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "5lo06jn",
+          "phaseId": "2rtatsi",
+          "title": "Informatica",
+          "items": [
+            "E"
+          ],
+          "tags": [],
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "duepv47",
+      "name": "Analítica e Incentivos",
+      "sub": "Tableau · Slack · Spiff",
+      "tone": "blue",
+      "icon": {
+        "key": "icono-tableau.png",
+        "url": ""
+      },
+      "cards": [
+        {
+          "id": "hk0qx32",
+          "phaseId": "2rtatsi",
+          "title": "Reportes y tableros",
+          "items": [
+            "Tableros de venta por agencia y asesor",
+            "Pipeline B2B y conversión",
+            "Servicio: SLA, casos y satisfacción"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "gh7aqm5",
+          "phaseId": "2rtatsi",
+          "title": "Slack + Tableau",
+          "items": [
+            "Colaboración por cuenta y por deal",
+            "Alertas de inventario y pedidos",
+            "Tableau para dirección comercial"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "dvups4l",
+          "phaseId": "iyitc4h",
+          "title": "Compensación variable",
+          "items": [
+            "Comisiones y esquemas por línea",
+            "Programas de venta y concursos",
+            "Performance en tiempo real"
+          ],
+          "tags": [],
+          "image": null
+        }
+      ]
+    }
+  ]
+};
+
+function defaultState(){
+  const d=JSON.parse(JSON.stringify(DEFAULT_DATA));
+  d.version=2; d.updatedAt=d.updatedAt||''; d.updatedBy=d.updatedBy||'';
+  d.comments=d.comments||{}; d.repoBase=d.repoBase||'';
+  (d.phases||[]).forEach(p=>{if(!p.id)p.id=uid()});
+  (d.lanes||[]).forEach(l=>{if(!l.id)l.id=uid();(l.cards||[]).forEach(c=>{if(!c.id)c.id=uid();c.items=c.items||[];c.tags=c.tags||[];if(c.image===undefined)c.image=null})});
+  return d;
+}
+
+/* ---------------- Persistencia ---------------- */
+let state=null, remoteSha=null, dirty=false, pushTimer=null, localTimer=null;
+let cfg=Object.assign({},CONFIG,{author:''},JSON.parse(lsGet(LS_CFG)||'{}'));
+let token=lsGet(LS_TOKEN)||'';
+let pending=JSON.parse(lsGet(LS_PEND)||'{}');   // comentarios locales de visitantes
+let me=lsGet(LS_ME)||cfg.author||'';
+
+function saveLocal(){
+  clearTimeout(localTimer);
+  localTimer=setTimeout(()=>lsSet(LS_STATE,JSON.stringify(state)),250);
+}
+function markDirty(){
+  dirty=true;saveLocal();setStatus('busy','Cambios sin publicar');
+  if(cfg.auto&&token&&cfgReady()){clearTimeout(pushTimer);pushTimer=setTimeout(()=>push(true),20000);}
+}
+function cfgReady(){return !!(cfg.owner&&cfg.repo&&cfg.branch&&cfg.path)}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
+function setStatus(kind,txt){
+  const el=document.getElementById('status');if(!el)return;
+  el.className='status '+(kind||'');document.getElementById('statusTxt').textContent=txt;
+}
+
+/* ---------------- GitHub ---------------- */
+function b64enc(str){const bytes=new TextEncoder().encode(str);let bin='';bytes.forEach(b=>bin+=String.fromCharCode(b));return btoa(bin)}
+function b64dec(b64){const bin=atob(String(b64).replace(/\s/g,''));return new TextDecoder().decode(Uint8Array.from(bin,c=>c.charCodeAt(0)))}
+const apiUrl=()=>`https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${cfg.path}`;
+const rawUrl=()=>`https://raw.githubusercontent.com/${cfg.owner}/${cfg.repo}/${cfg.branch}/${cfg.path}?t=${Date.now()}`;
+
+async function ghGet(){
+  if(!cfgReady()) throw new Error('Falta configurar el repositorio');
+  const headers={'Accept':'application/vnd.github+json'};
+  if(token) headers['Authorization']='Bearer '+token;
+  const r=await fetch(apiUrl()+'?ref='+encodeURIComponent(cfg.branch),{headers,cache:'no-store'});
+  if(r.status===404) return {missing:true};
+  if(!r.ok) throw new Error('GitHub '+r.status+' — '+(r.status===401?'token inválido':r.status===403?'sin permiso o límite de tasa':'no se pudo leer'));
+  const j=await r.json();
+  return {sha:j.sha,data:JSON.parse(b64dec(j.content))};
+}
+async function ghGetPublic(){
+  const r=await fetch(rawUrl(),{cache:'no-store'});
+  if(!r.ok) throw new Error('No se pudo leer el JSON publicado ('+r.status+')');
+  return {data:await r.json()};
+}
+async function push(silent){
+  if(!canEdit) return;
+  if(!cfgReady()){openGit();return toast('Configura primero el repositorio')}
+  if(!token){openGit();return toast('Falta el token de acceso')}
+  setStatus('busy','Guardando…');
+  try{
+    const cur=await ghGet();
+    if(!cur.missing && remoteSha && cur.sha!==remoteSha){
+      const who=cur.data&&cur.data.updatedBy?' ('+cur.data.updatedBy+')':'';
+      if(!confirm('Hay una versión más nueva en el repositorio'+who+'.\n\nAceptar = sobrescribirla con tu versión.\nCancelar = no guardar (usa “Traer del repo”).')){
+        setStatus('err','Conflicto sin resolver');return;
+      }
+    }
+    state.updatedAt=new Date().toISOString();
+    state.updatedBy=me||cfg.author||'editor';
+    const body={
+      message:'roadmap: actualización '+new Date().toLocaleString('es-CR')+' · '+state.updatedBy,
+      content:b64enc(JSON.stringify(state,null,2)),
+      branch:cfg.branch
+    };
+    if(!cur.missing) body.sha=cur.sha;
+    const r=await fetch(apiUrl(),{method:'PUT',headers:{'Accept':'application/vnd.github+json','Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify(body)});
+    if(!r.ok){
+      const t=await r.text();
+      throw new Error('GitHub '+r.status+(r.status===401?' — token inválido o expirado':r.status===403?' — el token no tiene permiso Contents: write en este repo':'')+' '+t.slice(0,120));
+    }
+    const j=await r.json();
+    remoteSha=j.content&&j.content.sha||null;
+    dirty=false;saveLocal();
+    setStatus('ok','Publicado '+new Date().toLocaleTimeString('es-CR',{hour:'2-digit',minute:'2-digit'}));
+    if(!silent) toast('Guardado en GitHub');
+  }catch(e){
+    setStatus('err','Error al guardar');
+    toast(String(e.message||e));
+  }
+}
+async function pull(){
+  try{
+    setStatus('busy','Leyendo repo…');
+    const res=token&&canEdit?await ghGet():await ghGetPublic();
+    if(res.missing){setStatus('','Sin archivo en el repo');return toast('El archivo no existe todavía; guarda una vez para crearlo')}
+    state=res.data;remoteSha=res.sha||null;dirty=false;
+    saveLocal();render();
+    setStatus('ok','Al día'+(state.updatedBy?' · '+state.updatedBy:''));
+    toast('Versión del repositorio cargada');
+  }catch(e){setStatus('err','Sin conexión al repo');toast(String(e.message||e))}
+}
+
+/* ---------------- Arranque ---------------- */
+async function boot(){
+  document.getElementById(canEdit?'toolbar':'robar').style.display='flex';
+  const local=lsGet(LS_STATE);
+  state=local?safeParse(local)||defaultState():defaultState();
+  render();
+  if(cfgReady()){
+    try{
+      const res=canEdit&&token?await ghGet():await ghGetPublic();
+      if(!res.missing&&res.data){
+        const remoteNewer=!local||!state.updatedAt||(res.data.updatedAt||'')>state.updatedAt;
+        if(!canEdit||remoteNewer||!dirty){state=res.data;remoteSha=res.sha||null;saveLocal();render()}
+        setStatus('ok','Al día'+(state.updatedBy?' · '+state.updatedBy:''));
+      }else setStatus('','Sin archivo en el repo');
+    }catch(e){setStatus('err','Sin conexión al repo')}
+  }else setStatus('','Solo local');
+  updateRoBar();
+}
+function safeParse(s){try{return JSON.parse(s)}catch(e){return null}}
+function updateRoBar(){
+  if(canEdit) return;
+  const d=state.updatedAt?new Date(state.updatedAt):null;
+  document.getElementById('roMeta').textContent=d?('Actualizado '+d.toLocaleString('es-CR')+(state.updatedBy?' por '+state.updatedBy:'')):'Versión de trabajo';
+  document.getElementById('roCmtCount').textContent=Object.values(pending).reduce((a,b)=>a+b.length,0);
+}
 
 /* ---------------- Imágenes ---------------- */
 function resolveSrc(img){
   if(!img) return '';
   if(img.url) return img.url;
-  if(img.key && state.repoBase) return state.repoBase.replace(/\/?$/,'/')+img.key.replace(/^\//,'');
+  if(img.key&&state.repoBase) return state.repoBase.replace(/\/?$/,'/')+String(img.key).replace(/^\//,'');
   return '';
 }
 function imgSlotHTML(img,path,label,style){
   const src=resolveSrc(img);
-  const inner = src
-    ? `<img src="${esc(src)}" alt="${esc(label)}" style="${style||''}" onerror="this.style.display='none';this.parentNode.querySelector('.ph').style.display='flex'">
-       <div class="ph" style="display:none"><b>${esc(label)}</b><span class="key">${esc(img.key||'sin clave')}</span></div>`
+  const inner=src
+    ? `<img src="${esc(src)}" alt="${esc(label)}" style="${style||''}" onerror="this.style.display='none';this.parentNode.querySelector('.ph').style.display='flex'"><div class="ph" style="display:none"><b>${esc(label)}</b><span class="key">${esc(img.key||'sin clave')}</span></div>`
     : `<div class="ph"><b>${esc(label)}</b><span class="key">${esc(img.key||'definir clave')}</span></div>`;
-  return `<div class="imgslot" data-imgpath="${esc(path)}">
-    ${inner}
-    <div class="slotbar no-print">
-      <button class="mini" data-act="img-key">clave</button>
-      <button class="mini" data-act="img-url">URL</button>
-      <button class="mini" data-act="img-file">subir</button>
-      <button class="mini" data-act="img-clear">×</button>
-    </div>
-  </div>`;
+  return `<div class="imgslot" data-imgpath="${esc(path)}">${inner}${canEdit?`<div class="slotbar"><button class="mini" data-act="img-key">clave</button><button class="mini" data-act="img-url">URL</button><button class="mini" data-act="img-file">subir</button><button class="mini" data-act="img-clear">×</button></div>`:''}</div>`;
 }
-/* path helpers: brand.logo | lane:<id>.icon | card:<id>.image */
 function getImgRef(path){
   if(path==='brand.logo') return {get:()=>state.brand.logo,set:v=>state.brand.logo=v};
   let m=path.match(/^lane:(.+)\.icon$/);
-  if(m){const l=state.lanes.find(x=>x.id===m[1]);return {get:()=>l.icon,set:v=>l.icon=v};}
+  if(m){const l=state.lanes.find(x=>x.id===m[1]);return l?{get:()=>l.icon,set:v=>l.icon=v}:null}
   m=path.match(/^card:(.+)\.image$/);
-  if(m){
-    for(const l of state.lanes){const c=l.cards.find(x=>x.id===m[1]); if(c) return {get:()=>c.image,set:v=>c.image=v};}
-  }
+  if(m){for(const l of state.lanes){const c=l.cards.find(x=>x.id===m[1]);if(c)return {get:()=>c.image,set:v=>c.image=v}}}
   return null;
 }
 function collectSlots(){
   const out=[{path:'brand.logo',where:'Encabezado · logo',img:state.brand.logo}];
   state.lanes.forEach(l=>{
     out.push({path:'lane:'+l.id+'.icon',where:'Carril · '+l.name,img:l.icon});
-    l.cards.forEach(c=>{ if(c.image) out.push({path:'card:'+c.id+'.image',where:'Tarjeta · '+c.title,img:c.image}); });
+    l.cards.forEach(c=>{if(c.image)out.push({path:'card:'+c.id+'.image',where:'Tarjeta · '+c.title,img:c.image})});
   });
   return out;
 }
 
+/* ---------------- Comentarios ---------------- */
+function committed(cardId){return (state.comments&&state.comments[cardId])||[]}
+function pendingOf(cardId){return pending[cardId]||[]}
+function cmtCount(cardId){return committed(cardId).length+pendingOf(cardId).length}
+function savePending(){lsSet(LS_PEND,JSON.stringify(pending));updateRoBar()}
+
 /* ---------------- Render ---------------- */
 function render(){
-  const cols='260px repeat('+state.phases.length+',minmax(190px,1fr))';
   const b=document.getElementById('board');
-  b.style.setProperty('--cols',cols);
-
+  b.style.setProperty('--cols','260px repeat('+state.phases.length+',minmax(190px,1fr))');
   let h='';
-  /* header */
-  h+=`<div class="bhead">
-    <div class="left">
-      <div class="pill" contenteditable data-bind="brand.badge">${esc(state.brand.badge)}</div>
-      <h1 class="title" contenteditable data-bind="brand.title">${esc(state.brand.title)}</h1>
-      <p class="subtitle" contenteditable data-bind="brand.subtitle">${esc(state.brand.subtitle)}</p>
-      <div class="prio">
-        <h4>Prioridades estratégicas</h4>
-        <ol class="items-prio" contenteditable data-bind="priorities">${state.priorities.map(p=>'<li>'+esc(p)+'</li>').join('')}</ol>
-      </div>
-    </div>
+  h+=`<div class="bhead"><div class="left">
+    <div class="pill" ${CE} data-bind="brand.badge">${esc(state.brand.badge)}</div>
+    <h1 class="title" ${CE} data-bind="brand.title">${esc(state.brand.title)}</h1>
+    <p class="subtitle" ${CE} data-bind="brand.subtitle">${esc(state.brand.subtitle)}</p>
+    <div class="prio"><h4>Prioridades estratégicas</h4>
+      <ol ${CE} data-bind="priorities">${state.priorities.map(p=>'<li>'+esc(p)+'</li>').join('')}</ol>
+    </div></div>
     <div class="logoslot">${imgSlotHTML(state.brand.logo,'brand.logo','Logo Repuestos La Guaca','max-height:70px;margin-left:auto')}</div>
   </div>`;
 
-  /* milestone band */
   h+=`<div class="grid"><div></div>`;
   state.phases.forEach(p=>{
     const empty=!p.milestone;
-    h+=`<div class="msCell">
-      <div class="msLabel ${empty?'empty':''}" contenteditable data-bind="phase.milestone:${p.id}">${esc(p.milestone||'hito…')}</div>
-      ${p.milestone?'<div class="msDot"></div>':''}
-      <div class="bar t-${p.tone}" style="height:${p.height||20}px"></div>
-    </div>`;
+    if(!canEdit&&empty){h+=`<div class="msCell"><div class="msLabel"></div><div class="bar t-${p.tone}" style="height:${p.height||20}px"></div></div>`;return}
+    h+=`<div class="msCell"><div class="msLabel ${empty?'empty':''}" ${CE} data-bind="phase.milestone:${p.id}">${esc(p.milestone||'hito…')}</div>${p.milestone?'<div class="msDot"></div>':''}<div class="bar t-${p.tone}" style="height:${p.height||20}px"></div></div>`;
   });
   h+=`</div>`;
 
-  /* timeline */
   h+=`<div class="tlrow"><div class="tlhead">Timeline</div>`;
   state.phases.forEach(p=>{
     h+=`<div class="tlcell" data-phase="${p.id}">
-      <button class="mini phx no-print" data-act="del-phase">×</button>
-      <span class="ph-label" contenteditable data-bind="phase.label:${p.id}">${esc(p.label)}</span>
-      <span class="ph-sub" contenteditable data-bind="phase.sub:${p.id}">${esc(p.sub)}</span>
-      <div class="tonepick no-print">${TONES.map(t=>`<button class="swatch" data-act="tone" data-tone="${t[0]}" title="${t[1]}" style="background:${TONE_HEX[t[0]]}"></button>`).join('')}</div>
+      ${canEdit?'<button class="mini phx" data-act="del-phase">×</button>':''}
+      <span class="ph-label" ${CE} data-bind="phase.label:${p.id}">${esc(p.label)}</span>
+      <span class="ph-sub" ${CE} data-bind="phase.sub:${p.id}">${esc(p.sub)}</span>
+      ${canEdit?`<div class="tonepick">${TONES.map(t=>`<button class="swatch" data-act="tone" data-tone="${t[0]}" title="${t[1]}" style="background:${TONE_HEX[t[0]]}"></button>`).join('')}</div>`:''}
     </div>`;
   });
   h+=`</div>`;
 
-  /* lanes */
   state.lanes.forEach((l,li)=>{
-    h+=`<div class="lane" data-lane="${l.id}">
-      <div class="laneTitle l-${l.tone}">
-        <div class="laneTools no-print">
-          <button class="mini" data-act="lane-tone">color</button>
-          <button class="mini" data-act="lane-up">↑</button>
-          <button class="mini" data-act="lane-down">↓</button>
-          <button class="mini" data-act="lane-del">×</button>
-        </div>
-        <div class="lt-name" contenteditable data-bind="lane.name:${l.id}">${esc(l.name)}</div>
-        <div class="lt-sub" contenteditable data-bind="lane.sub:${l.id}">${esc(l.sub)}</div>
-        <div class="lt-icon">${imgSlotHTML(l.icon,'lane:'+l.id+'.icon','icono','max-height:44px;margin-left:auto')}</div>
-      </div>`;
+    h+=`<div class="lane" data-lane="${l.id}"><div class="laneTitle l-${l.tone}">
+      ${canEdit?`<div class="laneTools"><button class="mini" data-act="lane-tone">color</button><button class="mini" data-act="lane-up">↑</button><button class="mini" data-act="lane-down">↓</button><button class="mini" data-act="lane-del">×</button></div>`:''}
+      <div class="lt-name" ${CE} data-bind="lane.name:${l.id}">${esc(l.name)}</div>
+      <div class="lt-sub" ${CE} data-bind="lane.sub:${l.id}">${esc(l.sub)}</div>
+      <div class="lt-icon">${imgSlotHTML(l.icon,'lane:'+l.id+'.icon','icono','max-height:44px;margin-left:auto')}</div>
+    </div>`;
     state.phases.forEach(p=>{
       const cards=l.cards.filter(c=>c.phaseId===p.id);
-      h+=`<div class="cell ${li%2?'alt':''}" data-lane="${l.id}" data-phase="${p.id}">
-        ${cards.map(c=>cardHTML(c,p)).join('')}
-        <button class="addcard no-print" data-act="add-card">+ tarjeta</button>
-      </div>`;
+      h+=`<div class="cell ${li%2?'alt':''}" data-lane="${l.id}" data-phase="${p.id}">${cards.map(c=>cardHTML(c,p)).join('')}${canEdit?'<button class="addcard" data-act="add-card">+ tarjeta</button>':''}</div>`;
     });
     h+=`</div>`;
   });
 
-  /* footer */
-  h+=`<div class="bfoot">
-    <div class="legend">
-      ${TONES.map(t=>`<span><i style="background:${TONE_HEX[t[0]]}"></i>${t[1]}</span>`).join('')}
-    </div>
-    <div contenteditable data-bind="brand.footer" style="text-align:right">${esc(state.brand.footer)}</div>
-  </div>`;
-
+  h+=`<div class="bfoot"><div class="legend">${TONES.map(t=>`<span><i style="background:${TONE_HEX[t[0]]}"></i>${t[1]}</span>`).join('')}</div>
+      <div ${CE} data-bind="brand.footer" style="text-align:right">${esc(state.brand.footer)}</div></div>`;
   b.innerHTML=h;
+  updateRoBar();
 }
-
 function cardHTML(c,p){
+  const n=cmtCount(c.id);
   return `<div class="card c-${p.tone}" data-card="${c.id}">
     <div class="chead">
-      <span class="handle no-print" title="Arrastrar">⠿</span>
-      <div class="c-title" contenteditable data-bind="card.title:${c.id}">${esc(c.title)}</div>
-      <div class="ctools no-print">
-        <button class="mini" data-act="card-img" title="Espacio de imagen">img</button>
-        <button class="mini" data-act="card-del" title="Eliminar">×</button>
-      </div>
+      ${canEdit?'<span class="handle" title="Arrastrar">⠿</span>':''}
+      <div class="c-title" ${CE} data-bind="card.title:${c.id}">${esc(c.title)}</div>
+      ${canEdit?`<div class="ctools"><button class="mini" data-act="card-img" title="Espacio de imagen">img</button><button class="mini" data-act="card-del" title="Eliminar">×</button></div>`:''}
     </div>
-    <div class="items" contenteditable data-bind="card.items:${c.id}">${(c.items.length?c.items:['']).map(i=>'<div>'+esc(i)+'</div>').join('')}</div>
+    <div class="items" ${CE} data-bind="card.items:${c.id}">${(c.items.length?c.items:['']).map(i=>'<div>'+esc(i)+'</div>').join('')}</div>
     ${c.image?imgSlotHTML(c.image,'card:'+c.id+'.image','imagen','width:100%'):''}
-    ${c.tags && c.tags.length?`<div class="tagrow">${c.tags.map(t=>'<span class="tag">'+esc(t)+'</span>').join('')}</div>`:''}
+    ${c.tags&&c.tags.length?`<div class="tagrow">${c.tags.map(t=>'<span class="tag">'+esc(t)+'</span>').join('')}</div>`:''}
+    <button class="cmt ${n?'has':''}" data-act="card-cmt">💬 ${n?n+(n===1?' comentario':' comentarios'):'Comentar'}</button>
   </div>`;
 }
 
 /* ---------------- Edición de texto ---------------- */
 document.addEventListener('input',e=>{
-  const el=e.target.closest('[data-bind]');
+  if(!canEdit) return;
+  const el=e.target.closest&&e.target.closest('[data-bind]');
   if(!el) return;
-  const bind=el.getAttribute('data-bind');
-  const [key,id]=bind.split(':');
+  const [key,id]=el.getAttribute('data-bind').split(':');
   const txt=el.innerText.replace(/\u00a0/g,' ').trim();
   const lines=()=>Array.from(el.children).map(n=>n.innerText.replace(/\u00a0/g,' ').trim()).filter(Boolean);
+  const P=x=>state.phases.find(p=>p.id===x), L=x=>state.lanes.find(l=>l.id===x);
   if(key==='brand.badge')state.brand.badge=txt;
   else if(key==='brand.title')state.brand.title=txt;
   else if(key==='brand.subtitle')state.brand.subtitle=txt;
   else if(key==='brand.footer')state.brand.footer=txt;
-  else if(key==='priorities')state.priorities=lines().length?lines():el.innerText.split('\n').filter(Boolean);
-  else if(key==='phase.label'){const p=state.phases.find(x=>x.id===id);if(p)p.label=txt;}
-  else if(key==='phase.sub'){const p=state.phases.find(x=>x.id===id);if(p)p.sub=txt;}
-  else if(key==='phase.milestone'){const p=state.phases.find(x=>x.id===id);if(p)p.milestone=(txt==='hito…'?'':txt);}
-  else if(key==='lane.name'){const l=state.lanes.find(x=>x.id===id);if(l)l.name=txt;}
-  else if(key==='lane.sub'){const l=state.lanes.find(x=>x.id===id);if(l)l.sub=txt;}
-  else if(key==='card.title'){const c=findCard(id);if(c)c.title=txt;}
-  else if(key==='card.items'){
-    const c=findCard(id);
-    if(c){
-      let arr=Array.from(el.children).map(n=>n.innerText.replace(/\u00a0/g,' ').trim()).filter(Boolean);
-      if(!arr.length) arr=el.innerText.split('\n').map(s=>s.trim()).filter(Boolean);
-      c.items=arr;
-    }
-  }
-  save();
+  else if(key==='priorities'){const a=lines();state.priorities=a.length?a:el.innerText.split('\n').filter(Boolean)}
+  else if(key==='phase.label'){const p=P(id);if(p)p.label=txt}
+  else if(key==='phase.sub'){const p=P(id);if(p)p.sub=txt}
+  else if(key==='phase.milestone'){const p=P(id);if(p)p.milestone=(txt==='hito…'?'':txt)}
+  else if(key==='lane.name'){const l=L(id);if(l)l.name=txt}
+  else if(key==='lane.sub'){const l=L(id);if(l)l.sub=txt}
+  else if(key==='card.title'){const c=findCard(id);if(c)c.title=txt}
+  else if(key==='card.items'){const c=findCard(id);if(c){let a=lines();if(!a.length)a=el.innerText.split('\n').map(s=>s.trim()).filter(Boolean);c.items=a}}
+  markDirty();
 });
-/* limpiar placeholder de hito al enfocar */
 document.addEventListener('focusin',e=>{
-  const el=e.target.closest('[data-bind^="phase.milestone"]');
-  if(el && el.innerText.trim()==='hito…'){el.innerText='';el.classList.remove('empty');}
+  const el=e.target.closest&&e.target.closest('[data-bind^="phase.milestone"]');
+  if(el&&el.innerText.trim()==='hito…'){el.innerText='';el.classList.remove('empty')}
 });
 document.addEventListener('focusout',e=>{
-  const el=e.target.closest('[data-bind^="phase.milestone"]');
-  if(el && !el.innerText.trim()){render();}
+  const el=e.target.closest&&e.target.closest('[data-bind^="phase.milestone"]');
+  if(el&&!el.innerText.trim())render();
 });
-/* pegar como texto plano */
 document.addEventListener('paste',e=>{
-  if(!e.target.closest || !e.target.closest('[contenteditable]')) return;
+  if(!e.target.closest||!e.target.closest('[contenteditable="true"]'))return;
   e.preventDefault();
   const t=(e.clipboardData||window.clipboardData).getData('text/plain');
   document.execCommand('insertText',false,t);
 });
+function findCard(id){for(const l of state.lanes){const c=l.cards.find(x=>x.id===id);if(c)return c}return null}
+function findCardLane(id){for(const l of state.lanes){if(l.cards.some(x=>x.id===id))return l}return null}
 
-function findCard(id){
-  for(const l of state.lanes){const c=l.cards.find(x=>x.id===id);if(c)return c;}
-  return null;
-}
-function findCardLane(id){
-  for(const l of state.lanes){if(l.cards.some(x=>x.id===id))return l;}
-  return null;
-}
-
-/* ---------------- Clicks ---------------- */
+/* ---------------- Clicks en el board ---------------- */
 document.getElementById('board').addEventListener('click',e=>{
-  const btn=e.target.closest('[data-act]');
-  if(!btn) return;
+  const btn=e.target.closest('[data-act]');if(!btn)return;
   const act=btn.getAttribute('data-act');
-  const cardEl=btn.closest('[data-card]');
-  const laneEl=btn.closest('[data-lane]');
-  const cellEl=btn.closest('.cell');
-  const phaseEl=btn.closest('[data-phase]');
-  const slotEl=btn.closest('[data-imgpath]');
+  const cardEl=btn.closest('[data-card]'), laneEl=btn.closest('[data-lane]'),
+        cellEl=btn.closest('.cell'), phaseEl=btn.closest('[data-phase]'), slotEl=btn.closest('[data-imgpath]');
+
+  if(act==='card-cmt'){openCmt(cardEl.dataset.card);return}
+  if(!canEdit) return;
 
   if(act==='add-card'){
-    const l=state.lanes.find(x=>x.id===cellEl.dataset.lane);
-    l.cards.push({id:uid(),phaseId:cellEl.dataset.phase,title:'Nueva iniciativa',items:['Detalle'],tags:[],image:null});
-    save();render();
-  }
-  else if(act==='card-del'){
+    state.lanes.find(x=>x.id===cellEl.dataset.lane).cards.push({id:uid(),phaseId:cellEl.dataset.phase,title:'Nueva iniciativa',items:['Detalle'],tags:[],image:null});
+    markDirty();render();
+  } else if(act==='card-del'){
     const l=findCardLane(cardEl.dataset.card);
-    l.cards=l.cards.filter(c=>c.id!==cardEl.dataset.card);
-    save();render();
-  }
-  else if(act==='card-img'){
+    l.cards=l.cards.filter(c=>c.id!==cardEl.dataset.card);markDirty();render();
+  } else if(act==='card-img'){
     const c=findCard(cardEl.dataset.card);
-    c.image=c.image?null:{key:slugify(c.title)+'.png',url:''};
-    save();render();
-  }
-  else if(act==='del-phase'){
-    if(state.phases.length<=1) return;
+    c.image=c.image?null:{key:slugify(c.title)+'.png',url:''};markDirty();render();
+  } else if(act==='del-phase'){
+    if(state.phases.length<=1)return;
+    if(!confirm('¿Eliminar esta fase y sus tarjetas?'))return;
     const id=phaseEl.dataset.phase;
-    if(!confirm('¿Eliminar esta fase y sus tarjetas?')) return;
     state.phases=state.phases.filter(p=>p.id!==id);
     state.lanes.forEach(l=>l.cards=l.cards.filter(c=>c.phaseId!==id));
-    save();render();
-  }
-  else if(act==='tone'){
-    const p=state.phases.find(x=>x.id===phaseEl.dataset.phase);
-    p.tone=btn.dataset.tone;save();render();
-  }
-  else if(act==='lane-tone'){
+    markDirty();render();
+  } else if(act==='tone'){
+    state.phases.find(x=>x.id===phaseEl.dataset.phase).tone=btn.dataset.tone;markDirty();render();
+  } else if(act==='lane-tone'){
     const l=state.lanes.find(x=>x.id===laneEl.dataset.lane);
-    const order=['amber','blue','navy','sky'];
-    l.tone=order[(order.indexOf(l.tone)+1)%order.length];save();render();
-  }
-  else if(act==='lane-up'||act==='lane-down'){
-    const i=state.lanes.findIndex(x=>x.id===laneEl.dataset.lane);
-    const j=act==='lane-up'?i-1:i+1;
-    if(j<0||j>=state.lanes.length) return;
-    const t=state.lanes[i];state.lanes[i]=state.lanes[j];state.lanes[j]=t;save();render();
-  }
-  else if(act==='lane-del'){
-    if(!confirm('¿Eliminar este carril completo?')) return;
-    state.lanes=state.lanes.filter(x=>x.id!==laneEl.dataset.lane);save();render();
-  }
-  else if(act && act.startsWith('img-')){
+    const o=['amber','blue','navy','sky'];l.tone=o[(o.indexOf(l.tone)+1)%o.length];markDirty();render();
+  } else if(act==='lane-up'||act==='lane-down'){
+    const i=state.lanes.findIndex(x=>x.id===laneEl.dataset.lane), j=act==='lane-up'?i-1:i+1;
+    if(j<0||j>=state.lanes.length)return;
+    const t=state.lanes[i];state.lanes[i]=state.lanes[j];state.lanes[j]=t;markDirty();render();
+  } else if(act==='lane-del'){
+    if(!confirm('¿Eliminar este carril completo?'))return;
+    state.lanes=state.lanes.filter(x=>x.id!==laneEl.dataset.lane);markDirty();render();
+  } else if(act.indexOf('img-')===0){
     handleImgAction(act,slotEl.dataset.imgpath);
   }
 });
-
-function slugify(s){
-  return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-    .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40)||'imagen';
-}
+function slugify(s){return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40)||'imagen'}
 
 let pendingImgPath=null;
 function handleImgAction(act,path){
-  const ref=getImgRef(path);
-  if(!ref) return;
+  const ref=getImgRef(path);if(!ref)return;
   const cur=ref.get()||{key:'',url:''};
-  if(act==='img-key'){
-    const k=prompt('Clave del archivo en el repositorio (ej. logo-guaca.png):',cur.key||'');
-    if(k===null) return;
-    ref.set(Object.assign({},cur,{key:k.trim()}));save();render();
-  }
-  else if(act==='img-url'){
-    const u=prompt('URL directa de la imagen (dejar vacío para usar el repositorio):',cur.url||'');
-    if(u===null) return;
-    ref.set(Object.assign({},cur,{url:u.trim()}));save();render();
-  }
-  else if(act==='img-file'){
-    pendingImgPath=path;
-    document.getElementById('filePick').click();
-  }
-  else if(act==='img-clear'){
-    ref.set(Object.assign({},cur,{url:''}));save();render();
-  }
+  if(act==='img-key'){const k=prompt('Clave del archivo (ej. logo-guaca.png):',cur.key||'');if(k===null)return;ref.set(Object.assign({},cur,{key:k.trim()}));markDirty();render()}
+  else if(act==='img-url'){const u=prompt('URL directa (vacío = usar repositorio):',cur.url||'');if(u===null)return;ref.set(Object.assign({},cur,{url:u.trim()}));markDirty();render()}
+  else if(act==='img-file'){pendingImgPath=path;document.getElementById('filePick').click()}
+  else if(act==='img-clear'){ref.set(Object.assign({},cur,{url:''}));markDirty();render()}
 }
 document.getElementById('filePick').addEventListener('change',e=>{
   const f=e.target.files[0];if(!f||!pendingImgPath)return;
+  if(f.size>400000&&!confirm('La imagen pesa '+Math.round(f.size/1024)+' KB y quedará embebida en el JSON. Para archivos grandes conviene subirla al repo y usar la clave. ¿Continuar?')){e.target.value='';return}
   const r=new FileReader();
-  r.onload=()=>{
-    const ref=getImgRef(pendingImgPath);
-    if(ref){const cur=ref.get()||{key:'',url:''};ref.set(Object.assign({},cur,{url:r.result}));save();render();}
-    pendingImgPath=null;e.target.value='';
-  };
+  r.onload=()=>{const ref=getImgRef(pendingImgPath);if(ref){const cur=ref.get()||{key:'',url:''};ref.set(Object.assign({},cur,{url:r.result}));markDirty();render()}pendingImgPath=null;e.target.value=''};
   r.readAsDataURL(f);
 });
 
 /* ---------------- Drag & drop ---------------- */
 let dragId=null;
 document.addEventListener('mousedown',e=>{
-  const h=e.target.closest('.handle');
-  if(h){const c=h.closest('.card');if(c)c.setAttribute('draggable','true');}
+  if(!canEdit)return;
+  const h=e.target.closest&&e.target.closest('.handle');
+  if(h){const c=h.closest('.card');if(c)c.setAttribute('draggable','true')}
 });
-document.addEventListener('mouseup',()=>{
-  document.querySelectorAll('.card[draggable="true"]').forEach(c=>c.removeAttribute('draggable'));
-});
+document.addEventListener('mouseup',()=>{document.querySelectorAll('.card[draggable="true"]').forEach(c=>c.removeAttribute('draggable'))});
 document.addEventListener('dragstart',e=>{
-  const c=e.target.closest('.card');
-  if(!c){e.preventDefault();return;}
-  dragId=c.dataset.card;
-  c.classList.add('dragging');
-  try{e.dataTransfer.setData('text/plain',dragId);}catch(err){}
+  const c=e.target.closest&&e.target.closest('.card');
+  if(!c||!canEdit){e.preventDefault();return}
+  dragId=c.dataset.card;c.classList.add('dragging');
+  try{e.dataTransfer.setData('text/plain',dragId)}catch(err){}
   e.dataTransfer.effectAllowed='move';
 });
 document.addEventListener('dragend',()=>{
@@ -1292,121 +1151,233 @@ document.addEventListener('dragend',()=>{
   document.querySelectorAll('.drop-ind').forEach(x=>x.remove());
 });
 document.addEventListener('dragover',e=>{
-  const cell=e.target.closest('.cell');
-  if(!cell||!dragId) return;
-  e.preventDefault();
-  e.dataTransfer.dropEffect='move';
+  const cell=e.target.closest&&e.target.closest('.cell');
+  if(!cell||!dragId)return;
+  e.preventDefault();e.dataTransfer.dropEffect='move';
   document.querySelectorAll('.cell.over').forEach(x=>{if(x!==cell)x.classList.remove('over')});
   cell.classList.add('over');
   document.querySelectorAll('.drop-ind').forEach(x=>x.remove());
   const target=cardTargetAt(cell,e.clientY);
   const ind=document.createElement('div');ind.className='drop-ind';
-  if(target) cell.insertBefore(ind,target);
-  else cell.insertBefore(ind,cell.querySelector('.addcard'));
+  target?cell.insertBefore(ind,target):cell.insertBefore(ind,cell.querySelector('.addcard'));
 });
 document.addEventListener('dragleave',e=>{
-  const cell=e.target.closest('.cell');
-  if(cell && !cell.contains(e.relatedTarget)) cell.classList.remove('over');
+  const cell=e.target.closest&&e.target.closest('.cell');
+  if(cell&&!cell.contains(e.relatedTarget))cell.classList.remove('over');
 });
 document.addEventListener('drop',e=>{
-  const cell=e.target.closest('.cell');
-  if(!cell||!dragId) return;
+  const cell=e.target.closest&&e.target.closest('.cell');
+  if(!cell||!dragId)return;
   e.preventDefault();
   const target=cardTargetAt(cell,e.clientY);
   moveCard(dragId,cell.dataset.lane,cell.dataset.phase,target?target.dataset.card:null);
-  dragId=null;save();render();
+  dragId=null;markDirty();render();
 });
 function cardTargetAt(cell,y){
-  const cards=Array.from(cell.querySelectorAll('.card:not(.dragging)'));
-  for(const c of cards){
+  for(const c of Array.from(cell.querySelectorAll('.card:not(.dragging)'))){
     const r=c.getBoundingClientRect();
-    if(y < r.top + r.height/2) return c;
+    if(y<r.top+r.height/2)return c;
   }
   return null;
 }
-function moveCard(cardId,laneId,phaseId,beforeCardId){
+function moveCard(cardId,laneId,phaseId,beforeId){
   let card=null;
-  state.lanes.forEach(l=>{
-    const i=l.cards.findIndex(c=>c.id===cardId);
-    if(i>-1){card=l.cards.splice(i,1)[0];}
-  });
-  if(!card) return;
+  state.lanes.forEach(l=>{const i=l.cards.findIndex(c=>c.id===cardId);if(i>-1)card=l.cards.splice(i,1)[0]});
+  if(!card)return;
   card.phaseId=phaseId;
   const lane=state.lanes.find(l=>l.id===laneId);
-  if(beforeCardId){
-    const i=lane.cards.findIndex(c=>c.id===beforeCardId);
-    lane.cards.splice(i<0?lane.cards.length:i,0,card);
-  } else lane.cards.push(card);
+  if(beforeId){const i=lane.cards.findIndex(c=>c.id===beforeId);lane.cards.splice(i<0?lane.cards.length:i,0,card)}
+  else lane.cards.push(card);
 }
 
-/* ---------------- Toolbar ---------------- */
-document.getElementById('btnPhase').onclick=()=>{
-  const last=state.phases[state.phases.length-1];
-  state.phases.push({id:uid(),label:'Nueva fase',sub:'Definir',tone:'navy',height:(last?(last.height||20)+30:20)});
-  save();render();
+/* ---------------- Modales: comentarios ---------------- */
+const mCmt=document.getElementById('modalCmt');
+let cmtCard=null;
+function openCmt(cardId){
+  cmtCard=cardId;
+  const c=findCard(cardId);
+  document.getElementById('cmtTitle').textContent=c?c.title:'Comentarios';
+  document.getElementById('cmtLead').textContent=canEdit
+    ?'Los comentarios se guardan junto al roadmap al publicar en GitHub.'
+    :'Tus comentarios se guardan en este navegador. Al terminar, expórtalos y envíalos al equipo del proyecto.';
+  document.getElementById('cmtAuthor').value=me||'';
+  document.getElementById('cmtText').value='';
+  renderCmtList();
+  mCmt.classList.add('open');
+}
+function renderCmtList(){
+  const list=committed(cmtCard).map(x=>({...x,pend:false})).concat(pendingOf(cmtCard).map(x=>({...x,pend:true})));
+  document.getElementById('cmtList').innerHTML=list.length?list.map(x=>`
+    <li class="${x.pend?'pend':''}">
+      <div class="meta"><span>${esc(x.author||'anónimo')}${x.pend?' · sin enviar':''}</span><span>${esc(new Date(x.ts).toLocaleString('es-CR'))}</span></div>
+      <div>${esc(x.text)}</div>
+      ${canEdit&&!x.pend?`<div style="text-align:right;margin-top:5px"><button class="mini" data-del="${x.id}">borrar</button></div>`:''}
+    </li>`).join(''):'<li style="border:none;background:transparent;color:#7A869A;padding:0">Sin comentarios todavía.</li>';
+}
+document.getElementById('cmtList').addEventListener('click',e=>{
+  const b=e.target.closest('[data-del]');if(!b||!canEdit)return;
+  state.comments[cmtCard]=committed(cmtCard).filter(x=>x.id!==b.dataset.del);
+  markDirty();renderCmtList();render();
+});
+document.getElementById('cmtAdd').onclick=()=>{
+  const author=document.getElementById('cmtAuthor').value.trim();
+  const text=document.getElementById('cmtText').value.trim();
+  if(!text)return toast('Escribe un comentario');
+  me=author||me;lsSet(LS_ME,me);
+  const item={id:uid(),author:me||'anónimo',text,ts:Date.now()};
+  if(canEdit){state.comments=state.comments||{};(state.comments[cmtCard]=state.comments[cmtCard]||[]).push(item);markDirty()}
+  else{(pending[cmtCard]=pending[cmtCard]||[]).push(item);savePending()}
+  document.getElementById('cmtText').value='';
+  renderCmtList();render();toast(canEdit?'Comentario agregado':'Comentario guardado en tu navegador');
 };
-document.getElementById('btnLane').onclick=()=>{
-  state.lanes.push({id:uid(),name:'Nuevo carril',sub:'Producto Salesforce',tone:'blue',icon:{key:'icono-nuevo.png',url:''},cards:[]});
-  save();render();
-};
-document.getElementById('btnPdf').onclick=()=>{window.print();};
-document.getElementById('btnReset').onclick=()=>{
-  if(!confirm('¿Reiniciar el roadmap al contenido propuesto? Se pierden los cambios.')) return;
-  state=defaultState();save();render();toast('Roadmap reiniciado');
-};
-document.getElementById('btnSave').onclick=()=>{
-  const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download='roadmap-guaca-salesforce.json';a.click();
+document.getElementById('cmtClose').onclick=()=>mCmt.classList.remove('open');
+mCmt.addEventListener('click',e=>{if(e.target===mCmt)mCmt.classList.remove('open')});
+
+/* bandeja de comentarios */
+const mInbox=document.getElementById('modalInbox');
+function openInbox(){
+  const rows=[];
+  state.lanes.forEach(l=>l.cards.forEach(c=>{
+    const items=committed(c.id).map(x=>({...x,pend:false})).concat(pendingOf(c.id).map(x=>({...x,pend:true})));
+    if(items.length)rows.push({lane:l.name,card:c.title,items});
+  }));
+  document.getElementById('inboxLead').textContent=canEdit
+    ?'Comentarios publicados y pendientes de importar.'
+    :'Estos comentarios están guardados solo en tu navegador. Exporta el archivo y envíalo al equipo del proyecto para que los incorpore.';
+  document.getElementById('inboxBody').innerHTML=rows.length?rows.map(r=>`
+    <div style="margin-bottom:14px">
+      <div style="font-size:12px;color:var(--navy);font-weight:700">${esc(r.card)} <span style="color:#7A869A;font-weight:400">· ${esc(r.lane)}</span></div>
+      <ul class="cmtlist">${r.items.map(x=>`<li class="${x.pend?'pend':''}"><div class="meta"><span>${esc(x.author||'anónimo')}${x.pend?' · sin enviar':''}</span><span>${esc(new Date(x.ts).toLocaleString('es-CR'))}</span></div><div>${esc(x.text)}</div></li>`).join('')}</ul>
+    </div>`).join(''):'<p style="color:#7A869A">Todavía no hay comentarios.</p>';
+  document.getElementById('inboxImport').style.display=canEdit?'':'none';
+  mInbox.classList.add('open');
+}
+document.getElementById('inboxClose').onclick=()=>mInbox.classList.remove('open');
+mInbox.addEventListener('click',e=>{if(e.target===mInbox)mInbox.classList.remove('open')});
+document.getElementById('inboxExport').onclick=()=>{
+  const payload={kind:'roadmap-comments',author:me||'anónimo',exportedAt:new Date().toISOString(),comments:pending};
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='comentarios-roadmap-'+slugify(me||'visitante')+'.json';a.click();
   setTimeout(()=>URL.revokeObjectURL(a.href),1000);
-  toast('JSON descargado');
+  toast('Archivo de comentarios descargado');
 };
-document.getElementById('btnLoad').onclick=()=>document.getElementById('jsonPick').click();
-document.getElementById('jsonPick').addEventListener('change',e=>{
+document.getElementById('inboxImport').onclick=()=>document.getElementById('cmtPick').click();
+document.getElementById('cmtPick').addEventListener('change',e=>{
   const f=e.target.files[0];if(!f)return;
   const r=new FileReader();
   r.onload=()=>{
     try{
-      const s=JSON.parse(r.result);
-      if(!s.phases||!s.lanes) throw new Error('formato');
-      state=s;save();render();toast('Roadmap cargado');
-    }catch(err){alert('El archivo no tiene el formato esperado.');}
+      const p=JSON.parse(r.result);
+      if(!p.comments)throw new Error('formato');
+      state.comments=state.comments||{};
+      let n=0;
+      Object.keys(p.comments).forEach(cid=>{
+        const dest=state.comments[cid]=state.comments[cid]||[];
+        p.comments[cid].forEach(it=>{if(!dest.some(x=>x.id===it.id)){dest.push(it);n++}});
+      });
+      markDirty();render();openInbox();
+      toast(n+' comentario(s) importados — publica para compartirlos');
+    }catch(err){alert('El archivo no tiene el formato esperado.')}
     e.target.value='';
   };
   r.readAsText(f);
 });
 
-/* modal imágenes */
-const modal=document.getElementById('modalImg');
-document.getElementById('btnImages').onclick=()=>{openImgModal()};
-document.getElementById('closeImg').onclick=()=>{modal.classList.remove('open')};
-modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open')});
-document.getElementById('repoBase').addEventListener('input',e=>{
-  state.repoBase=e.target.value.trim();save();render();openImgModal(true);
-});
-document.getElementById('copyManifest').onclick=()=>{
-  const txt=document.getElementById('manifest').textContent;
-  navigator.clipboard?navigator.clipboard.writeText(txt).then(()=>toast('Manifiesto copiado')):toast('Copia manual');
-};
-function openImgModal(keepOpen){
+/* ---------------- Modal imágenes ---------------- */
+const mImg=document.getElementById('modalImg');
+function openImgModal(keep){
   const slots=collectSlots();
   document.getElementById('repoBase').value=state.repoBase||'';
   document.getElementById('slotBody').innerHTML=slots.map(s=>{
     const src=resolveSrc(s.img);
-    const st=src?(s.img.url?(String(s.img.url).startsWith('data:')?'archivo subido':'URL directa'):'desde repositorio'):'pendiente';
-    return `<tr><td>${esc(s.where)}</td><td><code>${esc(s.img&&s.img.key||'—')}</code></td><td style="max-width:220px;word-break:break-all">${esc(s.img&&s.img.url?String(s.img.url).slice(0,60):'—')}</td><td>${esc(st)}</td></tr>`;
+    const st=src?(s.img.url?(String(s.img.url).indexOf('data:')===0?'archivo embebido':'URL directa'):'desde repositorio'):'pendiente';
+    return `<tr><td>${esc(s.where)}</td><td><code>${esc((s.img&&s.img.key)||'—')}</code></td><td style="max-width:200px;word-break:break-all">${esc(s.img&&s.img.url?String(s.img.url).slice(0,60):'—')}</td><td>${esc(st)}</td></tr>`;
   }).join('');
   document.getElementById('manifest').textContent=JSON.stringify({
     repoBase:state.repoBase||'',
-    slots:slots.map(s=>({path:s.path,where:s.where,key:s.img&&s.img.key||'',url:s.img&&s.img.url&&!String(s.img.url).startsWith('data:')?s.img.url:''}))
+    slots:slots.map(s=>({path:s.path,where:s.where,key:(s.img&&s.img.key)||'',url:(s.img&&s.img.url&&String(s.img.url).indexOf('data:')!==0)?s.img.url:''}))
   },null,2);
-  if(!keepOpen) modal.classList.add('open');
+  if(!keep)mImg.classList.add('open');
+}
+document.getElementById('closeImg').onclick=()=>mImg.classList.remove('open');
+mImg.addEventListener('click',e=>{if(e.target===mImg)mImg.classList.remove('open')});
+document.getElementById('repoBase').addEventListener('input',e=>{state.repoBase=e.target.value.trim();markDirty();render();openImgModal(true)});
+document.getElementById('copyManifest').onclick=()=>{
+  const txt=document.getElementById('manifest').textContent;
+  navigator.clipboard?navigator.clipboard.writeText(txt).then(()=>toast('Manifiesto copiado')):toast('Copia manual');
+};
+
+/* ---------------- Modal GitHub ---------------- */
+const mGit=document.getElementById('modalGit');
+function openGit(){
+  document.getElementById('gOwner').value=cfg.owner||'';
+  document.getElementById('gRepo').value=cfg.repo||'';
+  document.getElementById('gBranch').value=cfg.branch||'main';
+  document.getElementById('gPath').value=cfg.path||'data/roadmap.json';
+  document.getElementById('gToken').value=token||'';
+  document.getElementById('gAuthor').value=me||'';
+  document.getElementById('gAuto').checked=!!cfg.auto;
+  mGit.classList.add('open');
+}
+mGit.addEventListener('click',e=>{if(e.target===mGit)mGit.classList.remove('open')});
+document.getElementById('gSave').onclick=()=>{
+  cfg.owner=document.getElementById('gOwner').value.trim();
+  cfg.repo=document.getElementById('gRepo').value.trim();
+  cfg.branch=document.getElementById('gBranch').value.trim()||'main';
+  cfg.path=document.getElementById('gPath').value.trim()||'data/roadmap.json';
+  cfg.auto=document.getElementById('gAuto').checked;
+  me=document.getElementById('gAuthor').value.trim()||me;cfg.author=me;
+  token=document.getElementById('gToken').value.trim();
+  lsSet(LS_CFG,JSON.stringify({owner:cfg.owner,repo:cfg.repo,branch:cfg.branch,path:cfg.path,auto:cfg.auto,author:cfg.author}));
+  lsSet(LS_ME,me);
+  token?lsSet(LS_TOKEN,token):lsDel(LS_TOKEN);
+  mGit.classList.remove('open');
+  toast('Ajustes guardados en este navegador');
+  setStatus(cfgReady()?'':'','Configurado · sin publicar');
+};
+document.getElementById('gForget').onclick=()=>{token='';lsDel(LS_TOKEN);document.getElementById('gToken').value='';toast('Token eliminado de este navegador')};
+document.getElementById('gTest').onclick=async()=>{
+  cfg.owner=document.getElementById('gOwner').value.trim();
+  cfg.repo=document.getElementById('gRepo').value.trim();
+  cfg.branch=document.getElementById('gBranch').value.trim()||'main';
+  cfg.path=document.getElementById('gPath').value.trim()||'data/roadmap.json';
+  token=document.getElementById('gToken').value.trim();
+  try{
+    const r=await ghGet();
+    toast(r.missing?'Conexión OK · el archivo aún no existe, se creará al guardar':'Conexión OK · archivo encontrado');
+  }catch(e){toast(String(e.message||e))}
+};
+
+/* ---------------- Toolbar ---------------- */
+if(canEdit){
+  document.getElementById('btnPhase').onclick=()=>{
+    const last=state.phases[state.phases.length-1];
+    state.phases.push({id:uid(),label:'Nueva fase',sub:'Definir',tone:'navy',height:(last?(last.height||20)+30:20)});
+    markDirty();render();
+  };
+  document.getElementById('btnLane').onclick=()=>{
+    state.lanes.push({id:uid(),name:'Nuevo carril',sub:'Producto Salesforce',tone:'blue',icon:{key:'icono-nuevo.png',url:''},cards:[]});
+    markDirty();render();
+  };
+  document.getElementById('btnImages').onclick=()=>openImgModal();
+  document.getElementById('btnComments').onclick=openInbox;
+  document.getElementById('btnGit').onclick=openGit;
+  document.getElementById('btnPush').onclick=()=>push(false);
+  document.getElementById('btnPull').onclick=pull;
+  document.getElementById('btnPdf').onclick=()=>window.print();
+  document.getElementById('btnReset').onclick=()=>{
+    if(!confirm('¿Reiniciar al contenido propuesto? Se pierden los cambios locales no publicados.'))return;
+    state=defaultState();markDirty();render();toast('Roadmap reiniciado');
+  };
+  window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue=''}});
+}else{
+  document.getElementById('roComments').onclick=openInbox;
+  document.getElementById('roPdf').onclick=()=>window.print();
 }
 
-render();
+boot();
 })();
 </script>
-
-
-</body></html>
+</body>
+</html>
