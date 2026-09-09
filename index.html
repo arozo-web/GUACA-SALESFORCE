@@ -48,19 +48,20 @@ button{font-family:inherit}
 .robar .rbtn:hover{background:var(--blue);color:#fff}
 
 /* ---------- Canvas ---------- */
-.wrap{padding:20px 16px 60px;overflow-x:auto}
-.board{background:var(--white);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);min-width:1180px;padding:22px 24px 26px}
+.wrap{padding:20px 16px 60px}
+.board{background:var(--white);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);width:100%;max-width:1600px;margin:0 auto;padding:22px 24px 26px}
 .bhead{display:flex;gap:24px;align-items:flex-start}
 .bhead .left{flex:1;min-width:0}
 .pill{display:inline-block;background:var(--amber);color:#fff;font-weight:600;padding:6px 16px;border-radius:999px;font-size:12.5px;margin-bottom:14px}
-h1.title{font-size:34px;line-height:1.1;margin:0 0 4px;color:var(--navy);font-weight:700;letter-spacing:-.01em}
+h1.title{font-size:29px;line-height:1.15;margin:0 0 5px;color:var(--navy);font-weight:700;letter-spacing:-.01em;max-width:780px}
+.title2{font-size:22px;font-weight:700;color:var(--blue);margin:12px 0 10px;letter-spacing:-.01em}
 .subtitle{font-size:14.5px;color:var(--ink-soft);margin:0 0 14px}
 .prio{background:#F1F5F9;border:1px solid var(--line);border-radius:10px;padding:12px 14px;max-width:520px}
 .prio h4{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--navy)}
 .prio ol{margin:0;padding-left:0;list-style:none;counter-reset:p}
 .prio li{counter-increment:p;position:relative;padding-left:24px;margin:5px 0;font-size:12.8px;color:var(--ink-soft)}
 .prio li::before{content:counter(p);position:absolute;left:0;top:1px;width:16px;height:16px;border-radius:50%;background:var(--blue);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
-.logoslot{width:230px;flex:0 0 230px;text-align:right}
+.logoslot{width:min(230px,30%);flex:0 0 auto;text-align:right}
 
 .imgslot{position:relative;border-radius:10px;overflow:hidden}
 .imgslot img{display:block;max-width:100%;height:auto;border-radius:8px}
@@ -158,12 +159,224 @@ pre.json{background:#0B1F3A;color:#CFE9FE;border-radius:10px;padding:12px;font-s
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:10px 18px;border-radius:999px;font-size:12.5px;opacity:0;transition:.25s;z-index:200;pointer-events:none;max-width:80vw;text-align:center}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
+
+/* ---------- Secciones narrativas ---------- */
+html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.docsec{margin-top:34px}
+.docsec.brk{margin-top:40px}
+.sec-h{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--navy);padding-bottom:8px;margin-bottom:16px}
+.sec-h h2{margin:0;font-size:23px;color:var(--navy);font-weight:700;letter-spacing:-.01em}
+.sec-h .kicker{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--amber);font-weight:700}
+.sec-intro{font-size:13.5px;color:var(--ink-soft);margin:0 0 16px;max-width:900px;line-height:1.5}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panel{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:#fff}
+.panel.tint{background:#F7FAFD}
+.panel h3{margin:0 0 3px;font-size:15.5px;color:var(--navy)}
+.panel .psub{font-size:11.5px;color:var(--amber);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:9px}
+.panel p{font-size:12.8px;color:var(--ink-soft);line-height:1.55;margin:0 0 10px}
+.blist>div{position:relative;padding-left:14px;font-size:12.5px;color:var(--ink-soft);line-height:1.5;margin:4px 0}
+.blist>div::before{content:'';position:absolute;left:2px;top:7px;width:5px;height:5px;border-radius:50%;background:var(--blue)}
+.safarirow{display:grid;grid-template-columns:1.25fr 1fr;gap:20px;align-items:start}
+.safarirow p{margin:0}
+.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.photocell{display:flex;flex-direction:column;gap:5px}
+.vlink{font-size:11px;color:var(--blue);text-decoration:none;font-weight:600}
+.vlink:hover{text-decoration:underline}
+.vbtn{display:inline-flex;align-items:center;gap:6px;margin-top:9px;background:var(--blue);color:#fff;
+  border-radius:999px;padding:5px 12px;font-size:11px;align-self:flex-start}
+.vbtn:hover{background:var(--blue-600);text-decoration:none}
+.photos .imgslot .ph{min-height:120px}
+.photos .imgslot img{width:100%;object-fit:cover;max-height:210px}
+
+.demogrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.demo{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:12px 13px;background:#EEF6FE}
+.demo .dn{width:20px;height:20px;border-radius:50%;background:var(--blue);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:7px}
+.demo h4{margin:0 0 2px;font-size:13.2px;color:var(--navy)}
+.demo .dsub{font-size:11px;color:var(--blue-600);font-weight:600;margin-bottom:7px}
+
+/* ¿Qué escuchamos? */
+.heard{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.hcard{border:1px solid var(--line);border-radius:12px;padding:13px 14px;background:#fff;position:relative}
+.hcard .who{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--amber);font-weight:700;margin-bottom:6px}
+.hcard .quote{font-size:13px;color:var(--navy);font-weight:600;line-height:1.4}
+.hcard .ins{font-size:11.8px;color:var(--ink-soft);line-height:1.5;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+
+/* 6 dominios */
+.doms{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.dom{border:1px solid var(--line);border-left:6px solid var(--blue);border-radius:12px;padding:14px 18px;background:#fff;box-shadow:0 1px 3px rgba(3,45,96,.07);position:relative}
+.dom.d-red{border-left-color:#E4002B}.dom.d-amber{border-left-color:#F2A100}.dom.d-navy{border-left-color:#123B6D}
+.dom.d-purple{border-left-color:#7B1FA2}.dom.d-green{border-left-color:#00A651}.dom.d-blue{border-left-color:#0176D3}
+.dom .dhead{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.dom .num{width:26px;height:26px;border-radius:50%;color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto;background:var(--blue)}
+.dom.d-red .num{background:#E4002B}.dom.d-amber .num{background:#F2A100}.dom.d-navy .num{background:#123B6D}
+.dom.d-purple .num{background:#7B1FA2}.dom.d-green .num{background:#00A651}.dom.d-blue .num{background:#0176D3}
+.dom .dtitle{font-size:16px;font-weight:700;color:var(--navy);flex:1;min-width:0}
+.dom .flag{font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;color:#E4002B;font-weight:700;white-space:nowrap}
+.dom .now{font-size:13px;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:6px}
+.dom .detail{font-size:12.4px;color:var(--ink-soft);line-height:1.55;margin-bottom:9px}
+.dom .need{font-size:12.6px;color:var(--ink-soft);line-height:1.55}
+.dom .need b{color:var(--blue);display:inline}
+
+/* curva */
+.curvewrap{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:start}
+.curvebox{border:1px solid var(--line);border-radius:12px;background:#fff;padding:8px}
+.curvebox svg{width:100%;height:auto;display:block}
+.bub{cursor:grab}
+.bub:active{cursor:grabbing}
+.bublist{margin:0;padding:0;list-style:none;columns:1}
+.bublist li{display:flex;gap:9px;align-items:flex-start;font-size:12.2px;color:var(--ink-soft);margin-bottom:7px;line-height:1.4}
+.bublist [data-doc]:empty::before{content:'Por definir con el cliente…';color:#B9C2CF;font-style:italic}
+.ola:empty::before{content:'Ola por definir';color:#8A94A6;font-style:italic}
+.ola:empty{background:#EEF1F6}
+.bublist .bn{width:19px;height:19px;border-radius:50%;background:#7FAE3C;color:#fff;font-size:10.5px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:1px}
+.olas{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 4px}
+.ola{font-size:10.5px;font-weight:700;border-radius:999px;padding:3px 10px}
+.ola.o1{background:#F3D6E1;color:#8A2B4E}.ola.o2{background:#CFE5DD;color:#1F6B57}.ola.o3{background:#CFE0F5;color:#1B4E8A}
+
+/* siguientes pasos */
+.nextgrid{display:grid;grid-template-columns:minmax(240px,22rem) 1fr;gap:18px;align-items:start}
+.mstone{background:var(--navy);color:#fff;border-radius:12px;padding:18px}
+.mstone .mdate{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--yellow);font-weight:700;margin-bottom:6px}
+.mstone .mlabel{font-size:17px;font-weight:700;line-height:1.3}
+.mstone .mnote{font-size:12px;opacity:.9;margin-top:8px;line-height:1.5}
+.steps{counter-reset:st;margin:0;padding:0;list-style:none}
+.steps>div{counter-increment:st;position:relative;padding-left:30px;font-size:13px;color:var(--ink-soft);line-height:1.5;margin:0 0 10px}
+.steps>div::before{content:counter(st);position:absolute;left:0;top:0;width:20px;height:20px;border-radius:50%;background:var(--sky-200);color:var(--navy);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+
+/* ---------- Scroll del roadmap ---------- */
+.rmwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.rmscroll{min-width:1120px}
+
+/* ---------- Hamburguesa ---------- */
+.hamb{display:none;width:44px;height:44px;border-radius:12px;flex:0 0 auto;
+  border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);
+  flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer}
+.hamb span{display:block;width:20px;height:2px;background:#fff;border-radius:2px;transition:.2s}
+.hamb.on span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.hamb.on span:nth-child(2){opacity:0}
+.hamb.on span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.tbmenu{display:flex;flex-wrap:wrap;gap:8px;align-items:center;order:-1}
+.toolbar .brandmark{order:-2}
+.bub{touch-action:none}
+
+/* ================= TABLET ================= */
+@media (max-width:1100px){
+  .heard{grid-template-columns:repeat(2,1fr)}
+  .curvewrap{grid-template-columns:1fr}
+  .doms{grid-template-columns:1fr}
+  .two{grid-template-columns:1fr}
+  .safarirow{grid-template-columns:1fr;gap:10px}
+  .board{padding:18px}
+}
+
+/* ================= MÓVIL ================= */
+@media (max-width:760px){
+  body{font-size:15px}
+  .wrap{padding:12px 10px 48px}
+  .board{border-radius:14px;padding:14px 12px 20px}
+
+  .toolbar{padding:8px 12px;gap:8px}
+  .toolbar .brandmark{font-size:12.5px;margin-right:0}
+  .hamb{display:flex}
+  .status,.hint{display:none}
+  .tbmenu{display:none;order:5;width:100%;flex-direction:column;gap:8px;padding:8px 0 4px;border-top:1px solid rgba(255,255,255,.18);margin-top:4px}
+  .tbmenu.open{display:flex}
+  .tbmenu .tbtn{width:100%;justify-content:center}
+  .tbtn,.btn,.rbtn,.vbtn{min-height:44px;font-size:14px;padding:10px 16px}
+  .vbtn{width:100%;justify-content:center}
+  .vlink{min-height:44px;display:inline-flex;align-items:center}
+
+  .robar{padding:10px 12px;gap:8px}
+  .robar .rbtn{flex:1 1 auto;min-height:44px}
+
+  .bhead{flex-direction:column;gap:12px}
+  .logoslot{width:100%;flex:none;text-align:left;order:-1}
+  .logoslot .imgslot img{max-height:46px !important;margin-left:0 !important}
+  h1.title{font-size:clamp(21px,6.2vw,28px);max-width:none}
+  .title2{font-size:clamp(17px,5.2vw,22px);margin:10px 0 8px}
+  .subtitle{font-size:13.5px}
+  .prio{max-width:none}
+  .prio li{font-size:13.5px}
+  .sec-h{flex-direction:column;gap:2px;align-items:flex-start}
+  .sec-h h2{font-size:clamp(18px,5.4vw,23px)}
+  .sec-intro{font-size:13.5px}
+
+  .two,.safarirow,.photos,.demogrid,.heard,.doms,.curvewrap,.nextgrid{grid-template-columns:1fr}
+  .panel{padding:14px}
+  .panel p,.blist>div,.dom .detail,.dom .need,.hcard .ins{font-size:13.5px}
+  .photos .imgslot img{max-height:240px}
+  .dom{padding:13px 14px}
+  .dom .dtitle{font-size:15px}
+  .dom .flag{display:none}
+  .mstone{padding:16px}
+  .steps>div{font-size:13.5px}
+  .bublist li{font-size:13px}
+
+  /* roadmap apilado por carril */
+  .rmwrap{overflow-x:visible}
+  .rmscroll{min-width:0}
+  .grid,.tlrow{display:none}
+  .lane{display:block;margin-top:18px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .laneTitle{min-height:0;padding:12px 14px;border-radius:0}
+  .laneTitle .lt-name{font-size:16px}
+  .laneTools{display:none}
+  .cell{min-height:0;padding:12px 10px;border-radius:0;border-bottom:1px solid var(--line);background:#fff !important}
+  .cell.empty{display:none}
+  .cell::before{
+    content:attr(data-plabel) ' · ' attr(data-psub);
+    display:block;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--blue-600);background:var(--sky-100);border-radius:999px;padding:6px 12px;
+    margin:0 0 4px;align-self:flex-start;
+  }
+  .card{padding:11px 12px}
+  .c-title{font-size:14px}
+  .items{font-size:13.2px}
+
+  .ctools,.slotbar{display:flex !important}
+  .addcard{opacity:1;min-height:44px}
+  .mini{min-height:32px;min-width:32px;font-size:11.5px;padding:6px 10px}
+  .handle{font-size:18px;padding:2px 6px 0}
+
+  .legend{display:none}
+  .bfoot{flex-direction:column;align-items:flex-start;gap:6px}
+
+  .modal{padding:0;align-items:flex-end}
+  .sheet{max-width:100%;border-radius:16px 16px 0 0;max-height:92vh;padding:18px 16px 22px}
+  .field input,.field textarea{font-size:16px;min-height:44px}
+  .row2{grid-template-columns:1fr}
+  .sheet .actions{position:sticky;bottom:0;background:#fff;padding-top:10px}
+  .sheet .actions .btn{flex:1 1 auto}
+  table.slots{font-size:11.5px}
+}
+
+/* ================= MÓVIL ESTRECHO ================= */
+@media (max-width:400px){
+  .wrap{padding:10px 8px 40px}
+  .board{padding:12px 10px 18px}
+  h1.title{font-size:20px}
+  .pill{font-size:12px;padding:8px 14px}
+  .demo,.hcard{padding:12px}
+}
+
 @page{size:A3 landscape;margin:10mm}
 @media print{
   body{background:#fff}
-  .toolbar,.robar,.modal,.toast,.addcard,.ctools,.laneTools,.slotbar,.phx,.tonepick,.handle,  .wrap{padding:0;overflow:visible}
+  .toolbar,.robar,.modal,.toast,.addcard,.ctools,.laneTools,.slotbar,.phx,.tonepick,.handle,.hamb,.tbmenu{display:none !important}
+  .wrap{padding:0;overflow:visible}
+  .rmwrap{overflow:visible}
+  .rmscroll{min-width:0;width:100%}
+  .grid,.tlrow{display:grid !important}
+  .lane{display:grid !important}
+  .cell{border-bottom:none}
+  .cell::before{display:none !important}
+  .cell.empty{display:flex !important}
+  .legend{display:flex !important}
   .board{border:none;box-shadow:none;border-radius:0;min-width:0;width:100%;padding:0}
-  .lane,.card{break-inside:avoid;page-break-inside:avoid}
+  .lane,.card,.hcard,.dom,.demo,.panel,.curvewrap,.nextgrid{break-inside:avoid;page-break-inside:avoid}
+  .docsec.brk{break-before:page;page-break-before:always}
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
   [contenteditable]:focus{box-shadow:none;background:transparent}
 }
 </style>
@@ -181,18 +394,21 @@ pre.json{background:#0B1F3A;color:#CFE9FE;border-radius:10px;padding:12px;font-s
 <!-- barra de edición -->
 <div class="toolbar" id="toolbar" style="display:none">
   <div class="brandmark"><span class="dot"></span> Roadmap Builder</div>
-  <button class="tbtn" id="btnPhase">+ Fase</button>
-  <button class="tbtn" id="btnLane">+ Carril</button>
-  <button class="tbtn" id="btnImages">Imágenes</button>
-  <button class="tbtn" id="btnGit">GitHub</button>
-  <button class="tbtn" id="btnDownload">Descargar JSON</button>
-  <button class="tbtn" id="btnUpload">Cargar JSON</button>
-  <button class="tbtn ghost" id="btnReset">Reiniciar</button>
+  <div class="tbmenu" id="tbMenu">
+    <button class="tbtn" id="btnPhase">+ Fase</button>
+    <button class="tbtn" id="btnLane">+ Carril</button>
+    <button class="tbtn" id="btnImages">Imágenes</button>
+    <button class="tbtn" id="btnGit">GitHub</button>
+    <button class="tbtn" id="btnDownload">Descargar JSON</button>
+    <button class="tbtn" id="btnUpload">Cargar JSON</button>
+    <button class="tbtn" id="btnPull">Traer del repo</button>
+    <button class="tbtn" id="btnPush">Guardar en GitHub</button>
+    <button class="tbtn ghost" id="btnReset">Reiniciar</button>
+  </div>
   <div class="spacer"></div>
   <span class="status" id="status"><i></i><span id="statusTxt">Local</span></span>
-  <button class="tbtn" id="btnPull">Traer del repo</button>
-  <button class="tbtn primary" id="btnPush">Guardar en GitHub</button>
-  <button class="tbtn" id="btnPdf">PDF</button>
+  <button class="tbtn primary" id="btnPdf">PDF</button>
+  <button class="hamb" id="tbToggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
 </div>
 
 <div class="wrap"><div class="board" id="board"></div></div>
@@ -258,7 +474,7 @@ const CONFIG = {
 };
 /* ============================================================ */
 
-const LS_STATE='guaca-roadmap-sf-v4';
+const LS_STATE='guaca-roadmap-sf-v8';
 const LS_CFG='guaca-roadmap-cfg';
 const LS_TOKEN='guaca-roadmap-token';
 const LS_ME='guaca-roadmap-author';
@@ -275,17 +491,177 @@ const lsGet=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
 const lsSet=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
 const lsDel=k=>{try{localStorage.removeItem(k)}catch(e){}};
 
+
+/* ---------------- Contenido narrativo (editable) ---------------- */
+const DOC_DEFAULTS = {
+  exec:{
+    kicker:'Lo que hemos recorrido juntos',
+    title:'Resumen ejecutivo',
+    intro:'Entre el descubrimiento en campo y la propuesta de valor, se recorrió la operación de La Guaca Repuestos y Guaca Servicios de punta a punta y validamos con demostraciones en vivo cómo se vería resuelta sobre Salesforce.',
+    safari:{
+      title:'Safari de descubrimiento',
+      sub:'Visitas de campo · sede principal y talleres',
+      text:'El recorrido en sitio permitió reconstruir el flujo completo: captación digital y contact center, atención y cotización en mostrador, ejecución en la bahía del taller, y cierre con facturación y posventa. Se entrevistó a los líderes de TI, operaciones y comercial, y a las jefaturas de taller.',
+      bullets:[
+        'Sede principal: mostrador, contact center y administración',
+        'Sedes de taller: recepción de vehículos, bahías y bodega de repuestos',
+        'Entrevistas con TI, operaciones, comercial y jefaturas de taller',
+        'Reconstrucción del proceso actual y de sus puntos de fricción'
+      ],
+      photos:[{key:'safari-1.jpg',url:''},{key:'safari-2.jpg',url:''}]
+    },
+    demos:{
+      title:'Sesiones de demostración',
+      sub:'3 sesiones ejecutadas',
+      items:[
+        {n:'1',title:'Omnicanalidad',sub:'Marketing + Service + Agentforce',items:['Entrada por WhatsApp conservando el contexto del bot','Ruteo y consola unificada del agente','Agentforce calificando intención y datos del vehículo']},
+        {n:'2',title:'Recepción de carros',sub:'Service + Omnicanalidad',items:['Check-in digital del vehículo con fotos y firma','Vista 360 de cliente y vehículo por placa','Aviso y aprobación del cliente por WhatsApp']},
+        {n:'3',title:'Órdenes de trabajo en taller',sub:'Field Service',items:['Agenda con disponibilidad real de bahía y especialista','Asignación de técnicos y consola de despacho','Tiempos de tarea, repuestos y cierre de la orden']}
+      ]
+    }
+  },
+  listen:{
+    kicker:'Insights del discovery',
+    title:'¿Qué escuchamos?',
+    intro:'Ocho hallazgos que se repitieron en las visitas, descritos como hechos de la operación actual.',
+    items:[
+      {who:'Transferencia entre bot y agente',quote:'El contexto se pierde al pasar del bot al agente.',ins:'Los datos ya capturados no viajan a la consola: se vuelven a solicitar placa y cédula, y el tiempo de atención se duplica.'},
+      {who:'Cartera en canales personales',quote:'La relación con el cliente reside en teléfonos personales.',ins:'Ante rotación o incapacidad del vendedor se pierde la trazabilidad de la cartera y del historial de conversación.'},
+      {who:'Curva de aprendizaje',quote:'La identificación del repuesto correcto depende de la experiencia del vendedor.',ins:'Superar la curva toma más de seis meses y obliga a consultar fuentes externas antes de usar el sistema interno.'},
+      {who:'Consistencia comercial',quote:'Un mismo repuesto puede cotizarse a precios distintos según canal o vendedor.',ins:'No existe historial unificado de cotizaciones ni nivel de descuento visible en tiempo real.'},
+      {who:'Experiencia en mostrador',quote:'La atención en sucursal toma entre 30 y 40 minutos.',ins:'El llamado por número de factura y las mesas de consolidación están en rediseño para reducir la espera.'},
+      {who:'Recepción del vehículo',quote:'La recepción se documenta en papel y se respalda con video.',ins:'El check-list de 20 a 40 puntos queda fuera de todo sistema y la evidencia de daños previos es informal.'},
+      {who:'Productividad en bahía',quote:'Se desconoce el tiempo que lleva cada vehículo en la bahía.',ins:'Sin marcaje digital de inicio y fin de tarea hay trabajos de hasta tres días sin trazabilidad ni medición de productividad.'},
+      {who:'Medición y comisiones',quote:'El NPS se reporta en 88% sobre una muestra no representativa.',ins:'Son 25 encuestas sobre 4.000 vehículos atendidos, y las comisiones del contact center se rastrean de forma manual.'}
+    ]
+  },
+  domains:{
+    kicker:'Los seis frentes',
+    title:'¿Dónde está el trabajo por hacer?',
+    intro:'¿Qué está pasando hoy y qué se necesita en cada dominio de la operación?',
+    items:[
+      {n:'1',tone:'red',title:'Marketing y crecimiento',
+       now:'¿Cómo se conecta cada campaña con la venta o la cita que generó?',
+       detail:'El trabajo se apoya en WhatsApp y bases fragmentadas, lo que limita la segmentación, la reactivación de mantenimientos y la medición real del retorno.',
+       need:'atraer, convertir y volver a activar clientes con campañas medibles,',
+       needTail:'apoyando la meta de crecer de ~5.000–6.800 hacia 10.000 vehículos atendidos al mes.'},
+      {n:'2',tone:'amber',title:'Canales y atención',
+       now:'¿Cómo se unifica un canal repartido entre números, sucursales y conversaciones aisladas?',
+       detail:'No hay medición integral de demanda, tiempos y conversión; parte de la interacción tampoco queda visible ni auditable para la organización.',
+       need:'centralizar la atención digital y telefónica, conservar el contexto',
+       needTail:'y asegurar una experiencia consistente entre contact center, tienda y taller.'},
+      {n:'3',tone:'navy',title:'Tiendas y venta asistida',
+       now:'¿Cómo identifican 167 vendedores el repuesto correcto sin recorrer varias fuentes?',
+       detail:'Hoy no se logra ver en un mismo lugar el cliente, su vehículo, la necesidad, la disponibilidad consultada y el seguimiento posterior a la conversación.',
+       need:'una venta asistida más precisa y continua, reduciendo búsquedas,',
+       needTail:'reprocesos y oportunidades perdidas cuando el cliente cambia de canal o punto.'},
+      {n:'4',tone:'purple',title:'Experiencia digital y comercio',
+       now:'¿Cómo se completa un viaje digital continuo desde la intención hasta el servicio?',
+       detail:'El canal web aún debe explicar mejor servicios, tiempos y garantías; compra, pago, disponibilidad, instalación y agenda todavía funcionan como momentos separados.',
+       need:'conectar descubrimiento, compra e instalación, y recuperar la',
+       needTail:'intención de clientes que consultan o abandonan el proceso antes de convertir.'},
+      {n:'5',tone:'green',title:'Talleres y ejecución del servicio',
+       now:'¿Cómo se coordina y se da seguimiento al servicio sin tanta complejidad operativa?',
+       detail:'Hoy no se logra visualizar de punta a punta la agenda, recepción, aprobaciones, repuestos, bahías, técnicos, productividad y oportunidades de venta cruzada.',
+       need:'una operación visible y escalable para 9 talleres y 4 centros',
+       needTail:'de instalación, con una experiencia simple para asesores, jefes y técnicos.'},
+      {n:'6',tone:'blue',title:'Datos, fidelización y gestión',
+       now:'¿Cómo se identifica rápidamente el perfil del cliente y se conoce su contexto?',
+       detail:'La información del cliente y su vehículo está fragmentada; la gerencia tampoco logra relacionar conversión, ocupación, productividad, NPS, recompra y retorno.',
+       need:'una visión cliente-vehículo confiable y un motor analítico',
+       needTail:'que convierta los datos de La Guaca y Guaca Club en decisiones, fidelización y mejora continua.'}
+    ]
+  },
+  curve:{
+    kicker:'Antes del roadmap',
+    title:'Curva de priorización: valor de negocio vs. esfuerzo',
+    intro:'El roadmap no se ordena por producto, se ordena por retorno. Cada iniciativa se ubica según el valor que genera y el esfuerzo que exige; de ahí salen las olas de entrega. Las burbujas y las olas se completan en conjunto con el cliente.',
+    how:[
+      '¿Qué mide el eje vertical? El valor de negocio: ingreso incremental, retención, costo evitado y riesgo que se elimina.',
+      '¿Qué mide el eje horizontal? El esfuerzo y la complejidad: integraciones, cambio de proceso, calidad de datos y adopción del equipo.',
+      '¿Qué representa cada burbuja? Una iniciativa del discovery, cuya posición se acuerda entre negocio y TI.',
+      '¿Para qué sirven las nubes? Agrupan las olas de entrega y se recorren de arriba-izquierda hacia abajo-derecha.'
+    ],
+    recs:[
+      'Arrancar por el cuadrante superior izquierdo: alto valor con esfuerzo contenido. Esa primera ola financia y legitima el resto del programa.',
+      'Cada ola debe cerrar un ciclo de negocio completo, no una función suelta: el cliente entra por un canal y sale con el vehículo entregado y medido.',
+      'Mover una iniciativa a la derecha solo cuando sus dependencias estén resueltas: el taller completo depende del modelo cliente-vehículo y del catálogo.',
+      'Lo que caiga abajo a la derecha —bajo valor, alto esfuerzo— se descarta o se posterga de forma explícita; no entra al roadmap.',
+      'Fijar la línea base antes de arrancar: minutos de espera en mostrador, % de citas confirmadas, NPS con muestra representativa y conversión del contact center.',
+      'Revisar la curva cada trimestre: con el Data Lake y las integraciones en su lugar, iniciativas de hoy caras se abaratan y suben de prioridad.'
+    ],
+    bubbles:[
+      {n:'1',x:32,y:88,label:''},
+      {n:'2',x:22,y:78,label:''},
+      {n:'3',x:45,y:72,label:''},
+      {n:'4',x:20,y:55,label:''},
+      {n:'5',x:72,y:75,label:''},
+      {n:'6',x:57,y:52,label:''},
+      {n:'7',x:22,y:40,label:''},
+      {n:'8',x:10,y:25,label:''}
+    ],
+    olas:[
+      {c:'o1',label:'Ola 1 · MVP Guaca Servicios'},
+      {c:'o2',label:''},
+      {c:'o3',label:''}
+    ]
+  },
+  roadmapHead:{kicker:'El plan',title:'Roadmap propuesto',intro:'Olas de entrega por dominio, con los hitos acordados. Las tarjetas se mueven según cambien las prioridades.'},
+  next:{
+    kicker:'Cierre',
+    title:'Conclusiones y siguientes pasos',
+    intro:'El MVP se concentra en el ciclo de servicio del taller, que es donde el valor aparece más rápido y donde el equipo ya siente el dolor.',
+    date:'Viernes 11 de septiembre',
+    label:'Presentación de la oferta del MVP',
+    note:'Alcance, esfuerzo, equipo y cronograma del MVP Guaca Servicios.',
+    steps:[
+      'Confirmar el alcance del MVP: citas y recepción de vehículos, órdenes de trabajo, WhatsApp oficial y Vista 360 por placa.',
+      'Validar los supuestos de integración con TI: POS/ERP, catálogo y compatibilidad por placa/VIN, y el Data Lake en curso.',
+      'Acordar los indicadores de éxito y su línea base antes del kick-off.',
+      'Definir el gobierno del proyecto: sponsor, product owner y referentes de taller y contact center.',
+      'Programar el kick-off dentro de las dos semanas siguientes a la aprobación de la oferta.'
+    ]
+  }
+};
+
+function ensureDoc(d){
+  if(!d) return d;
+  const walk=(t,src)=>{
+    Object.keys(src).forEach(k=>{
+      const v=src[k];
+      if(t[k]===undefined||t[k]===null){t[k]=JSON.parse(JSON.stringify(v))}
+      else if(v&&typeof v==='object'&&!Array.isArray(v)&&typeof t[k]==='object'&&!Array.isArray(t[k])){walk(t[k],v)}
+    });
+  };
+  walk(d,DOC_DEFAULTS);
+  if(d.brand&&d.brand.title2===undefined)d.brand.title2='Propuesta de Roadmap';
+  if(d.exec&&d.exec.safari){
+    const ph=d.exec.safari.photos=d.exec.safari.photos||[];
+    while(ph.length<3) ph.push({key:'safari-'+(ph.length+1)+'.jpg',url:''});
+  }
+  return d;
+}
+function getPath(path){
+  return path.split('.').reduce((o,k)=>o==null?o:o[/^\d+$/.test(k)?Number(k):k],state);
+}
+function setPath(path,val){
+  const parts=path.split('.'),last=parts.pop();
+  const target=parts.reduce((o,k)=>o==null?o:o[/^\d+$/.test(k)?Number(k):k],state);
+  if(target)target[/^\d+$/.test(last)?Number(last):last]=val;
+}
+
 /* ---------------- Estado por defecto (versión cargada del roadmap) ---------------- */
 const DEFAULT_DATA = {
   "brand": {
     "badge": "¿Cómo llegaremos allá?",
-    "title": "Propuesta de Roadmap",
-    "subtitle": "Repuestos La Guaca · Transformación comercial y de servicio con Salesforce",
+    "title": "Visión de La Guaca Repuestos y Guaca Servicios + Salesforce",
+    "subtitle": "Repuestos La Guaca · Guaca Servicios · Transformación comercial, de servicio y de datos con Salesforce",
     "logo": {
       "key": "logo-guaca.png",
       "url": "https://laguacaenlinea.cr/skins/la_guacamaya/customer/images/footer-logo.png"
     },
-    "footer": "Propuesta preliminar · sujeta a validación conjunta de alcance y esfuerzo"
+    "footer": "Propuesta preliminar · sujeta a validación conjunta de alcance y esfuerzo",
+    "title2": "Propuesta de Roadmap"
   },
   "priorities": [
     "Unificar la experiencia del cliente entre tienda, web y WhatsApp",
@@ -359,18 +735,6 @@ const DEFAULT_DATA = {
           "image": null
         },
         {
-          "id": "qw3bfp1",
-          "phaseId": "2rtatsi",
-          "title": "Personalización",
-          "items": [
-            "Recomendación por vehículo y por historial en commerce",
-            "Personalización en sitio y app",
-            "Atribución de campañas al ingreso"
-          ],
-          "tags": [],
-          "image": null
-        },
-        {
           "id": "ci4ohsd",
           "phaseId": "iyitc4h",
           "title": "Lealtad avanzada",
@@ -396,7 +760,7 @@ const DEFAULT_DATA = {
         {
           "id": "gjpag0v",
           "phaseId": "9wbzzw7",
-          "title": "Estrategia digital",
+          "title": "Estrategia digital MVP",
           "items": [
             "Modelo contextual",
             "Audiencias y Segmentos x 5",
@@ -410,7 +774,10 @@ const DEFAULT_DATA = {
           "phaseId": "wmaeyq6",
           "title": "Orquestación de canales adicionales",
           "items": [
-            "Push Notification en app"
+            "Push Notification en app",
+            "Recomendación por vehículo y por historial en commerce",
+            "Personalización en sitio y app",
+            "Atribución de campañas al ingreso"
           ],
           "tags": [],
           "image": null
@@ -420,7 +787,9 @@ const DEFAULT_DATA = {
           "phaseId": "wmaeyq6",
           "title": "Estrategia Digital",
           "items": [
-            "Modelo de consentimiento y datos"
+            "Modelo de consentimiento y datos",
+            "Recuperación de carrito abandonado y de la intención de compra.",
+            "Recordatorio de mantenimiento por kilometraje"
           ],
           "tags": [],
           "image": null
@@ -442,7 +811,10 @@ const DEFAULT_DATA = {
           "phaseId": "2rtatsi",
           "title": "Commerce B2C",
           "items": [
-            "Mult"
+            "Catálogo y compra en línea conectados al inventario por tienda",
+            "Compatibilidad por placa o VIN dentro de la tienda digital",
+            "Pago, retiro en sucursal e instalación agendada en un mismo flujo",
+            "Cuenta del cliente: pedidos, vehículos, garantías y Guaca Club"
           ],
           "tags": [],
           "image": null
@@ -500,7 +872,7 @@ const DEFAULT_DATA = {
         {
           "id": "nwlihfu",
           "phaseId": "vu6j4ba",
-          "title": "Nueva iniciativa",
+          "title": "Servicio avanzado",
           "items": [
             "Gestión de casos y colas por agencia",
             "SLA, escalamiento y reasignación",
@@ -531,18 +903,6 @@ const DEFAULT_DATA = {
           "image": null
         },
         {
-          "id": "bjeyaf5",
-          "phaseId": "2rtatsi",
-          "title": "Servicio proactivo",
-          "items": [
-            "Recordatorio de mantenimiento por kilometraje",
-            "Autoservicio total en app y web",
-            "Tracking de satisfacción en todo el journey"
-          ],
-          "tags": [],
-          "image": null
-        },
-        {
           "id": "tma6ych",
           "phaseId": "wmaeyq6",
           "title": "Guaca Service",
@@ -552,6 +912,30 @@ const DEFAULT_DATA = {
           ],
           "tags": [],
           "image": null
+        },
+        {
+          "id": "bjeyaf5",
+          "phaseId": "2rtatsi",
+          "title": "Servicio proactivo",
+          "items": [
+            "Autoservicio total en app y web",
+            "Tracking de satisfacción en todo el journey"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "7hte0e4",
+          "phaseId": "2rtatsi",
+          "title": "ITSM · Servicio al empleado (TI y RH)",
+          "tags": [],
+          "image": null,
+          "items": [
+            "Autoservicio e IA 24/7: Portal único de TI y RH servicios y Agentforce.",
+            "Onboarding y Activos equipos por empleado.",
+            "Tickets con SLAs, escalamiento y aprobaciones",
+            "Analítica y Visibilidad"
+          ]
         }
       ]
     },
@@ -701,9 +1085,12 @@ const DEFAULT_DATA = {
         {
           "id": "5lo06jn",
           "phaseId": "2rtatsi",
-          "title": "Informatica",
+          "title": "Estrategia de datos",
           "items": [
-            "E"
+            "Integración, Ingesta y Orquestación de Sistemas (Conexión entre orígenes, ERP, POS, Salesforce y Data Lake)",
+            "Calidad de Datos, Normalización y Enriquecimiento (Limpieza automatizada, duplicación y perfilado)",
+            "Gestión de Datos Maestros (MDM)",
+            "Gobernanza, Catálogo y Linaje de Datos"
           ],
           "tags": [],
           "image": null
@@ -712,7 +1099,7 @@ const DEFAULT_DATA = {
     },
     {
       "id": "duepv47",
-      "name": "Analítica e Incentivos",
+      "name": "Estrategia, Analítica e Incentivos",
       "sub": "Tableau · Slack · Spiff",
       "tone": "blue",
       "icon": {
@@ -721,25 +1108,15 @@ const DEFAULT_DATA = {
       },
       "cards": [
         {
-          "id": "hk0qx32",
-          "phaseId": "2rtatsi",
-          "title": "Reportes y tableros",
-          "items": [
-            "Tableros de venta por agencia y asesor",
-            "Pipeline B2B y conversión",
-            "Servicio: SLA, casos y satisfacción"
-          ],
-          "tags": [],
-          "image": null
-        },
-        {
           "id": "gh7aqm5",
           "phaseId": "2rtatsi",
           "title": "Slack + Tableau",
           "items": [
             "Colaboración por cuenta y por deal",
             "Alertas de inventario y pedidos",
-            "Tableau para dirección comercial"
+            "Tableros de venta por agencia y asesor",
+            "Pipeline B2B y conversión",
+            "Servicio: SLA, casos y satisfacción"
           ],
           "tags": [],
           "image": null
@@ -755,10 +1132,310 @@ const DEFAULT_DATA = {
           ],
           "tags": [],
           "image": null
+        },
+        {
+          "id": "ratszuc",
+          "phaseId": "iyitc4h",
+          "title": "Estrategia ambiental (Net Zero Cloud)",
+          "tags": [],
+          "image": null,
+          "items": [
+            "Fuente única de datos ambientales: energía, combustible y residuos por sucursal.",
+            "Reportes listos para auditoría: Carbono Neutralidad (MINAE) y Bandera Azul",
+            "Habilita licitaciones B2B con flotillas, corporativos y aseguradoras",
+            "Ahorro operativo y acceso a créditos verdes al optimizar consumo y residuos"
+          ]
         }
       ]
     }
-  ]
+  ],
+  "version": 2,
+  "updatedAt": "2026-09-09T16:34:19.218Z",
+  "updatedBy": "alfredo",
+  "comments": {},
+  "exec": {
+    "kicker": "Lo que hemos recorrido juntos",
+    "title": "Resumen ejecutivo",
+    "intro": "Entre el descubrimiento en campo y la propuesta de valor, se recorrió la operación de La Guaca Repuestos y Guaca Servicios de punta a punta y validamos con demostraciones en vivo cómo se vería resuelta sobre Salesforce.",
+    "safari": {
+      "title": "Safari de descubrimiento",
+      "sub": "Visitas de campo · sede principal y talleres",
+      "text": "El recorrido en sitio permitió reconstruir el flujo completo: captación digital y contact center, atención y cotización en mostrador, ejecución en la bahía del taller, y cierre con facturación y posventa. Se entrevistó a los líderes de TI, operaciones y comercial, y a las jefaturas de taller.",
+      "bullets": [
+        "Sede principal: mostrador, contact center y administración",
+        "Sedes de taller: recepción de vehículos, bahías y bodega de repuestos",
+        "Entrevistas con TI, operaciones, comercial y jefaturas de taller",
+        "Reconstrucción del proceso actual y de sus puntos de fricción"
+      ],
+      "photos": [
+        {
+          "key": "safari-1.jpg",
+          "url": "https://drive.google.com/thumbnail?id=1AAAolkcewc9NzyRyyjCf_FzBwwFxvDrI&sz=w1600",
+          "link": "https://drive.google.com/file/d/1AAAolkcewc9NzyRyyjCf_FzBwwFxvDrI/view?usp=drive_link"
+        },
+        {
+          "key": "safari-2.jpg",
+          "url": "https://drive.google.com/thumbnail?id=1UqU3Y3fMAo_gPLYNoYuI9VB5RZ9aEM2T&sz=w1600",
+          "link": "https://drive.google.com/file/d/1UqU3Y3fMAo_gPLYNoYuI9VB5RZ9aEM2T/view?usp=drive_link"
+        },
+        {
+          "key": "safari-3.jpg",
+          "url": "https://drive.google.com/thumbnail?id=1y6ceMo22QeN3Ok8BBrumqFg3EvePIFxV&sz=w1600",
+          "link": "https://drive.google.com/file/d/1y6ceMo22QeN3Ok8BBrumqFg3EvePIFxV/view?usp=drive_link"
+        }
+      ]
+    },
+    "demos": {
+      "title": "Sesiones de demostración",
+      "sub": "3 sesiones ejecutadas",
+      "items": [
+        {
+          "n": "1",
+          "title": "Omnicanalidad",
+          "sub": "Marketing + Service + Agentforce",
+          "items": [
+            "Entrada por WhatsApp conservando el contexto del bot",
+            "Ruteo y consola unificada del agente",
+            "Agentforce calificando intención y datos del vehículo"
+          ],
+          "video": "https://drive.google.com/file/d/1RkvYKbU5dW1Sek5Ugk80X1mnOSzMFWcl/view?usp=drive_link"
+        },
+        {
+          "n": "2",
+          "title": "Recepción de vehículos",
+          "sub": "Service + Omnicanalidad",
+          "items": [
+            "Check-in digital del vehículo con fotos y firma",
+            "Vista 360 de cliente y vehículo por placa",
+            "Aviso y aprobación del cliente por WhatsApp"
+          ],
+          "video": "https://drive.google.com/file/d/14BMZqGMR8-JhFuYQEoT3MuWSIIXZZ7hq/view?usp=drive_link"
+        },
+        {
+          "n": "3",
+          "title": "Órdenes de trabajo en taller y ejecución de servicio",
+          "sub": "Field Service",
+          "items": [
+            "Agenda con disponibilidad real de bahía y especialista",
+            "Asignación de técnicos y consola de despacho",
+            "Tiempos de tarea, repuestos y cierre de la orden"
+          ],
+          "video": "https://drive.google.com/file/d/1Zk14vWhA6omYcSs2Nxu0s3-sFSdFoXfM/view?usp=drive_link"
+        }
+      ]
+    }
+  },
+  "listen": {
+    "kicker": "Insights del discovery",
+    "title": "¿Qué escuchamos?",
+    "intro": "Ocho hallazgos que se repitieron en las visitas, descritos como hechos de la operación actual.",
+    "items": [
+      {
+        "who": "Transferencia entre bot y agente",
+        "quote": "El contexto se pierde al pasar del bot al agente.",
+        "ins": "Los datos ya capturados no viajan a la consola: se vuelven a solicitar placa y cédula, y el tiempo de atención se duplica."
+      },
+      {
+        "who": "Cartera en canales personales",
+        "quote": "La relación con el cliente reside en teléfonos personales.",
+        "ins": "Ante rotación o incapacidad del vendedor se pierde la trazabilidad de la cartera y del historial de conversación."
+      },
+      {
+        "who": "Curva de aprendizaje",
+        "quote": "La identificación del repuesto correcto depende de la experiencia del vendedor.",
+        "ins": "Superar la curva toma más de seis meses y obliga a consultar fuentes externas antes de usar el sistema interno."
+      },
+      {
+        "who": "Consistencia comercial",
+        "quote": "Un mismo repuesto puede cotizarse a precios distintos según canal o vendedor.",
+        "ins": "No existe historial unificado de cotizaciones ni nivel de descuento visible en tiempo real."
+      },
+      {
+        "who": "Experiencia en mostrador",
+        "quote": "La atención en sucursal toma entre 30 y 40 minutos.",
+        "ins": "El llamado por número de factura y las mesas de consolidación están en rediseño para reducir la espera."
+      },
+      {
+        "who": "Recepción del vehículo",
+        "quote": "La recepción se documenta en papel y se respalda con video.",
+        "ins": "El check-list de 20 a 40 puntos queda fuera de todo sistema y la evidencia de daños previos es informal."
+      },
+      {
+        "who": "Productividad en bahía",
+        "quote": "Se desconoce el tiempo que lleva cada vehículo en la bahía.",
+        "ins": "Sin marcaje digital de inicio y fin de tarea hay trabajos de hasta tres días sin trazabilidad ni medición de productividad."
+      },
+      {
+        "who": "Medición y comisiones",
+        "quote": "El NPS se reporta en 88% sobre una muestra no representativa.",
+        "ins": "Son 25 encuestas sobre 4.000 vehículos atendidos, y las comisiones del contact center se rastrean de forma manual."
+      }
+    ]
+  },
+  "domains": {
+    "kicker": "Los seis frentes",
+    "title": "¿Dónde está el trabajo por hacer?",
+    "intro": "¿Qué está pasando hoy y qué se necesita en cada dominio de la operación?",
+    "items": [
+      {
+        "n": "1",
+        "tone": "red",
+        "title": "Marketing y crecimiento",
+        "now": "¿Cómo se conecta cada campaña con la venta o la cita que generó?",
+        "detail": "El trabajo se apoya en WhatsApp y bases fragmentadas, lo que limita la segmentación, la reactivación de mantenimientos y la medición real del retorno.",
+        "need": "atraer, convertir y volver a activar clientes con campañas medibles,",
+        "needTail": "apoyando la meta de crecer de ~5.000–6.800 hacia 10.000 vehículos atendidos al mes."
+      },
+      {
+        "n": "2",
+        "tone": "amber",
+        "title": "Canales y atención",
+        "now": "¿Cómo se unifica un canal repartido entre números, sucursales y conversaciones aisladas?",
+        "detail": "No hay medición integral de demanda, tiempos y conversión; parte de la interacción tampoco queda visible ni auditable para la organización.",
+        "need": "centralizar la atención digital y telefónica, conservar el contexto",
+        "needTail": "y asegurar una experiencia consistente entre contact center, tienda y taller."
+      },
+      {
+        "n": "3",
+        "tone": "navy",
+        "title": "Tiendas y venta asistida",
+        "now": "¿Cómo identifican 167 vendedores el repuesto correcto sin recorrer varias fuentes?",
+        "detail": "Hoy no se logra ver en un mismo lugar el cliente, su vehículo, la necesidad, la disponibilidad consultada y el seguimiento posterior a la conversación.",
+        "need": "una venta asistida más precisa y continua, reduciendo búsquedas,",
+        "needTail": "reprocesos y oportunidades perdidas cuando el cliente cambia de canal o punto."
+      },
+      {
+        "n": "4",
+        "tone": "purple",
+        "title": "Experiencia digital y comercio",
+        "now": "¿Cómo se completa un viaje digital continuo desde la intención hasta el servicio?",
+        "detail": "El canal web aún debe explicar mejor servicios, tiempos y garantías; compra, pago, disponibilidad, instalación y agenda todavía funcionan como momentos separados.",
+        "need": "conectar descubrimiento, compra e instalación, y recuperar la",
+        "needTail": "intención de clientes que consultan o abandonan el proceso antes de convertir."
+      },
+      {
+        "n": "5",
+        "tone": "green",
+        "title": "Talleres y ejecución del servicio",
+        "now": "¿Cómo se coordina y se da seguimiento al servicio sin tanta complejidad operativa?",
+        "detail": "Hoy no se logra visualizar de punta a punta la agenda, recepción, aprobaciones, repuestos, bahías, técnicos, productividad y oportunidades de venta cruzada.",
+        "need": "una operación visible y escalable para 9 talleres y 4 centros",
+        "needTail": "de instalación, con una experiencia simple para asesores, jefes y técnicos."
+      },
+      {
+        "n": "6",
+        "tone": "blue",
+        "title": "Datos, fidelización y gestión",
+        "now": "¿Cómo se identifica rápidamente el perfil del cliente y se conoce su contexto?",
+        "detail": "La información del cliente y su vehículo está fragmentada; la gerencia tampoco logra relacionar conversión, ocupación, productividad, NPS, recompra y retorno.",
+        "need": "una visión cliente-vehículo confiable y un motor analítico",
+        "needTail": "que convierta los datos de La Guaca y Guaca Club en decisiones, fidelización y mejora continua."
+      }
+    ]
+  },
+  "curve": {
+    "kicker": "Antes del roadmap",
+    "title": "Curva de priorización: valor de negocio vs. esfuerzo",
+    "intro": "El roadmap no se ordena por producto, se ordena por retorno. Cada iniciativa se ubica según el valor que genera y el esfuerzo que exige; de ahí salen las olas de entrega. Las burbujas y las olas se completan en conjunto con el cliente.",
+    "how": [
+      "¿Qué mide el eje vertical? El valor de negocio: ingreso incremental, retención, costo evitado y riesgo que se elimina.",
+      "¿Qué mide el eje horizontal? El esfuerzo y la complejidad: integraciones, cambio de proceso, calidad de datos y adopción del equipo.",
+      "¿Qué representa cada burbuja? Una iniciativa del discovery, cuya posición se acuerda entre negocio y TI.",
+      "¿Para qué sirven las nubes? Agrupan las olas de entrega y se recorren de arriba-izquierda hacia abajo-derecha."
+    ],
+    "recs": [
+      "Arrancar por el cuadrante superior izquierdo: alto valor con esfuerzo contenido. Esa primera ola financia y legitima el resto del programa.",
+      "Cada ola debe cerrar un ciclo de negocio completo, no una función suelta: el cliente entra por un canal y sale con el vehículo entregado y medido.",
+      "Mover una iniciativa a la derecha solo cuando sus dependencias estén resueltas: el taller completo depende del modelo cliente-vehículo y del catálogo.",
+      "Lo que caiga abajo a la derecha —bajo valor, alto esfuerzo— se descarta o se posterga de forma explícita; no entra al roadmap.",
+      "Fijar la línea base antes de arrancar: minutos de espera en mostrador, % de citas confirmadas, NPS con muestra representativa y conversión del contact center.",
+      "Revisar la curva cada trimestre: con el Data Lake y las integraciones en su lugar, iniciativas de hoy caras se abaratan y suben de prioridad."
+    ],
+    "bubbles": [
+      {
+        "n": "1",
+        "x": 29,
+        "y": 88,
+        "label": ""
+      },
+      {
+        "n": "2",
+        "x": 20,
+        "y": 83,
+        "label": ""
+      },
+      {
+        "n": "3",
+        "x": 45,
+        "y": 72,
+        "label": ""
+      },
+      {
+        "n": "4",
+        "x": 20,
+        "y": 61,
+        "label": ""
+      },
+      {
+        "n": "5",
+        "x": 72,
+        "y": 75,
+        "label": ""
+      },
+      {
+        "n": "6",
+        "x": 57,
+        "y": 52,
+        "label": ""
+      },
+      {
+        "n": "7",
+        "x": 76,
+        "y": 52,
+        "label": ""
+      },
+      {
+        "n": "8",
+        "x": 18,
+        "y": 36,
+        "label": ""
+      }
+    ],
+    "olas": [
+      {
+        "c": "o1",
+        "label": "Ola 1 · MVP Guaca Servicios"
+      },
+      {
+        "c": "o2",
+        "label": ""
+      },
+      {
+        "c": "o3",
+        "label": ""
+      }
+    ]
+  },
+  "roadmapHead": {
+    "kicker": "El plan",
+    "title": "Roadmap propuesto",
+    "intro": "Olas de entrega por dominio, con los hitos acordados. Las tarjetas se mueven según cambien las prioridades."
+  },
+  "next": {
+    "kicker": "Cierre",
+    "title": "Conclusiones y siguientes pasos",
+    "intro": "El MVP se concentra en el ciclo de servicio del taller, que es donde el valor aparece más rápido y donde el equipo ya siente el dolor.",
+    "date": "Viernes 11 de septiembre",
+    "label": "Presentación de la oferta del MVP",
+    "note": "Alcance, esfuerzo, equipo y cronograma del MVP Guaca Servicios.",
+    "steps": [
+      "Confirmar el alcance del MVP: citas y recepción de vehículos, órdenes de trabajo, WhatsApp oficial y Vista 360 por placa.",
+      "Validar los supuestos de integración con TI: POS/ERP, catálogo y compatibilidad por placa/VIN, y el Data Lake en curso.",
+      "Acordar los indicadores de éxito y su línea base antes del kick-off.",
+      "Definir el gobierno del proyecto: sponsor, product owner y referentes de taller y contact center.",
+      "Programar el kick-off dentro de las dos semanas siguientes a la aprobación de la oferta."
+    ]
+  }
 };
 
 function defaultState(){
@@ -767,6 +1444,7 @@ function defaultState(){
   d.comments=d.comments||{}; d.repoBase=d.repoBase||'';
   (d.phases||[]).forEach(p=>{if(!p.id)p.id=uid()});
   (d.lanes||[]).forEach(l=>{if(!l.id)l.id=uid();(l.cards||[]).forEach(c=>{if(!c.id)c.id=uid();c.items=c.items||[];c.tags=c.tags||[];if(c.image===undefined)c.image=null})});
+  ensureDoc(d);
   return d;
 }
 
@@ -901,27 +1579,167 @@ function imgSlotHTML(img,path,label,style){
 }
 function getImgRef(path){
   if(path==='brand.logo') return {get:()=>state.brand.logo,set:v=>state.brand.logo=v};
+  const mp=path.match(/^exec\.photo:(\d+)$/);
+  if(mp){const i=Number(mp[1]);return {get:()=>state.exec.safari.photos[i],set:v=>state.exec.safari.photos[i]=v}}
   return null;
 }
 function collectSlots(){
-  return [{path:'brand.logo',where:'Encabezado · logo',img:state.brand.logo}];
+  const out=[{path:'brand.logo',where:'Encabezado · logo',img:state.brand.logo}];
+  (state.exec&&state.exec.safari&&state.exec.safari.photos||[]).forEach((ph,i)=>out.push({path:'exec.photo:'+i,where:'Safari · foto '+(i+1),img:ph}));
+  return out;
 }
 
 /* ---------------- Render ---------------- */
+/* ---------------- Render de secciones narrativas ---------------- */
+function secHead(base){
+  const d=getPath(base)||{};
+  return `<div class="sec-h">
+    <span class="kicker" ${CE} data-doc="${base}.kicker">${esc(d.kicker)}</span>
+    <h2 ${CE} data-doc="${base}.title">${esc(d.title)}</h2>
+  </div>
+  ${d.intro!==undefined?`<p class="sec-intro" ${CE} data-doc="${base}.intro">${esc(d.intro)}</p>`:''}`;
+}
+function blist(path,cls){
+  const arr=getPath(path)||[];
+  return `<div class="${cls||'blist'}" ${CE} data-doclist="${path}">${arr.map(x=>'<div>'+esc(x)+'</div>').join('')}</div>`;
+}
+function docExec(){
+  const e=state.exec, sf=e.safari, dm=e.demos;
+  return `<div class="docsec">
+    ${secHead('exec')}
+    <div class="panel tint">
+      <h3 ${CE} data-doc="exec.safari.title">${esc(sf.title)}</h3>
+      <div class="psub" ${CE} data-doc="exec.safari.sub">${esc(sf.sub)}</div>
+      <div class="safarirow">
+        <p ${CE} data-doc="exec.safari.text">${esc(sf.text)}</p>
+        ${blist('exec.safari.bullets')}
+      </div>
+      <div class="photos">
+        ${(sf.photos||[]).map((phx,i)=>`<div class="photocell">
+          ${imgSlotHTML(phx,'exec.photo:'+i,'Foto del safari '+(i+1),'')}
+          ${phx&&phx.link?`<a class="vlink" href="${esc(phx.link)}" target="_blank" rel="noopener">Abrir la foto en Drive ↗</a>`:''}
+        </div>`).join('')}
+      </div>
+    </div>
+    <div class="panel" style="margin-top:16px">
+      <h3 ${CE} data-doc="exec.demos.title">${esc(dm.title)}</h3>
+      <div class="psub" ${CE} data-doc="exec.demos.sub">${esc(dm.sub)}</div>
+      <div class="demogrid">
+        ${dm.items.map((x,i)=>`<div class="demo">
+          <div class="dn">${esc(x.n)}</div>
+          <h4 ${CE} data-doc="exec.demos.items.${i}.title">${esc(x.title)}</h4>
+          <div class="dsub" ${CE} data-doc="exec.demos.items.${i}.sub">${esc(x.sub)}</div>
+          ${blist('exec.demos.items.'+i+'.items')}
+          ${x.video?`<a class="vlink vbtn" href="${esc(x.video)}" target="_blank" rel="noopener">▶ Ver la grabación de la demo</a>`:''}
+        </div>`).join('')}
+      </div>
+    </div>
+  </div>`;
+}
+function docListen(){
+  return `<div class="docsec brk">
+    ${secHead('listen')}
+    <div class="heard">
+      ${state.listen.items.map((it,i)=>`<div class="hcard">
+        <div class="who" ${CE} data-doc="listen.items.${i}.who">${esc(it.who)}</div>
+        <div class="quote" ${CE} data-doc="listen.items.${i}.quote">${esc(it.quote)}</div>
+        <div class="ins" ${CE} data-doc="listen.items.${i}.ins">${esc(it.ins)}</div>
+      </div>`).join('')}
+    </div>
+  </div>`;
+}
+function docDomains(){
+  return `<div class="docsec brk">
+    ${secHead('domains')}
+    <div class="doms">
+      ${state.domains.items.map((d,i)=>`<div class="dom d-${d.tone}">
+        <div class="dhead">
+          <div class="num">${esc(d.n)}</div>
+          <div class="dtitle" ${CE} data-doc="domains.items.${i}.title">${esc(d.title)}</div>
+          <div class="flag">¿Qué está pasando hoy?</div>
+        </div>
+        <div class="now" ${CE} data-doc="domains.items.${i}.now">${esc(d.now)}</div>
+        <div class="detail" ${CE} data-doc="domains.items.${i}.detail">${esc(d.detail)}</div>
+        <div class="need"><b>SE NECESITA → <span ${CE} data-doc="domains.items.${i}.need">${esc(d.need)}</span></b>
+          <span ${CE} data-doc="domains.items.${i}.needTail">${esc(d.needTail)}</span></div>
+      </div>`).join('')}
+    </div>
+  </div>`;
+}
+function curveSVG(){
+  const X0=95,X1=655,YT=40,YB=400,AX=430;
+  const px=v=>X0+(v/100)*(X1-X0), py=v=>YB-(v/100)*(YB-YT);
+  const b=state.curve.bubbles||[];
+  return `<svg id="curveSvg" viewBox="0 0 700 470" xmlns="http://www.w3.org/2000/svg">
+    <defs><marker id="arw" markerWidth="9" markerHeight="9" refX="4" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#F07C25"/></marker></defs>
+    <ellipse cx="255" cy="185" rx="105" ry="152" fill="#E5AEC3" opacity=".45" transform="rotate(-18 255 185)"/>
+    <ellipse cx="400" cy="165" rx="76" ry="115" fill="#BCDCD2" opacity=".55"/>
+    <ellipse cx="545" cy="180" rx="68" ry="92" fill="#BBD3EE" opacity=".55"/>
+    <path d="M105 330 Q 250 322 297 62" fill="none" stroke="#8CBF3F" stroke-width="1.6" opacity=".85"/>
+    <path d="M105 398 Q 400 392 552 62" fill="none" stroke="#8CBF3F" stroke-width="1.6" opacity=".85"/>
+    <line x1="${X0}" y1="${AX}" x2="672" y2="${AX}" stroke="#F07C25" stroke-width="3.5" marker-end="url(#arw)"/>
+    <line x1="${X0}" y1="${AX}" x2="${X0}" y2="18" stroke="#F07C25" stroke-width="3.5" marker-end="url(#arw)"/>
+    <text x="380" y="458" text-anchor="middle" font-size="14" fill="#8CBF3F" font-family="Segoe UI,system-ui,sans-serif">Esfuerzo / Complejidad</text>
+    <text x="72" y="235" text-anchor="middle" font-size="14" fill="#8CBF3F" font-family="Segoe UI,system-ui,sans-serif" transform="rotate(-90 72 235)">Valor de Negocio</text>
+    ${b.map((x,i)=>`<g class="bub" data-bi="${i}" transform="translate(${px(x.x)},${py(x.y)})">
+      <circle r="15.5" fill="#7FAE3C"/>
+      <text y="4.5" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="Segoe UI,system-ui,sans-serif">${esc(x.n)}</text>
+    </g>`).join('')}
+  </svg>`;
+}
+function docCurve(){
+  const c=state.curve;
+  return `<div class="docsec brk">
+    ${secHead('curve')}
+    <div class="curvewrap">
+      <div class="curvebox">${curveSVG()}</div>
+      <div>
+        <div class="panel"><h3>¿Cómo se lee esta curva?</h3>${blist('curve.how')}</div>
+        <div class="olas">${c.olas.map((o,i)=>`<span class="ola ${o.c}" ${CE} data-doc="curve.olas.${i}.label">${esc(o.label)}</span>`).join('')}</div>
+        <ul class="bublist">${c.bubbles.map((x,i)=>`<li><span class="bn">${esc(x.n)}</span><span ${CE} data-doc="curve.bubbles.${i}.label">${esc(x.label)}</span></li>`).join('')}</ul>
+      </div>
+    </div>
+    <div class="panel" style="margin-top:16px"><h3>Recomendaciones de negocio</h3>${blist('curve.recs')}</div>
+  </div>`;
+}
+function docRoadmapHead(){
+  return `<div class="docsec brk">${secHead('roadmapHead')}</div>`;
+}
+function docNext(){
+  const n=state.next;
+  return `<div class="docsec brk">
+    ${secHead('next')}
+    <div class="nextgrid">
+      <div class="mstone">
+        <div class="mdate" ${CE} data-doc="next.date">${esc(n.date)}</div>
+        <div class="mlabel" ${CE} data-doc="next.label">${esc(n.label)}</div>
+        <div class="mnote" ${CE} data-doc="next.note">${esc(n.note)}</div>
+      </div>
+      ${blist('next.steps','steps')}
+    </div>
+  </div>`;
+}
+
 function render(){
+  ensureDoc(state);
   const b=document.getElementById('board');
   b.style.setProperty('--cols','260px repeat('+state.phases.length+',minmax(190px,1fr))');
   let h='';
   h+=`<div class="bhead"><div class="left">
-    <div class="pill" ${CE} data-bind="brand.badge">${esc(state.brand.badge)}</div>
     <h1 class="title" ${CE} data-bind="brand.title">${esc(state.brand.title)}</h1>
     <p class="subtitle" ${CE} data-bind="brand.subtitle">${esc(state.brand.subtitle)}</p>
+    <div class="title2" ${CE} data-bind="brand.title2">${esc(state.brand.title2||'Propuesta de Roadmap')}</div>
+    <div class="pill" ${CE} data-bind="brand.badge">${esc(state.brand.badge)}</div>
     <div class="prio"><h4>Prioridades estratégicas</h4>
       <ol ${CE} data-bind="priorities">${state.priorities.map(p=>'<li>'+esc(p)+'</li>').join('')}</ol>
     </div></div>
     <div class="logoslot">${imgSlotHTML(state.brand.logo,'brand.logo','Logo Repuestos La Guaca','max-height:70px;margin-left:auto')}</div>
   </div>`;
 
+  h+=docExec()+docListen()+docDomains()+docCurve()+docRoadmapHead();
+
+  h+=`<div class="rmwrap"><div class="rmscroll">`;
   h+=`<div class="grid"><div></div>`;
   state.phases.forEach(p=>{
     const empty=!p.milestone;
@@ -949,11 +1767,13 @@ function render(){
     </div>`;
     state.phases.forEach(p=>{
       const cards=l.cards.filter(c=>c.phaseId===p.id);
-      h+=`<div class="cell ${li%2?'alt':''}" data-lane="${l.id}" data-phase="${p.id}">${cards.map(c=>cardHTML(c,p)).join('')}${canEdit?'<button class="addcard" data-act="add-card">+ tarjeta</button>':''}</div>`;
+      h+=`<div class="cell ${li%2?'alt':''} ${cards.length?'':'empty'}" data-lane="${l.id}" data-phase="${p.id}" data-plabel="${esc(p.label)}" data-psub="${esc(p.sub||'')}">${cards.map(c=>cardHTML(c,p)).join('')}${canEdit?'<button class="addcard" data-act="add-card">+ tarjeta</button>':''}</div>`;
     });
     h+=`</div>`;
   });
 
+  h+=`</div></div>`;
+  h+=docNext();
   h+=`<div class="bfoot"><div class="legend">${TONES.map(t=>`<span><i style="background:${TONE_HEX[t[0]]}"></i>${t[1]}</span>`).join('')}</div>
       <div ${CE} data-bind="brand.footer" style="text-align:right">${esc(state.brand.footer)}</div></div>`;
   b.innerHTML=h;
@@ -974,6 +1794,17 @@ function cardHTML(c,p){
 /* ---------------- Edición de texto ---------------- */
 document.addEventListener('input',e=>{
   if(!canEdit) return;
+  const dEl=e.target.closest&&e.target.closest('[data-doc],[data-doclist]');
+  if(dEl){
+    const raw=dEl.innerText.replace(/\u00a0/g,' ');
+    if(dEl.hasAttribute('data-doc')) setPath(dEl.getAttribute('data-doc'),raw.trim());
+    else{
+      let a=Array.from(dEl.children).map(n=>n.innerText.replace(/\u00a0/g,' ').trim()).filter(Boolean);
+      if(!a.length) a=raw.split('\n').map(x=>x.trim()).filter(Boolean);
+      setPath(dEl.getAttribute('data-doclist'),a);
+    }
+    markDirty();return;
+  }
   const el=e.target.closest&&e.target.closest('[data-bind]');
   if(!el) return;
   const [key,id]=el.getAttribute('data-bind').split(':');
@@ -983,6 +1814,7 @@ document.addEventListener('input',e=>{
   if(key==='brand.badge')state.brand.badge=txt;
   else if(key==='brand.title')state.brand.title=txt;
   else if(key==='brand.subtitle')state.brand.subtitle=txt;
+  else if(key==='brand.title2')state.brand.title2=txt;
   else if(key==='brand.footer')state.brand.footer=txt;
   else if(key==='priorities'){const a=lines();state.priorities=a.length?a:el.innerText.split('\n').filter(Boolean)}
   else if(key==='phase.label'){const p=P(id);if(p)p.label=txt}
@@ -1129,6 +1961,37 @@ function moveCard(cardId,laneId,phaseId,beforeId){
   else lane.cards.push(card);
 }
 
+
+/* ---------------- Arrastre de burbujas de la curva ---------------- */
+let bubDrag=null;
+document.addEventListener('pointerdown',e=>{
+  if(!canEdit) return;
+  const g=e.target.closest&&e.target.closest('#curveSvg .bub');
+  if(!g) return;
+  const svg=document.getElementById('curveSvg');
+  bubDrag={g,svg,i:Number(g.dataset.bi)};
+  g.setPointerCapture&&g.setPointerCapture(e.pointerId);
+  e.preventDefault();
+});
+document.addEventListener('pointermove',e=>{
+  if(!bubDrag) return;
+  const {svg,g}=bubDrag;
+  const pt=svg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;
+  const loc=pt.matrixTransform(svg.getScreenCTM().inverse());
+  const X0=95,X1=655,YT=40,YB=400;
+  const x=Math.max(X0,Math.min(X1,loc.x)), y=Math.max(YT,Math.min(YB,loc.y));
+  g.setAttribute('transform','translate('+x+','+y+')');
+  bubDrag.val={x:Math.round((x-X0)/(X1-X0)*100),y:Math.round((YB-y)/(YB-YT)*100)};
+});
+document.addEventListener('pointerup',()=>{
+  if(!bubDrag) return;
+  if(bubDrag.val){
+    const b=state.curve.bubbles[bubDrag.i];
+    if(b){b.x=bubDrag.val.x;b.y=bubDrag.val.y;markDirty()}
+  }
+  bubDrag=null;
+});
+
 /* ---------------- Modal imágenes ---------------- */
 const mImg=document.getElementById('modalImg');
 function openImgModal(keep){
@@ -1255,6 +2118,15 @@ if(canEdit){
     state=defaultState();markDirty();render();toast('Roadmap reiniciado');
   };
   window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue=''}});
+  const tbT=document.getElementById('tbToggle'), tbM=document.getElementById('tbMenu');
+  if(tbT&&tbM){
+    tbT.addEventListener('click',()=>{
+      const open=tbM.classList.toggle('open');
+      tbT.setAttribute('aria-expanded',open?'true':'false');
+      tbT.classList.toggle('on',open);
+    });
+    tbM.addEventListener('click',e=>{if(e.target.closest('.tbtn'))tbM.classList.remove('open')});
+  }
 }else{
   document.getElementById('roPdf').onclick=()=>window.print();
 }
