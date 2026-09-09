@@ -96,8 +96,6 @@ h1.title{font-size:34px;line-height:1.1;margin:0 0 4px;color:var(--navy);font-we
 .laneTitle.l-amber{background:var(--amber)}.laneTitle.l-blue{background:var(--blue)}.laneTitle.l-navy{background:var(--navy)}.laneTitle.l-sky{background:var(--sky)}
 .laneTitle .lt-name{font-size:15px;font-weight:700;line-height:1.25}
 .laneTitle .lt-sub{font-size:11.5px;opacity:.92;line-height:1.35}
-.laneTitle .lt-icon{width:52px;margin-top:auto;align-self:flex-end}
-.laneTitle .lt-icon .ph{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.6);color:#fff;min-height:44px;padding:6px}
 .laneTools{position:absolute;top:6px;right:6px;display:none;gap:4px}
 .laneTitle:hover .laneTools{display:flex}
 .laneTools .mini{background:rgba(0,0,0,.3)}
@@ -128,12 +126,6 @@ h1.title{font-size:34px;line-height:1.1;margin:0 0 4px;color:var(--navy);font-we
 .card .imgslot{margin-top:7px}
 .tagrow{display:flex;gap:4px;flex-wrap:wrap;margin-top:7px}
 .tag{font-size:10px;background:rgba(1,118,211,.12);color:var(--blue-600);border-radius:999px;padding:2px 8px;font-weight:600}
-.cmt{
-  margin-top:7px;display:inline-flex;align-items:center;gap:5px;cursor:pointer;
-  border:1px solid var(--line);background:#fff;border-radius:999px;padding:2px 9px;font-size:10.5px;color:var(--blue-600);
-}
-.cmt:hover{border-color:var(--blue)}
-.cmt.has{background:#FFF6E5;border-color:var(--amber);color:#8A4B00;font-weight:600}
 .drop-ind{height:3px;background:var(--blue);border-radius:3px;margin:1px 0}
 
 .bfoot{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:22px;padding-top:12px;border-top:1px solid var(--line);font-size:11.5px;color:#7A869A}
@@ -163,18 +155,13 @@ table.slots code{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;backg
 .btn.danger{color:var(--warn)}
 pre.json{background:#0B1F3A;color:#CFE9FE;border-radius:10px;padding:12px;font-size:11.5px;overflow:auto;max-height:220px;font-family:ui-monospace,Menlo,monospace}
 .note{background:#FFF6E5;border:1px solid #FFD08A;border-radius:8px;padding:10px 12px;font-size:12px;color:#7A4A00;margin-bottom:14px}
-.cmtlist{margin:6px 0 0;padding:0;list-style:none}
-.cmtlist li{border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin-bottom:8px;font-size:12.5px;background:#FBFCFE}
-.cmtlist li .meta{font-size:11px;color:#7A869A;margin-bottom:3px;display:flex;justify-content:space-between;gap:8px}
-.cmtlist li.pend{border-style:dashed;border-color:var(--amber);background:#FFFBF4}
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:10px 18px;border-radius:999px;font-size:12.5px;opacity:0;transition:.25s;z-index:200;pointer-events:none;max-width:80vw;text-align:center}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 @page{size:A3 landscape;margin:10mm}
 @media print{
   body{background:#fff}
-  .toolbar,.robar,.modal,.toast,.addcard,.ctools,.laneTools,.slotbar,.phx,.tonepick,.handle,.cmt{display:none !important}
-  .wrap{padding:0;overflow:visible}
+  .toolbar,.robar,.modal,.toast,.addcard,.ctools,.laneTools,.slotbar,.phx,.tonepick,.handle,  .wrap{padding:0;overflow:visible}
   .board{border:none;box-shadow:none;border-radius:0;min-width:0;width:100%;padding:0}
   .lane,.card{break-inside:avoid;page-break-inside:avoid}
   [contenteditable]:focus{box-shadow:none;background:transparent}
@@ -188,7 +175,6 @@ pre.json{background:#0B1F3A;color:#CFE9FE;border-radius:10px;padding:12px;font-s
   <b>Vista de solo lectura</b>
   <span id="roMeta">—</span>
   <span class="spacer" style="flex:1"></span>
-  <button class="rbtn" id="roComments">Mis comentarios (<span id="roCmtCount">0</span>)</button>
   <button class="rbtn" id="roPdf">Descargar PDF</button>
 </div>
 
@@ -198,8 +184,9 @@ pre.json{background:#0B1F3A;color:#CFE9FE;border-radius:10px;padding:12px;font-s
   <button class="tbtn" id="btnPhase">+ Fase</button>
   <button class="tbtn" id="btnLane">+ Carril</button>
   <button class="tbtn" id="btnImages">Imágenes</button>
-  <button class="tbtn" id="btnComments">Comentarios</button>
   <button class="tbtn" id="btnGit">GitHub</button>
+  <button class="tbtn" id="btnDownload">Descargar JSON</button>
+  <button class="tbtn" id="btnUpload">Cargar JSON</button>
   <button class="tbtn ghost" id="btnReset">Reiniciar</button>
   <div class="spacer"></div>
   <span class="status" id="status"><i></i><span id="statusTxt">Local</span></span>
@@ -250,31 +237,9 @@ pre.json{background:#0B1F3A;color:#CFE9FE;border-radius:10px;padding:12px;font-s
   <div class="actions"><button class="btn" id="copyManifest">Copiar manifiesto</button><button class="btn primary" id="closeImg">Listo</button></div>
 </div></div>
 
-<!-- modal comentario de tarjeta -->
-<div class="modal" id="modalCmt"><div class="sheet" style="max-width:560px">
-  <h3 id="cmtTitle">Comentarios</h3>
-  <p class="lead" id="cmtLead">—</p>
-  <ul class="cmtlist" id="cmtList"></ul>
-  <div class="field"><label>Tu nombre</label><input id="cmtAuthor" placeholder="Nombre y empresa"></div>
-  <div class="field"><label>Comentario</label><textarea id="cmtText" placeholder="Escribe aquí tu observación sobre esta iniciativa…"></textarea></div>
-  <div class="actions"><button class="btn" id="cmtClose">Cerrar</button><button class="btn primary" id="cmtAdd">Agregar comentario</button></div>
-</div></div>
-
-<!-- modal bandeja de comentarios -->
-<div class="modal" id="modalInbox"><div class="sheet">
-  <h3>Comentarios del roadmap</h3>
-  <p class="lead" id="inboxLead">—</p>
-  <div id="inboxBody"></div>
-  <div class="actions">
-    <button class="btn" id="inboxExport">Exportar mis comentarios</button>
-    <button class="btn" id="inboxImport">Importar archivo de comentarios</button>
-    <button class="btn primary" id="inboxClose">Cerrar</button>
-  </div>
-</div></div>
-
 <div class="toast" id="toast"></div>
 <input type="file" id="filePick" accept="image/*" style="display:none">
-<input type="file" id="cmtPick" accept="application/json,.json" style="display:none">
+<input type="file" id="jsonPick" accept="application/json,.json" style="display:none">
 
 <script>
 (function(){
@@ -296,7 +261,6 @@ const CONFIG = {
 const LS_STATE='guaca-roadmap-sf-v4';
 const LS_CFG='guaca-roadmap-cfg';
 const LS_TOKEN='guaca-roadmap-token';
-const LS_PEND='guaca-roadmap-pending-comments';
 const LS_ME='guaca-roadmap-author';
 
 const qs=new URLSearchParams(location.search);
@@ -810,7 +774,6 @@ function defaultState(){
 let state=null, remoteSha=null, dirty=false, pushTimer=null, localTimer=null;
 let cfg=Object.assign({},CONFIG,{author:''},JSON.parse(lsGet(LS_CFG)||'{}'));
 let token=lsGet(LS_TOKEN)||'';
-let pending=JSON.parse(lsGet(LS_PEND)||'{}');   // comentarios locales de visitantes
 let me=lsGet(LS_ME)||cfg.author||'';
 
 function saveLocal(){
@@ -920,7 +883,6 @@ function updateRoBar(){
   if(canEdit) return;
   const d=state.updatedAt?new Date(state.updatedAt):null;
   document.getElementById('roMeta').textContent=d?('Actualizado '+d.toLocaleString('es-CR')+(state.updatedBy?' por '+state.updatedBy:'')):'Versión de trabajo';
-  document.getElementById('roCmtCount').textContent=Object.values(pending).reduce((a,b)=>a+b.length,0);
 }
 
 /* ---------------- Imágenes ---------------- */
@@ -939,26 +901,11 @@ function imgSlotHTML(img,path,label,style){
 }
 function getImgRef(path){
   if(path==='brand.logo') return {get:()=>state.brand.logo,set:v=>state.brand.logo=v};
-  let m=path.match(/^lane:(.+)\.icon$/);
-  if(m){const l=state.lanes.find(x=>x.id===m[1]);return l?{get:()=>l.icon,set:v=>l.icon=v}:null}
-  m=path.match(/^card:(.+)\.image$/);
-  if(m){for(const l of state.lanes){const c=l.cards.find(x=>x.id===m[1]);if(c)return {get:()=>c.image,set:v=>c.image=v}}}
   return null;
 }
 function collectSlots(){
-  const out=[{path:'brand.logo',where:'Encabezado · logo',img:state.brand.logo}];
-  state.lanes.forEach(l=>{
-    out.push({path:'lane:'+l.id+'.icon',where:'Carril · '+l.name,img:l.icon});
-    l.cards.forEach(c=>{if(c.image)out.push({path:'card:'+c.id+'.image',where:'Tarjeta · '+c.title,img:c.image})});
-  });
-  return out;
+  return [{path:'brand.logo',where:'Encabezado · logo',img:state.brand.logo}];
 }
-
-/* ---------------- Comentarios ---------------- */
-function committed(cardId){return (state.comments&&state.comments[cardId])||[]}
-function pendingOf(cardId){return pending[cardId]||[]}
-function cmtCount(cardId){return committed(cardId).length+pendingOf(cardId).length}
-function savePending(){lsSet(LS_PEND,JSON.stringify(pending));updateRoBar()}
 
 /* ---------------- Render ---------------- */
 function render(){
@@ -999,7 +946,6 @@ function render(){
       ${canEdit?`<div class="laneTools"><button class="mini" data-act="lane-tone">color</button><button class="mini" data-act="lane-up">↑</button><button class="mini" data-act="lane-down">↓</button><button class="mini" data-act="lane-del">×</button></div>`:''}
       <div class="lt-name" ${CE} data-bind="lane.name:${l.id}">${esc(l.name)}</div>
       <div class="lt-sub" ${CE} data-bind="lane.sub:${l.id}">${esc(l.sub)}</div>
-      <div class="lt-icon">${imgSlotHTML(l.icon,'lane:'+l.id+'.icon','icono','max-height:44px;margin-left:auto')}</div>
     </div>`;
     state.phases.forEach(p=>{
       const cards=l.cards.filter(c=>c.phaseId===p.id);
@@ -1014,17 +960,14 @@ function render(){
   updateRoBar();
 }
 function cardHTML(c,p){
-  const n=cmtCount(c.id);
   return `<div class="card c-${p.tone}" data-card="${c.id}">
     <div class="chead">
       ${canEdit?'<span class="handle" title="Arrastrar">⠿</span>':''}
       <div class="c-title" ${CE} data-bind="card.title:${c.id}">${esc(c.title)}</div>
-      ${canEdit?`<div class="ctools"><button class="mini" data-act="card-img" title="Espacio de imagen">img</button><button class="mini" data-act="card-del" title="Eliminar">×</button></div>`:''}
+      ${canEdit?`<div class="ctools"><button class="mini" data-act="card-del" title="Eliminar">×</button></div>`:''}
     </div>
     <div class="items" ${CE} data-bind="card.items:${c.id}">${(c.items.length?c.items:['']).map(i=>'<div>'+esc(i)+'</div>').join('')}</div>
-    ${c.image?imgSlotHTML(c.image,'card:'+c.id+'.image','imagen','width:100%'):''}
     ${c.tags&&c.tags.length?`<div class="tagrow">${c.tags.map(t=>'<span class="tag">'+esc(t)+'</span>').join('')}</div>`:''}
-    <button class="cmt ${n?'has':''}" data-act="card-cmt">💬 ${n?n+(n===1?' comentario':' comentarios'):'Comentar'}</button>
   </div>`;
 }
 
@@ -1075,7 +1018,6 @@ document.getElementById('board').addEventListener('click',e=>{
   const cardEl=btn.closest('[data-card]'), laneEl=btn.closest('[data-lane]'),
         cellEl=btn.closest('.cell'), phaseEl=btn.closest('[data-phase]'), slotEl=btn.closest('[data-imgpath]');
 
-  if(act==='card-cmt'){openCmt(cardEl.dataset.card);return}
   if(!canEdit) return;
 
   if(act==='add-card'){
@@ -1084,10 +1026,7 @@ document.getElementById('board').addEventListener('click',e=>{
   } else if(act==='card-del'){
     const l=findCardLane(cardEl.dataset.card);
     l.cards=l.cards.filter(c=>c.id!==cardEl.dataset.card);markDirty();render();
-  } else if(act==='card-img'){
-    const c=findCard(cardEl.dataset.card);
-    c.image=c.image?null:{key:slugify(c.title)+'.png',url:''};markDirty();render();
-  } else if(act==='del-phase'){
+    } else if(act==='del-phase'){
     if(state.phases.length<=1)return;
     if(!confirm('¿Eliminar esta fase y sus tarjetas?'))return;
     const id=phaseEl.dataset.phase;
@@ -1190,100 +1129,6 @@ function moveCard(cardId,laneId,phaseId,beforeId){
   else lane.cards.push(card);
 }
 
-/* ---------------- Modales: comentarios ---------------- */
-const mCmt=document.getElementById('modalCmt');
-let cmtCard=null;
-function openCmt(cardId){
-  cmtCard=cardId;
-  const c=findCard(cardId);
-  document.getElementById('cmtTitle').textContent=c?c.title:'Comentarios';
-  document.getElementById('cmtLead').textContent=canEdit
-    ?'Los comentarios se guardan junto al roadmap al publicar en GitHub.'
-    :'Tus comentarios se guardan en este navegador. Al terminar, expórtalos y envíalos al equipo del proyecto.';
-  document.getElementById('cmtAuthor').value=me||'';
-  document.getElementById('cmtText').value='';
-  renderCmtList();
-  mCmt.classList.add('open');
-}
-function renderCmtList(){
-  const list=committed(cmtCard).map(x=>({...x,pend:false})).concat(pendingOf(cmtCard).map(x=>({...x,pend:true})));
-  document.getElementById('cmtList').innerHTML=list.length?list.map(x=>`
-    <li class="${x.pend?'pend':''}">
-      <div class="meta"><span>${esc(x.author||'anónimo')}${x.pend?' · sin enviar':''}</span><span>${esc(new Date(x.ts).toLocaleString('es-CR'))}</span></div>
-      <div>${esc(x.text)}</div>
-      ${canEdit&&!x.pend?`<div style="text-align:right;margin-top:5px"><button class="mini" data-del="${x.id}">borrar</button></div>`:''}
-    </li>`).join(''):'<li style="border:none;background:transparent;color:#7A869A;padding:0">Sin comentarios todavía.</li>';
-}
-document.getElementById('cmtList').addEventListener('click',e=>{
-  const b=e.target.closest('[data-del]');if(!b||!canEdit)return;
-  state.comments[cmtCard]=committed(cmtCard).filter(x=>x.id!==b.dataset.del);
-  markDirty();renderCmtList();render();
-});
-document.getElementById('cmtAdd').onclick=()=>{
-  const author=document.getElementById('cmtAuthor').value.trim();
-  const text=document.getElementById('cmtText').value.trim();
-  if(!text)return toast('Escribe un comentario');
-  me=author||me;lsSet(LS_ME,me);
-  const item={id:uid(),author:me||'anónimo',text,ts:Date.now()};
-  if(canEdit){state.comments=state.comments||{};(state.comments[cmtCard]=state.comments[cmtCard]||[]).push(item);markDirty()}
-  else{(pending[cmtCard]=pending[cmtCard]||[]).push(item);savePending()}
-  document.getElementById('cmtText').value='';
-  renderCmtList();render();toast(canEdit?'Comentario agregado':'Comentario guardado en tu navegador');
-};
-document.getElementById('cmtClose').onclick=()=>mCmt.classList.remove('open');
-mCmt.addEventListener('click',e=>{if(e.target===mCmt)mCmt.classList.remove('open')});
-
-/* bandeja de comentarios */
-const mInbox=document.getElementById('modalInbox');
-function openInbox(){
-  const rows=[];
-  state.lanes.forEach(l=>l.cards.forEach(c=>{
-    const items=committed(c.id).map(x=>({...x,pend:false})).concat(pendingOf(c.id).map(x=>({...x,pend:true})));
-    if(items.length)rows.push({lane:l.name,card:c.title,items});
-  }));
-  document.getElementById('inboxLead').textContent=canEdit
-    ?'Comentarios publicados y pendientes de importar.'
-    :'Estos comentarios están guardados solo en tu navegador. Exporta el archivo y envíalo al equipo del proyecto para que los incorpore.';
-  document.getElementById('inboxBody').innerHTML=rows.length?rows.map(r=>`
-    <div style="margin-bottom:14px">
-      <div style="font-size:12px;color:var(--navy);font-weight:700">${esc(r.card)} <span style="color:#7A869A;font-weight:400">· ${esc(r.lane)}</span></div>
-      <ul class="cmtlist">${r.items.map(x=>`<li class="${x.pend?'pend':''}"><div class="meta"><span>${esc(x.author||'anónimo')}${x.pend?' · sin enviar':''}</span><span>${esc(new Date(x.ts).toLocaleString('es-CR'))}</span></div><div>${esc(x.text)}</div></li>`).join('')}</ul>
-    </div>`).join(''):'<p style="color:#7A869A">Todavía no hay comentarios.</p>';
-  document.getElementById('inboxImport').style.display=canEdit?'':'none';
-  mInbox.classList.add('open');
-}
-document.getElementById('inboxClose').onclick=()=>mInbox.classList.remove('open');
-mInbox.addEventListener('click',e=>{if(e.target===mInbox)mInbox.classList.remove('open')});
-document.getElementById('inboxExport').onclick=()=>{
-  const payload={kind:'roadmap-comments',author:me||'anónimo',exportedAt:new Date().toISOString(),comments:pending};
-  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
-  a.download='comentarios-roadmap-'+slugify(me||'visitante')+'.json';a.click();
-  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
-  toast('Archivo de comentarios descargado');
-};
-document.getElementById('inboxImport').onclick=()=>document.getElementById('cmtPick').click();
-document.getElementById('cmtPick').addEventListener('change',e=>{
-  const f=e.target.files[0];if(!f)return;
-  const r=new FileReader();
-  r.onload=()=>{
-    try{
-      const p=JSON.parse(r.result);
-      if(!p.comments)throw new Error('formato');
-      state.comments=state.comments||{};
-      let n=0;
-      Object.keys(p.comments).forEach(cid=>{
-        const dest=state.comments[cid]=state.comments[cid]||[];
-        p.comments[cid].forEach(it=>{if(!dest.some(x=>x.id===it.id)){dest.push(it);n++}});
-      });
-      markDirty();render();openInbox();
-      toast(n+' comentario(s) importados — publica para compartirlos');
-    }catch(err){alert('El archivo no tiene el formato esperado.')}
-    e.target.value='';
-  };
-  r.readAsText(f);
-});
-
 /* ---------------- Modal imágenes ---------------- */
 const mImg=document.getElementById('modalImg');
 function openImgModal(keep){
@@ -1361,18 +1206,56 @@ if(canEdit){
     markDirty();render();
   };
   document.getElementById('btnImages').onclick=()=>openImgModal();
-  document.getElementById('btnComments').onclick=openInbox;
   document.getElementById('btnGit').onclick=openGit;
   document.getElementById('btnPush').onclick=()=>push(false);
   document.getElementById('btnPull').onclick=pull;
   document.getElementById('btnPdf').onclick=()=>window.print();
+
+  /* --- respaldo local: descargar / cargar el JSON --- */
+  function stamp(){
+    const d=new Date(),p=n=>String(n).padStart(2,'0');
+    return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+'-'+p(d.getHours())+p(d.getMinutes());
+  }
+  document.getElementById('btnDownload').onclick=()=>{
+    state.updatedAt=new Date().toISOString();
+    state.updatedBy=me||cfg.author||'local';
+    saveLocal();
+    const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='roadmap-guaca-'+stamp()+'.json';
+    document.body.appendChild(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+    toast('Respaldo descargado: roadmap-guaca-'+stamp()+'.json');
+  };
+  document.getElementById('btnUpload').onclick=()=>{
+    if(dirty&&!confirm('Tienes cambios sin publicar. Cargar un archivo los reemplaza. ¿Continuar?'))return;
+    document.getElementById('jsonPick').click();
+  };
+  document.getElementById('jsonPick').addEventListener('change',e=>{
+    const f=e.target.files[0];if(!f)return;
+    const r=new FileReader();
+    r.onload=()=>{
+      try{
+        const d=JSON.parse(r.result);
+        if(!d.phases||!d.lanes)throw new Error('formato');
+        d.comments=d.comments||{};
+        d.repoBase=d.repoBase||'';
+        (d.phases||[]).forEach(x=>{if(!x.id)x.id=uid()});
+        (d.lanes||[]).forEach(l=>{if(!l.id)l.id=uid();(l.cards||[]).forEach(c=>{if(!c.id)c.id=uid();c.items=c.items||[];c.tags=c.tags||[];if(c.image===undefined)c.image=null})});
+        state=d;remoteSha=null;render();markDirty();
+        toast('Versión cargada desde el archivo · sin publicar todavía');
+      }catch(err){alert('El archivo no tiene el formato esperado de roadmap.')}
+      e.target.value='';
+    };
+    r.readAsText(f);
+  });
   document.getElementById('btnReset').onclick=()=>{
     if(!confirm('¿Reiniciar al contenido propuesto? Se pierden los cambios locales no publicados.'))return;
     state=defaultState();markDirty();render();toast('Roadmap reiniciado');
   };
   window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue=''}});
 }else{
-  document.getElementById('roComments').onclick=openInbox;
   document.getElementById('roPdf').onclick=()=>window.print();
 }
 
