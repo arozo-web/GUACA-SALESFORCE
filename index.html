@@ -548,7 +548,7 @@ const CONFIG = {
 };
 /* ============================================================ */
 
-const LS_STATE='guaca-roadmap-sf-v11';
+const LS_STATE='guaca-roadmap-sf-v12';
 const LS_CFG='guaca-roadmap-cfg';
 const LS_TOKEN='guaca-roadmap-token';
 const LS_ME='guaca-roadmap-author';
@@ -843,7 +843,7 @@ const DEFAULT_DATA = {
     {
       "id": "y6abaz0",
       "name": "Marketing y Comercio Digital",
-      "sub": "Marketing Cloud",
+      "sub": "Marketing Cloud · Adquisición y tráfico al taller de manera omnicanal",
       "tone": "sky",
       "icon": {
         "key": "icono-marketing-cloud.png",
@@ -945,7 +945,7 @@ const DEFAULT_DATA = {
           "items": [
             "Modelo contextual",
             "5 audiencias y segmentos iniciales",
-            "2 journeys prioritarios",
+            "2 Customer journeys prioritarios",
             "Preferencias de canal y exclusiones mínimas",
             "Indicadores de campaña, conversación y cita"
           ],
@@ -1007,7 +1007,8 @@ const DEFAULT_DATA = {
           "title": "Agentforce",
           "items": [
             "Agendamiento completamente autonomo.",
-            "Estado de pedido 24/7"
+            "Estado de pedido 24/7",
+            "Recomendaciones por placa y vehiculo accesorios"
           ],
           "tags": [],
           "image": null
@@ -1015,20 +1016,13 @@ const DEFAULT_DATA = {
         {
           "id": "0zvoywa",
           "phaseId": "2rtatsi",
-          "title": "CTI TBD",
+          "title": "Telefonia Nativa Salesforce",
           "items": [
-            "Telefonía / CTI en contact center"
-          ],
-          "tags": [],
-          "image": null
-        },
-        {
-          "id": "tma6ych",
-          "phaseId": "wmaeyq6",
-          "title": "Guaca Service",
-          "items": [
-            "Órdenes de trabajo",
-            "Asignación de técnicos y agenda"
+            "Telefonía / CTI en contact center",
+            "Transferencia a números externos y navegación de IVRs",
+            "Integración con WhatsApp Voice/PSTN vía AFCC Digital",
+            "Agente de voz autónomo con escalamiento a humano (Agentforce Voice)",
+            "Grabación, transcripción y enrutamiento/IVR ilimitados"
           ],
           "tags": [],
           "image": null
@@ -1062,7 +1056,7 @@ const DEFAULT_DATA = {
           "phaseId": "9wbzzw7",
           "title": "Omnicanalidad + IA",
           "items": [
-            "Agentforce captura información inicial para el agendamiento",
+            "Agentforce captura información inicial para el agendamiento.",
             "Escalamiento al agente humano conservando el contexto",
             "WhatsApp oficial con enrutamiento y trazabilidad",
             "Chat para web y Facebook Messenger",
@@ -1078,6 +1072,29 @@ const DEFAULT_DATA = {
           "items": [
             "Estrategia de transición desde la plataforma actual; alcance histórico por validar",
             "Base de conocimiento unificada",
+            "Encuesta de la experiencia digital"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "rw749e9",
+          "phaseId": "iyitc4h",
+          "title": "Telefonia por integración",
+          "items": [
+            "Screen pop con # de teléfono llamadas inbound Asterisk.",
+            "Recomendaciones de vendors Genesys, Five9, Vonage, Cisco, NICE, Amazon Connect"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "tma6ych",
+          "phaseId": "vu6j4ba",
+          "title": "Guaca Service v2",
+          "items": [
+            "Órdenes de trabajo",
+            "Asignación de técnicos y agenda",
             "Citas de taller",
             "Recepción de vehículos",
             "Encuesta posterior con alerta y acción de recuperación",
@@ -1108,19 +1125,6 @@ const DEFAULT_DATA = {
             "Cotizaciones y proformas",
             "Integración con tienda en línea (X-Cart)",
             "Gestión de prospectos B2B: talleres y flotillas"
-          ],
-          "tags": [],
-          "image": null
-        },
-        {
-          "id": "wn6ss77",
-          "phaseId": "vu6j4ba",
-          "title": "Descubrimiento y diseño",
-          "items": [
-            "Levantamiento de procesos B2C y B2B",
-            "Mapa de datos de clientes y flotillas",
-            "Definición de la Vista 360",
-            "Gobierno del proyecto y KPIs"
           ],
           "tags": [],
           "image": null
@@ -1158,6 +1162,18 @@ const DEFAULT_DATA = {
             "Reglas de asignación por agencia",
             "Catálogo, listas de precios y descuentos",
             "Aprobaciones y visibilidad por rol"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "wn6ss77",
+          "phaseId": "vu6j4ba",
+          "title": "Descubrimiento y diseño",
+          "items": [
+            "Levantamiento de procesos B2C y B2B",
+            "Mapa de datos de clientes y flotillas",
+            "KPIs"
           ],
           "tags": [],
           "image": null
@@ -1235,15 +1251,11 @@ const DEFAULT_DATA = {
           "image": null
         },
         {
-          "id": "5h488ut",
+          "id": "ophgvt5",
           "phaseId": "9wbzzw7",
-          "title": "Arquitectura e integraciones prioritarias",
+          "title": "Telefonia por integración",
           "items": [
-            "Inventario de sistemas y datos",
-            "Definición de fuentes y sistemas maestros",
-            "Disponibilidad de APIs y frecuencia de actualización",
-            "Diseño de integración, seguridad y responsables",
-            "Relación entre Data Lake, Salesforce y Data Cloud"
+            "Screen pop con # de teléfono llamadas inbound Asterisk."
           ],
           "tags": [],
           "image": null
@@ -1256,6 +1268,20 @@ const DEFAULT_DATA = {
             "Precarga de información básica",
             "Datos disponibles mediante API, sujetos a validación de TI",
             "Calidad y cobertura requeridas para identificar cliente y vehículo"
+          ],
+          "tags": [],
+          "image": null
+        },
+        {
+          "id": "5h488ut",
+          "phaseId": "wmaeyq6",
+          "title": "Arquitectura e integraciones prioritarias",
+          "items": [
+            "Inventario de sistemas y datos",
+            "Definición de fuentes y sistemas maestros",
+            "Disponibilidad de APIs y frecuencia de actualización",
+            "Diseño de integración, seguridad y responsables",
+            "Relación entre Data Lake, Salesforce y Data Cloud"
           ],
           "tags": [],
           "image": null
@@ -1332,7 +1358,6 @@ const DEFAULT_DATA = {
             "Conversaciones, respuesta y atención",
             "Conversión de conversación a cita y asistencia",
             "Vehículos recibidos y conversión por campaña",
-            "NPS/CSAT, tasa de respuesta y recuperación",
             "Línea base y metas por definir conjuntamente"
           ],
           "tags": [],
@@ -1342,8 +1367,8 @@ const DEFAULT_DATA = {
     }
   ],
   "version": 2,
-  "updatedAt": "2026-09-09T19:54:25.086Z",
-  "updatedBy": "alfredo",
+  "updatedAt": "2026-09-10T13:17:50.525Z",
+  "updatedBy": "local",
   "comments": {},
   "exec": {
     "kicker": "Lo que hemos recorrido juntos",
@@ -1352,7 +1377,7 @@ const DEFAULT_DATA = {
     "safari": {
       "title": "Safari de descubrimiento",
       "sub": "Visitas de campo · sede principal y talleres",
-      "text": "El recorrido en sitio permitió reconstruir el flujo completo: captación digital y contact center, atención y cotización en mostrador, ejecución en la bahía del taller, y cierre con facturación y posventa. Se entrevistó a los líderes de TI, operaciones y comercial, y a las jefaturas de taller.",
+      "text": "El recorrido en sitio permitió reconstruir el flujo completo: captación digital y contact center, atención y cotización en mostrador, ejecución en la bahía del taller, y cierre con facturación y posventa. Se entrevistó a los líderes de TI, operaciones y comercial, y a las jefaturas de taller.\n\n\nSesiones con nuestro equipo virtual, solution engineers, estrategas de diferentes nubes.",
       "bullets": [
         "Sede principal: mostrador, contact center y administración",
         "Sedes de taller: recepción de vehículos, bahías y bodega de repuestos",
@@ -1480,7 +1505,7 @@ const DEFAULT_DATA = {
         "tone": "amber",
         "title": "Canales y atención",
         "now": "¿Cómo se unifica un canal repartido entre números, sucursales y conversaciones aisladas?",
-        "detail": "No hay medición integral de demanda, tiempos y conversión; parte de la interacción tampoco queda visible ni auditable para la organización.",
+        "detail": "No hay medición integral de demanda, tiempos y conversión; parte de la interacción tampoco queda visible ni auditable para la organización.\n\nCentral telefónica",
         "need": "centralizar la atención digital y telefónica, conservar el contexto",
         "needTail": "y asegurar una experiencia consistente entre contact center, tienda y taller."
       },
